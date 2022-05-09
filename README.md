@@ -24,3 +24,11 @@
     <li>WESLEY DE ALMEIDA CRUZ</li>
   </ul>
 </table>
+
+<h2>
+  Cronograma - Trello:
+</h2>
+
+<p>
+  https://trello.com/invite/b/vpRl5d8x/0ecd24507db41564617288916035b76b/cronograma-do-projeto
+</p>
