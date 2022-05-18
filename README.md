@@ -32,3 +32,27 @@
 <p>
   https://trello.com/invite/b/vpRl5d8x/0ecd24507db41564617288916035b76b/cronograma-do-projeto
 </p>
+
+<h2>
+  Documento de Requisitos:
+</h2>
+
+<p>
+  https://docs.google.com/document/d/1bLgXvPnQ-JTfa59iU4vmXhrcmiO5_fdz8YJvQH1Dj_8/edit
+</p>
+
+<h2>
+  Diagrama de Classes:
+</h2>
+
+<p>
+  https://app.diagrams.net/#G1bwz7nqdYscr42HANkks7u94oNk8vs1GN
+</p>
+
+<h2>
+  Diagrama de Casos de uso:
+</h2>
+
+<p>
+  https://app.diagrams.net/#G1ioF2ZGrYRLUzunQ5Ojd4rxq8b-VawiHQ
+</p>
