@@ -11,7 +11,7 @@ caminho \ parametros \ retorna \ descrição
 
 'app.url/usuarios/login' \ email, senha \ json com info usuario \ func de login, se as info forem validas retorna as inf do usuario
 
-'app.url/usuarios/insert' \nome, email, senha. experiencia, nivel, caminhoAtual, caminhoFront, caminhoBAck \ 'ok'\ insere um usuario no banco de dados
+'app.url/usuarios/insert' \nome, email, senha. experiencia, caminhoAtual, caminhoFront, caminhoBAck \ 'ok'\ insere um usuario no banco de dados
 
 'app.url/usuarios/get/all' \ -- \ json com todos os usuarios \ get para todos os usuarios cadastrados
 

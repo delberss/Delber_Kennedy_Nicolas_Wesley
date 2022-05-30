@@ -41,15 +41,13 @@ router.post('/insert', async (req, res) => {
   var email = req.body.email == "" ? null : req.body.email;
   var senha = req.body.senha == "" ? null : req.body.senha;
   var experiencia = req.body.experiencia == "" ? null : req.body.experiencia;
-  var nivel = req.body.nivel == "" ? null : req.body.nivel;
   var caminhoAtual = req.body.caminhoAtual == "" ? null : req.body.caminhoAtual;
   var caminhoFront = req.body.caminhoFront == "" ? null : req.body.caminhoFront;
   var caminhoBack = req.body.caminhoBack == "" ? null : req.body.caminhoBack;
 
  
-  var query = 'INSERT INTO usuarios(nome, email, senha, experiencia, nivel, caminhoAtual,caminhoFront, caminhoBack) '
-                'VALUES ($1,$2,$3,$4,$5,$6,$8);';
-  var values = [nome,email,senha,experiencia,nivel,caminhoAtual,caminhoFront,caminhoBack];
+  var query = "INSERT INTO usuarios(nome, email, senha, experiencia, caminhoAtual,caminhoFront, caminhoBack) VALUES ($1,$2,$3,$4,$5,$6,$7);";
+  var values = [nome,email,senha,experiencia,caminhoAtual,caminhoFront,caminhoBack];
 
   try {
     const client = await pool.connect();
