@@ -6,42 +6,40 @@ var router = express.Router();
 
 // criar novo caminho
 router.post('/insert', async (req, res) => {
-  if(req.body.pword == "senha123")
-  {
-   
-  var nome = req.body.nome == "" ? null : req.body.nome;
-  var descricao = req.body.descricao == "" ? null : req.body.descricao;
-  var numeroTopicos = req.body.experiencia == "" ? null : req.body.experiencia;
+  if (req.query.pword == "senha123") {
 
- 
-  var query = 'INSERT INTO caminhos(nome,descricao,numeroTopicos) '
-                'VALUES ($1,$2,$3);';
-  var values = [nome,descricao,numeroTopicos];
+    var nome = req.body.nome == "" ? null : req.body.nome;
+    var descricao = req.body.descricao == "" ? null : req.body.descricao;
+    var numeroTopicos = req.body.numeroTopicos == "" ? null : req.body.numeroTopicos;
 
-  try {
-    const client = await pool.connect();
-    const result = await client.query(query, values);
-  
-    res.status(200).send('ok');
-    client.release();
-  } catch (err) {
-    console.error(err);
-    res.send("Error " + err);
+    var query = 'INSERT INTO caminhos(nome,descricao,numeroTopicos) ' +
+      'VALUES ($1,$2,$3);';
+    var values = [nome, descricao, numeroTopicos];
+
+    try {
+      const client = await pool.connect();
+      const result = await client.query(query, values);
+
+      res.status(200).send('ok');
+      client.release();
+    } catch (err) {
+      console.error(err);
+      res.send("Error " + err);
+    }
   }
-}
-else{
-  res.status(401).send("não autorizado");
-}
+  else {
+    res.status(401).send('não autorizado' + req.query.pword);
+  }
 });
 
 router.get('/get/all', async (req, res) => {
-    if(req.body.pword == "senha123"){
-      var id = req.body.id == "" ? null : req.body.id;
-      const query = 'SELECT * FROM caminhos;';
-      const values = [id];
+  if (req.query.pword == "senha123") {
+    var id = req.body.id == "" ? null : req.body.id;
+    const query = 'SELECT * FROM caminhos;';
+    const values = [id];
     try {
       const client = await pool.connect();
-      const resultado_query = await client.query(query,values);
+      const resultado_query = await client.query(query, values);
       var resultado_final = resultado_query.rows;
       res.send(resultado_final);
       client.release();
@@ -50,93 +48,68 @@ router.get('/get/all', async (req, res) => {
       res.send("Error " + err);
     }
   }
-  else{
+  else {
     res.status(401).send("não autorizado");
   }
-  });
+});
+
+//TODO  precisa implementar essa aqui ainda
+router.get('/get/topicos/all', async (req, res) => {
+  if (req.query.pword == "senha123") {
+    var id = req.body.id == "" ? null : req.body.id;
+    const query = 'SELECT * FROM caminhos;';
+    const values = [id];
+    try {
+      const client = await pool.connect();
+      const resultado_query = await client.query(query, values);
+      var resultado_final = resultado_query.rows;
+      res.send(resultado_final);
+      client.release();
+    } catch (err) {
+      console.error(err);
+      res.send("Error " + err);
+    }
+  }
+  else {
+    res.status(401).send("não autorizado");
+  }
+});
 
 router.get('/get', async (req, res) => {
-  if(req.body.pword == "senha123"){
+  if (req.query.pword == "senha123") {
     var id = req.body.id == "" ? null : req.body.id;
     const query = 'SELECT * FROM caminhos WHERE ID =$1;';
     const values = [id];
-  try {
-    const client = await pool.connect();
-    const resultado_query = await client.query(query,values);
-    var resultado_final = resultado_query.rows;
-    res.send(resultado_final);
-    client.release();
-  } catch (err) {
-    console.error(err);
-    res.send("Error " + err);
+    try {
+      const client = await pool.connect();
+      const resultado_query = await client.query(query, values);
+      var resultado_final = resultado_query.rows;
+      res.send(resultado_final);
+      client.release();
+    } catch (err) {
+      console.error(err);
+      res.send("Error " + err);
+    }
   }
-}
-else{
-  res.status(401).send("não autorizado");
-}
+  else {
+    res.status(401).send("não autorizado");
+  }
 });
 
-//TODO
-router.get('/ranking/get', async (req, res) => {
-  if(req.body.pword == "senha123"){
-    const query = 'SELECT nome,experiencia,nivel FROM usuarios ORDER BY experiencia;';
-  try {
-    const client = await pool.connect();
-    const resultado_query = await client.query(query);
-    var resultado_final = resultado_query.rows;
-    res.send(resultado_final);
-    client.release();
-  } catch (err) {
-    console.error(err);
-    res.send("Error " + err);
-  }
-}
-else{
-  res.status(401).send("não autorizado");
-}
-});
 
 //TODO
 router.put('/edit', async (req, res) => {
-  if(req.body.pword == "senha123"){
-  var id = req.body.id == "" ? null : req.body.id;
-  var email = req.body.email == "" ? null : req.body.email;
-  var senha = req.body.senha == "" ? null : req.body.senha;
-  var experiencia = req.body.experiencia == "" ? null : req.body.experiencia;
-  var nivel = req.body.nivel == "" ? null : req.body.nivel;
-  var caminhoAtual = req.body.caminhoAtual == "" ? null : req.body.caminhoAtual;
-  var caminhoFront = req.body.caminhoFront == "" ? null : req.body.caminhoFront;
-  var caminhoBack = req.body.caminhoBack == "" ? null : req.body.caminhoBack;
+  if (req.query.pword == "senha123") {
+    var id = req.body.id == "" ? null : req.body.id;
+    var nome = req.body.nome == "" ? null : req.body.nome;
+    var descricao = req.body.descricao == "" ? null : req.body.descricao;
+    var numeroTopicos = req.body.experiencia == "" ? null : req.body.experiencia;
 
- 
-  var query = 'UPDATE usuarios SET nome =$1, email =$2, senha=$3, experiencia=$4, nivel=$5, caminhoAtual=$6,caminhoFront=$7, caminhoBack=$8 WHERE id = $9'
-                'VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9);';
-  var values = [nome,email,senha,experiencia,nivel,caminhoAtual,caminhoFront,caminhoBack,id];
 
-  try {
-    const client = await pool.connect();
-    const result = await client.query(query, values);
-    res.status(200).send('ok');
-    client.release();
-  } catch (err) {
-    console.error(err);
-    res.send("Error " + err);
-  }
+    var query = 'UPDATE caminhos(nome,descricao,numeroTopicos) WHERE id = $1 ' +
+      'VALUES ($1,$2,$3,$4);';
+    var values = [id, nome, descricao, numeroTopicos];
 
-}
-else{
-  res.status(401).send("não autorizado");
-}
-});
-
-//TODO
-router.delete('/delete', async (req, res) => {
-  if(req.body.pword == "senha123"){
-  var id = req.body.id == "" ? null : req.body.id;
-  if (id) //verifica se id tem um valor valido, se ele for null ou undefined isso aqui retorna falso
-   {
-    var query = "DELETE FROM usuarios WHERE id = $1;"
-    var values = [id];
     try {
       const client = await pool.connect();
       const result = await client.query(query, values);
@@ -146,11 +119,35 @@ router.delete('/delete', async (req, res) => {
       console.error(err);
       res.send("Error " + err);
     }
-  } else {
-    res.send("error, invalid id");
+
   }
+  else {
+    res.status(401).send("não autorizado");
   }
-  else{
+});
+
+//TODO
+router.delete('/delete', async (req, res) => {
+  if (req.query.pword == "senha123") {
+    var id = req.body.id == "" ? null : req.body.id;
+    if (id) //verifica se id tem um valor valido, se ele for null ou undefined isso aqui retorna falso
+    {
+      var query = "DELETE FROM caminhos WHERE id = $1;"
+      var values = [id];
+      try {
+        const client = await pool.connect();
+        const result = await client.query(query, values);
+        res.status(200).send('ok');
+        client.release();
+      } catch (err) {
+        console.error(err);
+        res.send("Error " + err);
+      }
+    } else {
+      res.send("error, invalid id");
+    }
+  }
+  else {
     res.status(401).send("Não autorizado");
   }
 });

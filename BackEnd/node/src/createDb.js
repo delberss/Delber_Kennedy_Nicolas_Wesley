@@ -5,17 +5,23 @@ var router = express.Router();
 
 
 router.get('/', async (req, res) => {
-  if (req.body.pword == "senha123") {
+  if (req.query.pword == "senha123") {
     const CREATE_TABLE =
-    'CREATE TABLE usuarios (id SERIAL PRIMARY KEY, nome VARCHAR, email VARCHAR NOT NULL, senha VARCHAR NOT NULL, experiencia JSONB, caminhoAtual INTEGER,caminhoBack JSONB,caminhoFront JSONB);'
-    'CREATE TABLE caminhos (id SERIAL PRIMARY KEY, nome VARCHAR, descricao VARCHAR, numeroTopicos INTEGER);'
-    'CREATE TABLE topicos (ID SERIAL PRIMARY KEY, nome varchar, descricao VARCHAR);'
-    'CREATE TABLE subtopicos (ID SERIAL PRIMARY KEY, nome VARCHAR, descricao VARCHAR);'
-    'CREATE TABLE caminhoContemTopico(id SERIAL PRIMARY KEY, caminho INTEGER REFERENCES caminhos,topico INTEGER REFERENCES topicos);'
-    'CREATE TABLE topicoContemSubTopico(id SERIAL PRIMARY KEy, topico INTEGER REFERENCES topicos,subtopico INTEGER REFERENCES subtopicos);'
-    'CREATE TABLE feedbackSubTopico(id SERIAL PRIMARY KEY, usuario INTEGER REFERENCES usuarios,subtopico INTEGER REFERENCES subtopicos ,  criadoEm TIMESTAMP, editadoEm TIMESTAMP);'
-    'CREATE TABLE feedbackTopico(id SERIAL PRIMARY KEY, usuario INTEGER REFERENCES usuarios,topico INTEGER REFERENCES topicos , criadoEm TIMESTAMP, editadoEm TIMESTAMP);'
-    'CREATE TABLE feedbackCaminho(id SERIAL PRIMARY KEY, usuario INTEGER REFERENCES usuarios, caminho INTEGER REFERENCES caminhos, criadoEm TIMESTAMP, editadoEm TIMESTAMP);';
+    'CREATE TABLE usuarios (id SERIAL PRIMARY KEY, nome VARCHAR, email VARCHAR NOT NULL, '+
+    'senha VARCHAR NOT NULL, experiencia JSONB, caminhoAtual INTEGER,caminhoBack JSONB,caminhoFront JSONB);'+
+    'CREATE TABLE caminhos (id SERIAL PRIMARY KEY, nome VARCHAR, descricao VARCHAR, numeroTopicos INTEGER);'+
+    'CREATE TABLE topicos (id SERIAL PRIMARY KEY, nome varchar, descricao VARCHAR);'+
+    'CREATE TABLE subtopicos (id SERIAL PRIMARY KEY, nome VARCHAR, descricao VARCHAR, conteudo JSONB);'+
+    'CREATE TABLE caminhoContemTopico(id SERIAL , caminho INTEGER REFERENCES caminhos ON DELETE CASCADE,'+
+    'topico INTEGER REFERENCES topicos ON DELETE CASCADE, PRIMARY KEY (caminho,topico));'+
+    'CREATE TABLE topicoContemSubtopico(id SERIAL , topico INTEGER REFERENCES topicos ON DELETE CASCADE,'+
+    'subtopico INTEGER REFERENCES subtopicos ON DELETE CASCADE, PRIMARY KEY (topico,subtopico));'+
+    'CREATE TABLE feedbackSubtopico(id SERIAL PRIMARY KEY, usuario INTEGER REFERENCES usuarios ON DELETE CASCADE,'+ 
+    'subtopico INTEGER REFERENCES subtopicos ON DELETE CASCADE,  criadoEm TIMESTAMP, editadoEm TIMESTAMP, conteudo VARCHAR) ;'+
+    'CREATE TABLE feedbackTopico(id SERIAL PRIMARY KEY, usuario INTEGER REFERENCES usuarios ON DELETE CASCADE,'+ 
+    'topico INTEGER REFERENCES topicos ON DELETE CASCADE , criadoEm TIMESTAMP, editadoEm TIMESTAMP, conteudo VARCHAR);'
+    'CREATE TABLE feedbackCaminho(id SERIAL PRIMARY KEY, usuario INTEGER REFERENCES usuarios ON DELETE CASCADE, '+
+    'caminho INTEGER REFERENCES caminhos ON DELETE CASCADE, criadoEm TIMESTAMP, editadoEm TIMESTAMP, conteudo VARCHAR);';
 
 
     try {
