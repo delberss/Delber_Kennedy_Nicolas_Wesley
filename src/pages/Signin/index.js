@@ -20,7 +20,7 @@ fetch("https://trabalhoengsw.herokuapp.com/usuarios/login?pword=senha123&email=j
   .catch(error => console.log('error', error));
 
         e.preventDefault();
-        navigate("/jornadas");
+        navigate("/formulario1");
     };
 
     const handleBack = (e) => {
