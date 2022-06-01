@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Header from "../../Header/Header";
 import Footer from '../../Footer/Footer';
+import "../Ranking/styles.css";
 
 class Ranking extends Component {
     constructor(props) {
