@@ -1,0 +1,19 @@
+.content{
+    background-color: #cecece;
+  
+    width: 960px;
+    height: 100vh;
+  
+    margin: 0 auto;
+    padding: 20px 40px;
+  
+    text-align: center;
+}
+  
+.content h2 {
+    color: rgb(16, 103, 127);
+    text-transform: uppercase;
+    padding-bottom: 20px;
+
+}
+
