@@ -1,0 +1,11 @@
+.sobre {
+    text-align: center;
+    width: 80%;
+    margin: 10px auto;
+}
+
+.sobre p{
+    font-size: 18px;
+    line-height: 35px;
+    text-align: justify;
+}
