@@ -8,40 +8,20 @@ var router = express.Router();
 router.post('/insert', async (req, res) => {
     if (req.query.pword == "senha123") {
 
-        var nome = req.body.nome == "" ? null : req.body.nome;
-        var descricao = req.body.descricao == "" ? null : req.body.descricao;
-        var idTopico = req.body.idTopico == "" ? null : req.body.idTopico;
+        var usuario = req.body.descricao == "" ? null : req.body.descricao;
+        var topico = req.body.idTopico == "" ? null : req.body.idTopico;
         var conteudo = req.body.conteudo == "" ? null : req.body.conteudo;
+        var criado = 'NOW()';
+        var editado = 'NOW';
 
-        var query = 'INSERT INTO subtopicos(nome,descricao,conteudo)' +
-            'VALUES ($1,$2,$3) RETURNING id;';
-        var values = [nome, descricao,conteudo];
+        var query = 'INSERT INTO feedbackTopico(usuario,topico,conteudo,criado,editado)' +
+            'VALUES ($1,$2,$3,$4,$5)';
+        var values = [usuario,topico,conteudo,criado,editado];
 
         try {
             // primeiro tenta inserir o topico
             const client = await pool.connect();
             const result = await client.query(query, values);
-            var idSubtopico = result.rows[0].id;
-            client.release();
-            try {
-                // se o topico for inserido cria a relação entre caminho e topico
-                var query2 = 'INSERT INTO topicoContemSubtopico(subtopico,topico) ' +
-                    'VALUES ($1,$2);';
-                var values2 = [idSubtopico, idTopico];
-                const client2 = await pool.connect();
-                const result2 = await client.query(query2, values2);
-                res.status(200).send('ok');
-                client2.release();
-            }
-            catch (er) {   // se falhar ao criar ao criar a relação caminho topico, exclui o topico
-                var query3 = 'DELETE FROM subtopicos WHERE id = $1' +
-                    'VALUES ($1);';
-                var values3 = [idSubtopico];
-                const client3 = await pool.connect();
-                const result3 = await client.query(query3, values3);
-                client3.release();
-                res.send("erro");
-            }
         } catch (err) {
             console.error(err);
             res.send("Error " + err);
@@ -52,35 +32,33 @@ router.post('/insert', async (req, res) => {
     }
 });
 
-router.post('/insertRelation', async (req, res) => {
+
+
+router.get('/get/all', async (req, res) => {
     if (req.query.pword == "senha123") {
-        var idTopico = req.body.idTopico == "" ? null : req.body.idTopico;
-        var idSubtopico = req.body.idSubtopico == "" ? null : req.body.idSubtopico;
-
+        var id = req.query.id == "" ? null : req.query.id;
+        const query = 'SELECT * FROM feedbackTopico;';
+        const values = [id];
         try {
-            // se o topico for inserido cria a relação entre caminho e topico
-            var query2 = 'INSERT INTO topicoContemSubtopico(subtopico,topico) ' +
-                'VALUES ($1,$2);';
-            var values2 = [idSubtopico, idTopico];
-            const client2 = await pool.connect();
-            const result2 = await client.query(query2, values2);
-            res.status(200).send('ok');
-            client2.release();
+            const client = await pool.connect();
+            const resultado_query = await client.query(query, values);
+            var resultado_final = resultado_query.rows;
+            res.send(resultado_final);
+            client.release();
+        } catch (err) {
+            console.error(err);
+            res.send("Error " + err);
         }
-        catch (er) {
-            res.send("erro");
-        }
-
     }
     else {
         res.status(401).send("não autorizado");
     }
 });
 
-router.get('/get/all', async (req, res) => {
+router.get('/get/all/user', async (req, res) => {
     if (req.query.pword == "senha123") {
-        var id = req.query.id == "" ? null : req.query.id;
-        const query = 'SELECT * FROM subtopicos;';
+        var id = req.query.usuario == "" ? null : req.query.usuario;
+        const query = 'SELECT * FROM feedbackTopico WHERE usuario= $1;';
         const values = [id];
         try {
             const client = await pool.connect();
@@ -101,7 +79,7 @@ router.get('/get/all', async (req, res) => {
 router.get('/get', async (req, res) => {
     if (req.query.pword == "senha123") {
         var id = req.query.id == "" ? null : req.query.id;
-        const query = 'SELECT * FROM subtopicos WHERE ID =$1;';
+        const query = 'SELECT * FROM feedbackTopico WHERE ID =$1;';
         const values = [id];
         try {
             const client = await pool.connect();
@@ -119,19 +97,19 @@ router.get('/get', async (req, res) => {
     }
 });
 
-
-
 router.put('/edit', async (req, res) => {
     if (req.query.pword == "senha123") {
         var id = req.body.id == "" ? null : req.body.id;
-        var nome = req.body.nome == "" ? null : req.body.nome;
-        var descricao = req.body.descricao == "" ? null : req.body.descricao;
+        var usuario = req.body.descricao == "" ? null : req.body.descricao;
+        var topico = req.body.idTopico == "" ? null : req.body.idTopico;
         var conteudo = req.body.conteudo == "" ? null : req.body.conteudo;
+        var criado = req.body.criado == "" ? null : req.body.criado;
+        var editado = 'NOW';
 
 
-        var query = 'UPDATE subtopicos(nome,descricao,conteudo) WHERE id = $1 ' +
-            'VALUES ($1,$2,$3,$4);';
-        var values = [id, nome, descricao,conteudo];
+        var query = 'UPDATE feedbackTopico(usuario,topico,conteudo,criado,editado) WHERE id = $1 ' +
+            'VALUES ($1,$2,$3,$4,$5,$6);';
+        var values = [id, usuario,topico,conteudo,criado,editado];
 
         try {
             const client = await pool.connect();
@@ -149,13 +127,12 @@ router.put('/edit', async (req, res) => {
     }
 });
 
-
 router.delete('/delete', async (req, res) => {
     if (req.query.pword == "senha123") {
         var id = req.body.id == "" ? null : req.body.id;
         if (id) //verifica se id tem um valor valido, se ele for null ou undefined isso aqui retorna falso
         {
-            var query = "DELETE FROM subtopicos WHERE id = $1;"
+            var query = "DELETE FROM feedbackTopico WHERE id = $1;"
             var values = [id];
             try {
                 const client = await pool.connect();

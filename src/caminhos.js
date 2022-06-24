@@ -53,7 +53,6 @@ router.get('/get/all', async (req, res) => {
   }
 });
 
-//TODO  precisa implementar essa aqui ainda
 router.get('/get/topicos/all', async (req, res) => {
   if (req.query.pword == "senha123") {
     var id = req.query.id == "" ? null : req.query.id;
@@ -97,7 +96,7 @@ router.get('/get', async (req, res) => {
 });
 
 
-//TODO
+
 router.put('/edit', async (req, res) => {
   if (req.query.pword == "senha123") {
     var id = req.body.id == "" ? null : req.body.id;
@@ -126,7 +125,7 @@ router.put('/edit', async (req, res) => {
   }
 });
 
-//TODO
+
 router.delete('/delete', async (req, res) => {
   if (req.query.pword == "senha123") {
     var id = req.body.id == "" ? null : req.body.id;

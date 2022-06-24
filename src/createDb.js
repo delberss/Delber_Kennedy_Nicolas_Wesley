@@ -7,7 +7,7 @@ var router = express.Router();
 router.get('/', async (req, res) => {
   if (req.query.pword == "senha123") {
     const CREATE_TABLE =
-    'CREATE TABLE usuarios (id SERIAL PRIMARY KEY, nome VARCHAR, email VARCHAR NOT NULL, '+
+    'CREATE TABLE usuarios (id SERIAL PRIMARY KEY, nome VARCHAR, email VARCHAR UNIQUE, curso VARCHAR'+
     'senha VARCHAR NOT NULL, experiencia JSONB, caminhoAtual INTEGER,caminhoBack JSONB,caminhoFront JSONB);'+
     'CREATE TABLE caminhos (id SERIAL PRIMARY KEY, nome VARCHAR, descricao VARCHAR, numeroTopicos INTEGER);'+
     'CREATE TABLE topicos (id SERIAL PRIMARY KEY, nome varchar, descricao VARCHAR);'+
@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
     'topico INTEGER REFERENCES topicos ON DELETE CASCADE , criadoEm TIMESTAMP, editadoEm TIMESTAMP, conteudo VARCHAR);'
     'CREATE TABLE feedbackCaminho(id SERIAL PRIMARY KEY, usuario INTEGER REFERENCES usuarios ON DELETE CASCADE, '+
     'caminho INTEGER REFERENCES caminhos ON DELETE CASCADE, criadoEm TIMESTAMP, editadoEm TIMESTAMP, conteudo VARCHAR);';
-
+    
 
     try {
       const client = await pool.connect();

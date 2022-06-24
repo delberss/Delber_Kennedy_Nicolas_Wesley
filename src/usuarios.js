@@ -41,6 +41,7 @@ router.post('/insert', async (req, res) => {
   var nome = req.body.nome == "" ? null : req.body.nome; 
   var email = req.body.email == "" ? null : req.body.email;
   var senha = req.body.senha == "" ? null : req.body.senha;
+  var curso = req.body.curso == "" ? null : req.body.curso;
   var experiencia = req.body.experiencia == "" ? null : req.body.experiencia;
   var caminhoAtual = req.body.caminhoAtual == "" ? null : req.body.caminhoAtual;
   var caminhoFront = req.body.caminhoFront == "" ? null : req.body.caminhoFront;
@@ -48,8 +49,8 @@ router.post('/insert', async (req, res) => {
 
  
   var query = 'INSERT INTO usuarios(nome, email, senha, experiencia, caminhoAtual,caminhoFront,'+
-  ' caminhoBack) VALUES ($1,$2,$3,$4,$5,$6,$7);';
-  var values = [nome,email,senha,experiencia,caminhoAtual,caminhoFront,caminhoBack];
+  ' caminhoBack,curso) VALUES ($1,$2,$3,$4,$5,$6,$7,$8);';
+  var values = [nome,email,senha,experiencia,caminhoAtual,caminhoFront,caminhoBack,curso];
 
   try {
     const client = await pool.connect();
@@ -138,12 +139,13 @@ router.put('/edit', async (req, res) => {
   var caminhoAtual = req.body.caminhoAtual == "" ? null : req.body.caminhoAtual;
   var caminhoFront = req.body.caminhoFront == "" ? null : req.body.caminhoFront;
   var caminhoBack = req.body.caminhoBack == "" ? null : req.body.caminhoBack;
+  var curso = req.body.curso == "" ? null : req.body.curso;
 
  
   var query = 'UPDATE usuarios SET nome =$1, email =$2, senha=$3, experiencia=$4, nivel=$5,'+
-  ' caminhoAtual=$6,caminhoFront=$7, caminhoBack=$8 WHERE id = $9'+
-                'VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9);';
-  var values = [nome,email,senha,experiencia,nivel,caminhoAtual,caminhoFront,caminhoBack,id];
+  ' caminhoAtual=$6,caminhoFront=$7,curso = $10, caminhoBack=$8 WHERE id = $9'+
+                'VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10);';
+  var values = [nome,email,senha,experiencia,nivel,caminhoAtual,caminhoFront,caminhoBack,id,curso];
 
   try {
     const client = await pool.connect();
