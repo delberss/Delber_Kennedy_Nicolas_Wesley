@@ -9,7 +9,7 @@ class Jornadas extends Component {
         super(props);
         this.state = {
             frontend: [],
-            backend :[]
+            backend: []
         }
     }
 
@@ -39,19 +39,21 @@ class Jornadas extends Component {
         console.log("criando lista front");
         const frontList = [];
         for (let i = 0; i < this.state.frontend.length; i++) {
+            
             let id = this.state.frontend[i]['id'];
-            let nome = this.state.usuarios[i]['nome'];
-            let descricao = this.state.usuarios[i]['descricao'];
+            let nome = this.state.frontend[i]['nome'];
+            let descricao = this.state.frontend[i]['descricao'];
             frontList.push(<li key={id}>Nome = {nome}, descricao = {descricao}</li>);
         }
         return frontList;
     }
+    
     backJsonToList() {
         const backList = [];
         for (let i = 0; i < this.state.backend.length; i++) {
-            let id = this.state.frontend[i]['id'];
-            let nome = this.state.usuarios[i]['nome'];
-            let descricao = this.state.usuarios[i]['descricao'];
+            let id = this.state.backend[i]['id'];
+            let nome = this.state.backend[i]['nome'];
+            let descricao = this.state.backend[i]['descricao'];
             backList.push(<li key={id}>Nome = {nome}, descricao = {descricao}</li>);
         }
         return backList;
