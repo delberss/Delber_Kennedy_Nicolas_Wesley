@@ -6,7 +6,7 @@ var router = express.Router();
 
 // criar novo caminho
 router.post('/insert', async (req, res) => {
-  if (req.query.pword == "senha123") {
+   
 
     var nome = req.body.nome == "" ? null : req.body.nome;
     var descricao = req.body.descricao == "" ? null : req.body.descricao;
@@ -27,13 +27,11 @@ router.post('/insert', async (req, res) => {
       res.send("Error " + err);
     }
   }
-  else {
-    res.status(401).send('não autorizado' + req.query.pword);
-  }
-});
+
+ );
 
 router.get('/get/all', async (req, res) => {
-  if (req.query.pword == "senha123") {
+   
     var id = req.query.id == "" ? null : req.query.id;
     const query = 'SELECT * FROM caminhos;';
     const values = [id];
@@ -48,17 +46,15 @@ router.get('/get/all', async (req, res) => {
       res.send("Error " + err);
     }
   }
-  else {
-    res.status(401).send("não autorizado");
-  }
-});
+  
+ );
 
-router.get('/get/topicos/all', async (req, res) => {
-  if (req.query.pword == "senha123") {
-    var id = req.query.id == "" ? null : req.query.id;
+router.get('/get/topicos', async (req, res) => {
+   
+    var idCaminho = req.query.idCaminho == "" ? null : req.query.idCaminho;
     const query = 'SELECT topicos.* FROM topicos JOIN caminhocontemtopico ON '+
     'topicos.id = caminhocontemtopico.topico WHERE caminhocontemtopico.caminho = $1;;';
-    const values = [id];
+    const values = [idCaminho];
     try {
       const client = await pool.connect();
       const resultado_query = await client.query(query, values);
@@ -70,13 +66,11 @@ router.get('/get/topicos/all', async (req, res) => {
       res.send("Error " + err);
     }
   }
-  else {
-    res.status(401).send("não autorizado");
-  }
-});
+  
+ );
 
 router.get('/get', async (req, res) => {
-  if (req.query.pword == "senha123") {
+   
     var id = req.query.id == "" ? null : req.query.id;
     const query = 'SELECT * FROM caminhos WHERE ID =$1;';
     const values = [id];
@@ -91,15 +85,13 @@ router.get('/get', async (req, res) => {
       res.send("Error " + err);
     }
   }
-  else {
-    res.status(401).send("não autorizado");
-  }
-});
+  
+ );
 
 
 
 router.put('/edit', async (req, res) => {
-  if (req.query.pword == "senha123") {
+   
     var id = req.body.id == "" ? null : req.body.id;
     var nome = req.body.nome == "" ? null : req.body.nome;
     var descricao = req.body.descricao == "" ? null : req.body.descricao;
@@ -121,14 +113,12 @@ router.put('/edit', async (req, res) => {
     }
 
   }
-  else {
-    res.status(401).send("não autorizado");
-  }
-});
+  
+ );
 
 
 router.delete('/delete', async (req, res) => {
-  if (req.query.pword == "senha123") {
+   
     var id = req.body.id == "" ? null : req.body.id;
     if (id) //verifica se id tem um valor valido, se ele for null ou undefined isso aqui retorna falso
     {
@@ -147,9 +137,8 @@ router.delete('/delete', async (req, res) => {
       res.send("error, invalid id");
     }
   }
-  else {
-    res.status(401).send("Não autorizado");
-  }
-});
+
+  
+ );
 
 module.exports = router;

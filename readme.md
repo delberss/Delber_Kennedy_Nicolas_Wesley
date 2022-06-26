@@ -1,7 +1,6 @@
-Todos os metodos precisam contem um parametro chamado pword com valor senha123
- as outras informações são passadas no body do request // chamadas do tipo GET os dado são passados da mesma forma que a pword não no body do request
+ as  informações são passadas no body do request // chamadas do tipo GET os dado são passados na url da request 
 
-exemplo  : "https://trabalhoengsw.herokuapp.com/usuarios/get/all?pword=senha123"
+exemplo  : "https://trabalhoengsw.herokuapp.com/usuarios/get/all"
 
 app.url = https://trabalhoengsw.herokuapp.com/  
 

@@ -6,7 +6,7 @@ var router = express.Router();
 
 
 router.post('/insert', async (req, res) => {
-    if (req.query.pword == "senha123") {
+     
 
         var usuario = req.body.descricao == "" ? null : req.body.descricao;
         var subtopico = req.body.idSubTopico == "" ? null : req.body.idSubTopico;
@@ -27,15 +27,13 @@ router.post('/insert', async (req, res) => {
             res.send("Error " + err);
         }
     }
-    else {
-        res.status(401).send("não autorizado");
-    }
-});
+     
+ );
 
 
 
 router.get('/get/all', async (req, res) => {
-    if (req.query.pword == "senha123") {
+     
         var id = req.query.id == "" ? null : req.query.id;
         const query = 'SELECT * FROM feedbackSubTopico;';
         const values = [id];
@@ -50,13 +48,11 @@ router.get('/get/all', async (req, res) => {
             res.send("Error " + err);
         }
     }
-    else {
-        res.status(401).send("não autorizado");
-    }
-});
+     
+ );
 
 router.get('/get/all/user', async (req, res) => {
-    if (req.query.pword == "senha123") {
+     
         var id = req.query.usuario == "" ? null : req.query.usuario;
         const query = 'SELECT * FROM feedbackSubTopico WHERE usuario= $1;';
         const values = [id];
@@ -71,13 +67,11 @@ router.get('/get/all/user', async (req, res) => {
             res.send("Error " + err);
         }
     }
-    else {
-        res.status(401).send("não autorizado");
-    }
-});
+     
+ );
 
 router.get('/get', async (req, res) => {
-    if (req.query.pword == "senha123") {
+     
         var id = req.query.id == "" ? null : req.query.id;
         const query = 'SELECT * FROM feedbackSubTopico WHERE ID =$1;';
         const values = [id];
@@ -92,14 +86,12 @@ router.get('/get', async (req, res) => {
             res.send("Error " + err);
         }
     }
-    else {
-        res.status(401).send("não autorizado");
-    }
-});
+     
+ );
 
 
 router.put('/edit', async (req, res) => {
-    if (req.query.pword == "senha123") {
+     
         var id = req.body.id == "" ? null : req.body.id;
         var usuario = req.body.descricao == "" ? null : req.body.descricao;
         var subtopico= req.body.idSubTopico == "" ? null : req.body.idSubTopico;
@@ -123,14 +115,12 @@ router.put('/edit', async (req, res) => {
         }
 
     }
-    else {
-        res.status(401).send("não autorizado");
-    }
-});
+     
+ );
 
 
 router.delete('/delete', async (req, res) => {
-    if (req.query.pword == "senha123") {
+     
         var id = req.body.id == "" ? null : req.body.id;
         if (id) //verifica se id tem um valor valido, se ele for null ou undefined isso aqui retorna falso
         {
@@ -149,9 +139,7 @@ router.delete('/delete', async (req, res) => {
             res.send("error, invalid id");
         }
     }
-    else {
-        res.status(401).send("Não autorizado");
-    }
-});
+     
+ );
 
 module.exports = router;

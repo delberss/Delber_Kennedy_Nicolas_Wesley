@@ -6,7 +6,7 @@ var router = express.Router();
 
 
 router.post('/insert', async (req, res) => {
-    if (req.query.pword == "senha123") {
+     
 
         var tipo = req.body.tipo == "" ? null : req.body.tipo;
         var link = req.body.link == "" ? null : req.body.link;
@@ -23,13 +23,11 @@ router.post('/insert', async (req, res) => {
             res.send("Error " + err);
         }
     }
-    else {
-        res.status(401).send("não autorizado");
-    }
-});
+     
+ );
 
 router.post('/insertRelation/caminho', async (req, res) => {
-    if (req.query.pword == "senha123") {
+     
         var idConteudo = req.query.idConteudo == "" ? null : req.query.idConteudo;
         var idCaminho = req.body.idCaminho == "" ? null : req.body.idCaminho;
 
@@ -48,12 +46,10 @@ router.post('/insertRelation/caminho', async (req, res) => {
         }
 
     }
-    else {
-        res.status(401).send("não autorizado");
-    }
-});
+     
+ );
 router.post('/insertRelation/topico', async (req, res) => {
-    if (req.query.pword == "senha123") {
+     
         var idConteudo = req.query.idConteudo == "" ? null : req.query.idConteudo;
         var idTopico = req.body.idTopico == "" ? null : req.body.idTopico;
 
@@ -72,13 +68,11 @@ router.post('/insertRelation/topico', async (req, res) => {
         }
 
     }
-    else {
-        res.status(401).send("não autorizado");
-    }
-});
+     
+ );
 
 router.post('/insertRelation/subtopico', async (req, res) => {
-    if (req.query.pword == "senha123") {
+     
         var idConteudo = req.query.idConteudo == "" ? null : req.query.idConteudo;
         var idSubTopico = req.body.idSubTopico == "" ? null : req.body.idSubTopico;
 
@@ -97,16 +91,14 @@ router.post('/insertRelation/subtopico', async (req, res) => {
         }
 
     }
-    else {
-        res.status(401).send("não autorizado");
-    }
-});
+     
+ );
 
 
 
 
 router.get('/get/all', async (req, res) => {
-    if (req.query.pword == "senha123") {
+     
         const query = 'SELECT * FROM conteudos;';
         try {
             const client = await pool.connect();
@@ -119,13 +111,11 @@ router.get('/get/all', async (req, res) => {
             res.send("Error " + err);
         }
     }
-    else {
-        res.status(401).send("não autorizado");
-    }
-});
+     
+ );
 
 router.get('/get/all/caminho', async (req, res) => {
-    if (req.query.pword == "senha123") {
+     
 
         var id = req.query.idCaminho == "" ? null : req.query.idCaminho;
         const query = 'SELECT * FROM caminhoContemConteudo WHERE caminho = $1;';
@@ -141,12 +131,10 @@ router.get('/get/all/caminho', async (req, res) => {
             res.send("Error " + err);
         }
     }
-    else {
-        res.status(401).send("não autorizado");
-    }
-});
+     
+ );
 router.get('/get/all/topico', async (req, res) => {
-    if (req.query.pword == "senha123") {
+     
         var id = req.query.idTopico == "" ? null : req.query.idTopico;
         const query = 'SELECT * FROM topicoContemConteudo WHERE topico = $1;';
         const values = [id];
@@ -161,12 +149,10 @@ router.get('/get/all/topico', async (req, res) => {
             res.send("Error " + err);
         }
     }
-    else {
-        res.status(401).send("não autorizado");
-    }
-});
+     
+ );
 router.get('/get/all/subtopico', async (req, res) => {
-    if (req.query.pword == "senha123") {
+     
         var id = req.query.idSubtopico == "" ? null : req.query.idSubtopico;
         const query = 'SELECT * FROM subtopicoContemConteudo WHERE subtopico = $1;';
         const values = [id];
@@ -181,13 +167,11 @@ router.get('/get/all/subtopico', async (req, res) => {
             res.send("Error " + err);
         }
     }
-    else {
-        res.status(401).send("não autorizado");
-    }
-});
+     
+ );
 
 router.get('/get', async (req, res) => {
-    if (req.query.pword == "senha123") {
+     
         var id = req.query.id == "" ? null : req.query.id;
         const query = 'SELECT * FROM conteudos WHERE ID =$1;';
         const values = [id];
@@ -202,15 +186,13 @@ router.get('/get', async (req, res) => {
             res.send("Error " + err);
         }
     }
-    else {
-        res.status(401).send("não autorizado");
-    }
-});
+     
+ );
 
 
 
 router.put('/edit', async (req, res) => {
-    if (req.query.pword == "senha123") {
+     
         var id = req.body.id == "" ? null : req.body.id;
         var tipo = req.body.tipo == "" ? null : req.body.tipo;
         var link = req.body.link == "" ? null : req.body.link;
@@ -232,14 +214,12 @@ router.put('/edit', async (req, res) => {
         }
 
     }
-    else {
-        res.status(401).send("não autorizado");
-    }
-});
+     
+ );
 
 
 router.delete('/delete', async (req, res) => {
-    if (req.query.pword == "senha123") {
+     
         var id = req.body.id == "" ? null : req.body.id;
         if (id) //verifica se id tem um valor valido, se ele for null ou undefined isso aqui retorna falso
         {
@@ -258,9 +238,7 @@ router.delete('/delete', async (req, res) => {
             res.send("error, invalid id");
         }
     }
-    else {
-        res.status(401).send("Não autorizado");
-    }
-});
+     
+ );
 
 module.exports = router;

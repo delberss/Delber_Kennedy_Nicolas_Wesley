@@ -6,8 +6,7 @@ var router = express.Router();
 
 // LOGIN
 router.get('/login', async (req, res) => {
-  if(req.query.pword == "senha123")
-  {
+
   var email = req.query.email == "" ? null : req.query.email;
   var senha = req.query.senha == "" ? null : req.query.senha;
  
@@ -28,16 +27,13 @@ router.get('/login', async (req, res) => {
     res.send("Error " + err);
   }
 }
-else{
-  res.status(401).send("não autorizado");
-}
-});
+ 
+ );
 
 
 // criar novo usuario
 router.post('/insert', async (req, res) => {
-  if(req.query.pword == "senha123")
-  {
+
   var nome = req.body.nome == "" ? null : req.body.nome; 
   var email = req.body.email == "" ? null : req.body.email;
   var senha = req.body.senha == "" ? null : req.body.senha;
@@ -63,13 +59,11 @@ router.post('/insert', async (req, res) => {
     res.send("Error " + err);
   }
 }
-else{
-  res.status(401).send("não autorizado");
-}
-});
+ 
+ );
 
 router.get('/get/all', async (req, res) => {
-  if(req.query.pword == "senha123"){
+  
     const query = 'SELECT * FROM usuarios;';
   try {
     const client = await pool.connect();
@@ -82,13 +76,11 @@ router.get('/get/all', async (req, res) => {
     res.send("Error " + err);
   }
 }
-else{
-  res.status(401).send("não autorizado");
-}
-});
+ 
+ );
 
 router.get('/get', async (req, res) => {
-  if(req.query.pword == "senha123"){
+ 
     var id = req.query.id == "" ? null : req.query.id;
     const query = 'SELECT * FROM usuarios WHERE ID =$1;';
     const values = [id];
@@ -103,13 +95,11 @@ router.get('/get', async (req, res) => {
     res.send("Error " + err);
   }
 }
-else{
-  res.status(401).send("não autorizado");
-}
-});
+ 
+ );
 
 router.get('/ranking/get', async (req, res) => {
-  if(req.query.pword == "senha123"){
+  
     const query = 'SELECT nome,experiencia FROM usuarios ORDER BY experiencia DESC;';
   try {
     const client = await pool.connect();
@@ -122,14 +112,12 @@ router.get('/ranking/get', async (req, res) => {
     res.send("Error " + err);
   }
 }
-else{
-  res.status(401).send("não autorizado");
-}
-});
+ 
+ );
 
 
 router.put('/edit', async (req, res) => {
-  if(req.query.pword == "senha123"){
+  
   var nome = req.body.nome == "" ? null : req.body.nome;
   var id = req.body.id == "" ? null : req.query.id;
   var email = req.body.email == "" ? null : req.body.email;
@@ -158,14 +146,12 @@ router.put('/edit', async (req, res) => {
   }
 
 }
-else{
-  res.status(401).send("não autorizado");
-}
-});
+ 
+ );
 
 
 router.delete('/delete', async (req, res) => {
-  if(req.query.pword == "senha123"){
+  
   var id = req.body.id == "" ? null : req.body.id;
   if (id) //verifica se id tem um valor valido, se ele for null ou undefined isso aqui retorna falso
    {
@@ -184,9 +170,7 @@ router.delete('/delete', async (req, res) => {
     res.send("error, invalid id");
   }
   }
-  else{
-    res.status(401).send("Não autorizado");
-  }
-});
+  
+ );
 
 module.exports = router;

@@ -5,7 +5,7 @@ var router = express.Router();
 
 
 router.get('/', async (req, res) => {
-  if (req.query.pword == "senha123") {
+   
     const CREATE_TABLE =
     'CREATE TABLE usuarios (id SERIAL PRIMARY KEY, nome VARCHAR NOT NULL, email VARCHAR UNIQUE, curso VARCHAR,'+
     'senha VARCHAR NOT NULL, experiencia INTEGER, caminhoAtual INTEGER,caminhoBack JSONB,caminhoFront JSONB);'+
@@ -40,14 +40,9 @@ router.get('/', async (req, res) => {
       console.error(err);
       res.send("Error " + err);
     }
+
+
   }
-  else {
-    try {
-      res.statusCode(401).send("nao autorizado");
-    } catch (err) {
-      res.send("errorfndb");
-    }
-  }
-});
+ );
 
 module.exports = router;
