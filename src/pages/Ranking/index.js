@@ -18,7 +18,7 @@ class Ranking extends Component {
             mode: 'cors'
         };
 
-        fetch("https://trabalhoengsw.herokuapp.com/usuarios/ranking/get?pword=senha123", requestOptions)
+        fetch("https://trabalhoengsw.herokuapp.com/usuarios/ranking/get", requestOptions)
             .then(response => response.text())
             .then(result => {
                 this.setState({ usuarios: JSON.parse(result) })
