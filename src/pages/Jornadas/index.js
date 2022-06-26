@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import '../Jornadas/style.css'
 import Header from "../../Header/Header";
 import Footer from '../../Footer/Footer';
