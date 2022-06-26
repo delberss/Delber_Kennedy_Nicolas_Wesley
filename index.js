@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 5000;
 var usuarios = require('./src/usuarios'),
     createDb = require('./src/createDb'),
     topicos = require('./src/topicos'),
-    conteudos = require('./src/conteudoos'),
+    conteudos = require('./src/conteudos'),
     subtopicos = require('./src/subtopicos'),
     caminhos = require('./src/caminhos');
 
