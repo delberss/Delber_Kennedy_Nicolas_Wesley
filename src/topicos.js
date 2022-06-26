@@ -3,9 +3,35 @@ var pool = require('./db');
 
 var router = express.Router();
 
-
-
 router.post('/insert', async (req, res) => {
+    if (req.query.pword == "senha123") {
+
+        var nome = req.body.nome == "" ? null : req.body.nome;
+        var descricao = req.body.descricao == "" ? null : req.body.descricao;
+        var idCaminho = req.body.idCaminho == "" ? null : req.body.idCaminho;
+
+        var query = 'INSERT INTO topicos(nome,descricao)' +
+            'VALUES ($1,$2) ;';
+        var values = [nome, descricao];
+
+        try {
+            // primeiro tenta inserir o topico
+            const client = await pool.connect();
+            const result = await client.query(query, values);
+
+            client.release();
+
+        } catch (err) {
+            console.error(err);
+            res.send("Error " + err);
+        }
+    }
+    else {
+        res.status(401).send("não autorizado");
+    }
+});
+
+router.post('/insertComRelacao', async (req, res) => {
     if (req.query.pword == "senha123") {
 
         var nome = req.body.nome == "" ? null : req.body.nome;
@@ -99,24 +125,25 @@ router.get('/get/all', async (req, res) => {
 
 router.get('/get/subtopicos/all', async (req, res) => {
     if (req.query.pword == "senha123") {
-      var id = req.query.id == "" ? null : req.query.id;
-      const query = 'SELECT * FROM caminhos;';
-      const values = [id];
-      try {
-        const client = await pool.connect();
-        const resultado_query = await client.query(query, values);
-        var resultado_final = resultado_query.rows;
-        res.send(resultado_final);
-        client.release();
-      } catch (err) {
-        console.error(err);
-        res.send("Error " + err);
-      }
+        var idTopico = req.query.idTopico == "" ? null : req.query.idTopico;
+        const query = 'SELECT subtopicos.* FROM subtopicos JOIN topicocontemsubtopico'+
+        ' ON subtopicos.id = topicocontemsubtopico.subtopico WHERE topicocontemsubtopico.topico = $1;';
+        const values = [idTopico];
+        try {
+            const client = await pool.connect();
+            const resultado_query = await client.query(query, values);
+            var resultado_final = resultado_query.rows;
+            res.send(resultado_final);
+            client.release();
+        } catch (err) {
+            console.error(err);
+            res.send("Error " + err);
+        }
     }
     else {
-      res.status(401).send("não autorizado");
+        res.status(401).send("não autorizado");
     }
-  });
+});
 
 router.get('/get', async (req, res) => {
     if (req.query.pword == "senha123") {

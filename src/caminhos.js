@@ -56,7 +56,8 @@ router.get('/get/all', async (req, res) => {
 router.get('/get/topicos/all', async (req, res) => {
   if (req.query.pword == "senha123") {
     var id = req.query.id == "" ? null : req.query.id;
-    const query = 'SELECT * FROM caminhos;';
+    const query = 'SELECT topicos.* FROM topicos JOIN caminhocontemtopico ON '+
+    'topicos.id = caminhocontemtopico.topico WHERE caminhocontemtopico.caminho = $1;;';
     const values = [id];
     try {
       const client = await pool.connect();
