@@ -5,6 +5,9 @@ exemplo  : "https://trabalhoengsw.herokuapp.com/usuarios/get/all?pword=senha123"
 
 app.url = https://trabalhoengsw.herokuapp.com/  
 
+
+------ cat inserts.sql |heroku pg:psql --app trabalhoengsw
+
 #  Informações abaixo estão desatualizadas
 
 | rota          | parametros    | retorna | descricao | tipo http|

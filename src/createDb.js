@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
     'CREATE TABLE caminhos (id SERIAL PRIMARY KEY, nome VARCHAR, descricao VARCHAR);'+
     'CREATE TABLE topicos (id SERIAL PRIMARY KEY, nome varchar NOT NULL, descricao VARCHAR);'+
     'CREATE TABLE subtopicos (id SERIAL PRIMARY KEY, nome VARCHAR NOT NULL, descricao VARCHAR);'+
-    'CREATE TABLE conteudos (id SERIAL PRIMARY KEY,tipo VARCHAR NOT NULL, link VARCHAR);'+
+    'CREATE TABLE conteudos (id SERIAL PRIMARY KEY,tipo VARCHAR NOT NULL, link VARCHAR,titulo VARCHAR);'+
     'CREATE TABLE caminhoContemTopico(id SERIAL PRIMARY KEY , caminho INTEGER REFERENCES caminhos ON DELETE CASCADE,'+
     'topico INTEGER REFERENCES topicos ON DELETE CASCADE, UNIQUE (caminho,topico));'+
     'CREATE TABLE topicoContemSubtopico(id SERIAL PRIMARY KEY , topico INTEGER REFERENCES topicos ON DELETE CASCADE,'+
