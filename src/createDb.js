@@ -7,7 +7,7 @@ var router = express.Router();
 router.get('/', async (req, res) => {
   if (req.query.pword == "senha123") {
     const CREATE_TABLE =
-    'CREATE TABLE usuarios (id SERIAL PRIMARY KEY, nome VARCHAR NOT NULL, email VARCHAR UNIQUE, curso VARCHAR'+
+    'CREATE TABLE usuarios (id SERIAL PRIMARY KEY, nome VARCHAR NOT NULL, email VARCHAR UNIQUE, curso VARCHAR,'+
     'senha VARCHAR NOT NULL, experiencia INTEGER, caminhoAtual INTEGER,caminhoBack JSONB,caminhoFront JSONB);'+
     'CREATE TABLE caminhos (id SERIAL PRIMARY KEY, nome VARCHAR, descricao VARCHAR);'+
     'CREATE TABLE topicos (id SERIAL PRIMARY KEY, nome varchar NOT NULL, descricao VARCHAR);'+
