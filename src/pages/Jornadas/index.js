@@ -36,6 +36,7 @@ class Jornadas extends Component {
     }
 
     frontJsonToList() {
+        console.log("criando lista front");
         const frontList = [];
         for (let i = 0; i < this.state.frontend.length; i++) {
             let id = this.state.frontend[i]['id'];
