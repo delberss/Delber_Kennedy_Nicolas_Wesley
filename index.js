@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 5000;
 var usuarios = require('./src/usuarios'),
     createDb = require('./src/createDb'),
     topicos = require('./src/topicos'),
+    conteudos = require('./src/conteudoos'),
     subtopicos = require('./src/subtopicos'),
     caminhos = require('./src/caminhos');
 
@@ -21,6 +22,7 @@ app.use(require('body-parser').urlencoded({ extended: false }));
 app.use('/createDb', createDb);
 app.use('/usuarios', usuarios);
 app.use('/topicos', topicos);
+app.use('/conteudos', conteudos);
 app.use('/subtopicos', subtopicos);
 app.use('/caminhos', caminhos);
 app.use('/wakeup', (req, res) => { res.send("ok"); });
