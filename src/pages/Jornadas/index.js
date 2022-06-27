@@ -20,14 +20,14 @@ class Jornadas extends Component {
             mode: 'cors'
         };
 
-        fetch("https://trabalhoengsw.herokuapp.com/caminhos/get/topicos?idCaminho=2", requestOptions)
+        fetch("https://trabalhoengsw.herokuapp.com/caminhos/get/topicos?idCaminho=1", requestOptions)
             .then(response => response.text())
             .then(result => {
                 this.setState({ frontend: JSON.parse(result) })
             })
             .catch(error => console.log('error', error));
 
-            fetch("https://trabalhoengsw.herokuapp.com/caminhos/get/topicos?idCaminho=1", requestOptions)
+            fetch("https://trabalhoengsw.herokuapp.com/caminhos/get/topicos?idCaminho=2", requestOptions)
             .then(response => response.text())
             .then(result => {
                 this.setState({ backend: JSON.parse(result) })
