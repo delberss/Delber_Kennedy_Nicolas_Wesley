@@ -36,10 +36,8 @@ class Jornadas extends Component {
     }
 
     frontJsonToList() {
-        console.log("criando lista front");
         const frontList = [];
         for (let i = 0; i < this.state.frontend.length; i++) {
-            
             let id = this.state.frontend[i]['id'];
             let nome = this.state.frontend[i]['nome'];
             let descricao = this.state.frontend[i]['descricao'];
@@ -69,7 +67,7 @@ class Jornadas extends Component {
                         <div className="backend">
                             <h2>Back-end</h2>
                             <ul>
-                            {this.backJsonToList()}
+                            {this.frontJsonToList()}
                             </ul>
                         </div>
     
