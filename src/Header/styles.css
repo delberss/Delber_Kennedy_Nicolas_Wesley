@@ -54,7 +54,7 @@ li a {
   color: white;
 }
 
-li:hover{
+.header li:hover{
   padding: 10px;
   background: rgba(0, 0, 0, 0.311);
   border-radius: 4px;

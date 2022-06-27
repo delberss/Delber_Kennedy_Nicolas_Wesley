@@ -1,25 +1,27 @@
 .jornadas{
     display: flex;
     box-sizing: border-box;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
     justify-content: space-around;
     width: 100%;
 }
 
-.jornadas h2{
+.jornadasBackFront{
+    font-size: 35px;
+}
+
+.jornadas a{
+    font-size: 35px;
+    text-decoration: none;
     color: rgb(61, 223, 180);
     text-transform: uppercase;
 }
 
-.jornadas li{
-    font-style: italic;
-    margin-bottom: 5px;
-}
 
-.backend,
-.frontend{
+.box-backend,
+.box-frontend{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: rgb(16, 103, 127);
     padding: 20px;
     height: 350px;

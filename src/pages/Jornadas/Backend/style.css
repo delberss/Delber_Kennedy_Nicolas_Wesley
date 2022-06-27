@@ -1,0 +1,21 @@
+.backend {
+    background-color: rgb(16, 103, 127);
+    display: block;
+    margin: auto;
+    height: 100%;
+    width: 350px;
+    border-radius: 10px;
+}
+
+.backend a{
+    text-decoration: none;
+}
+
+.backend li{
+    margin-bottom: 8px;
+}
+
+.backend li:hover{
+    background: rgba(0, 0, 0, 0.311);
+    border-radius: 4px;
+}

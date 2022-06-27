@@ -9,6 +9,8 @@ import Jornadas from '../pages/Jornadas'
 import Signin from '../pages/Signin'
 import Signup from '../pages/Signup'
 import Formulario1 from '../pages/Formulario1'
+import Backend from '../pages/Jornadas/Backend'
+import Frontend from '../pages/Jornadas/Frontend'
 
 
 
@@ -23,6 +25,8 @@ function Rotas(){
                 <Route path='/signin' element={<Signin/>} />
                 <Route path='/signup' element={<Signup/>} />
                 <Route path='/formulario1' element={<Formulario1/>} />
+                <Route path='/jornadaback' element={<Backend/>} />
+                <Route path='/jornadafront' element={<Frontend/>} />
 
             </Routes>
             
