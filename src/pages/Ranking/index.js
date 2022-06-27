@@ -31,7 +31,13 @@ class Ranking extends Component {
         for (let i = 0; i < this.state.usuarios.length; i++) {
             let nome = this.state.usuarios[i]['nome'];
             let xp = this.state.usuarios[i]['experiencia'];
-            userList.push(<li key={i}>Nome = {nome}, xp = {xp}</li>);
+            userList.push(
+                <tr>
+                    <td class="rank">{i+1}</td>
+                    <td class="team">{nome}</td>
+                    <td class="points">{xp}</td>
+                </tr>
+            );
         }
         return userList;
     }
@@ -41,13 +47,25 @@ class Ranking extends Component {
         return (<div>
             <Header />
             <div className="content">
-                <div>
-                    <h2>RANKING</h2>
+            <div class="container">
+                    <header>
+                        <h1>RANKING TOP 15</h1>
+                    </header>
+                    <div class="wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>Nome</th>
+                                    <th>Pontos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.usuariosJsonToList()}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-
-
-                <ul>  {this.usuariosJsonToList()}</ul>
-
             </div>
             <Footer />
         </div>
