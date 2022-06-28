@@ -1,0 +1,50 @@
+.topico {
+    background-color: rgb(16, 103, 127);
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    height: 100%;
+    width: 60%;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: -50px;
+}
+
+.voltar {
+    display: flex;
+    width: 50px;
+    align-items: left;
+    margin-left: 20px;
+}
+
+.material-symbols-outlined{
+    background-color: rgb(16, 103, 127);
+    font-size: 45px;
+    border-radius: 25px;
+    color:white;
+}
+
+.material-symbols-outlined:hover{
+    transition: 1s;
+    background-color: white;
+    color: rgb(16, 103, 127);
+}
+
+
+.topico ul{
+    margin-bottom: 20px;
+}
+
+.topico a{
+    text-decoration: none;
+}
+
+.topico li{
+    margin-bottom: 8px;
+}
+
+.topico li:hover{
+    background: rgba(0, 0, 0, 0.311);
+    border-radius: 4px;
+    transition: 100ms;
+}

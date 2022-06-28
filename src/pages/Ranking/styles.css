@@ -1,10 +1,15 @@
-.container > header {
+.container_ranking > header > h1 {
+    color: rgb(16, 103, 127);
+    font-style: italic;
+}
+
+.container_ranking > header {
 	margin: 0 auto;
 	padding: 1em;
 	text-align: center;
 }
 
-.container > header h1 {
+.container_ranking > header h1 {
   font-weight: 600;
 	font-size: 3em;
 	margin: 0;
@@ -50,4 +55,26 @@ tbody tr:hover {
 
 td.rank {
 	text-transform: capitalize;
+}
+
+
+#first span{
+    font-size: 30px;
+    margin-left: 10px;
+    color: gold;
+    background-color: #8f8c2c;
+}
+
+#second span{
+    font-size: 30px;
+    margin-left: 10px;
+    color: #c0c0c0;
+    background-color: #636262;
+}
+
+#third span{
+    font-size: 30px;
+    margin-left: 10px;
+    color: rgba(135, 106, 46, 0.76);
+    background-color: rgba(135, 106, 46, 0.76);
 }

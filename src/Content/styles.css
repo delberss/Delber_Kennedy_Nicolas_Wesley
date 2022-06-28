@@ -1,8 +1,8 @@
 .content{
     background-color: #2beb7e7f;
   
-    width: 960px;
-    height: 100vh;
+    width: 70%;
+    min-height: 100vh;
   
     margin: 0 auto;
     padding: 20px 40px;

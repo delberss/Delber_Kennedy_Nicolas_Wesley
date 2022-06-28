@@ -1,6 +1,7 @@
 .header {
   background-color: rgb(80, 184, 190);
   padding: 20px;
+  min-width: 100vw;
   height: 150px;
 
   display: flex;
@@ -37,11 +38,12 @@ li{
   padding: 0 10px;
 }
 
-.login{
+.login_off{
   display: flex;
 }
 
-.login li{
+
+.login_off li{
   border: 1px solid white;
   text-align: center;
   border-radius: 4px;
@@ -49,13 +51,42 @@ li{
   margin: 10px;
 }
 
+.login_on {
+  display: none;
+  align-items: center;
+  width: 15%;
+}
+
+.login_on .dataUser{
+  margin-right: 20px;
+}
+
+.buttonLogout li:hover{
+  text-align: center;
+  background: rgba(0, 0, 0, 0.311);
+  width: 50px;
+  border-radius: 30px;
+}
+
+.login_on .dataUser .xp{
+  font-size: 18px;
+}
+
+.login_on .photoUser {
+  width: 50px;
+  height: 50px;
+  border-radius: 60px;
+}
+
 li a {
   text-decoration: none;
   color: white;
 }
 
-.header li:hover{
+.menu li:hover,
+.login_off li:hover{
   padding: 10px;
   background: rgba(0, 0, 0, 0.311);
+  transition: 100ms;
   border-radius: 4px;
 }

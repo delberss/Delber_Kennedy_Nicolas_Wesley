@@ -12,6 +12,8 @@ import Formulario1 from '../pages/Formulario1'
 import Backend from '../pages/Jornadas/Backend'
 import Frontend from '../pages/Jornadas/Frontend'
 
+import Internet from '../pages/Jornadas/Backend/topicos/Internet'
+import BancoNoSQL from '../pages/Jornadas/Backend/topicos/BancoNoSQL'
 
 
 function Rotas(){
@@ -27,6 +29,10 @@ function Rotas(){
                 <Route path='/formulario1' element={<Formulario1/>} />
                 <Route path='/jornadaback' element={<Backend/>} />
                 <Route path='/jornadafront' element={<Frontend/>} />
+
+                
+                <Route path='/jornadaback/internet' element={<Internet/>} />
+                <Route path='/jornadaback/bancoNoSQL' element={<BancoNoSQL/>} />
 
             </Routes>
             
