@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import './style.css'
 import Header from "../../../Header/Header";
 import Footer from '../../../Footer/Footer';
-import '../../../Content/styles.css'
+import '../../Jornadas/styleJornada.css'
 
 class Backend extends Component {
     constructor(props) {
@@ -33,8 +32,14 @@ class Backend extends Component {
         for (let i = 0; i < this.state.backend.length; i++) {
             let id = this.state.backend[i]['id'];
             let nome = this.state.backend[i]['nome'];
+            let ref = "";
+            if(nome == 'Internet') 
+                ref = "/jornadaback/internet"
+            if(nome == 'Bancos de Dados NoSQL') 
+                ref = "/jornadaback/bancoNoSQL"
+
             backList.push(
-                <a  href="#">
+                <a href={ref}>
                     <li key={id}>{nome}</li>
                 </a>
             );
@@ -44,11 +49,16 @@ class Backend extends Component {
 
     render() {
         return(
-            <div>
+                <>
                 <Header/>
                 <div className="content">
                     <h2>Backend</h2>
-                    <div className="backend">
+                    <div className="voltar">
+                        <a  href="/jornadas">
+                            <span class="material-symbols-outlined">arrow_back</span>
+                        </a>
+                    </div>
+                    <div className="topico">
                         <ul>
                             {this.backJsonToList()}
                         </ul>
@@ -56,8 +66,7 @@ class Backend extends Component {
                     
                 </div>
                 <Footer/>
-            </div>
-            
+                </>
         );
     }
 }
@@ -65,4 +74,3 @@ class Backend extends Component {
 
 
 export default Backend;
-
