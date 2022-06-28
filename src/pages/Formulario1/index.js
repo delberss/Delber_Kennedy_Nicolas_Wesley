@@ -16,82 +16,67 @@ function Formulario1(){
     return(
         <div className="content">
             <div className="formulario1"  onSubmit={handleSubmit}>
+
                 <div className="question">
                     <label>1. Qual o seu nível de conhecimento em programação?</label>
 
                     <div className="radio">
                         <label>
-                            <input type="radio" name="nivelProg"
-                    value="basico" /> Básico
+                            <input type="radio" name="conhecimentoProg" value="basico" /> Básico
                         </label>
-                    </div>
 
-                    <div className="radio">
                         <label>
-                            <input type="radio" name="nivelProg"
-                    value="intermediário" /> Intermediário
+                            <input type="radio" name="conhecimentoProg" value="intermediário" /> Intermediário
                         </label>
-                    </div>
 
-                    <div className="radio">
                         <label>
-                            <input type="radio" name="nivelProg"
-                    value="avancado" /> Avançado
+                            <input type="radio" name="conhecimentoProg" value="avancado" /> Avançado
                         </label>
+
                     </div>
                 </div>
 
                 <div className="question">
-                    <label>2. Qual o seu nível de conhecimento em programação?</label>
+                    <label>2. Você tem interesse sobre backend?</label>
 
                     <div className="radio">
                         <label>
-                            <input type="radio" name="nivelProg"
-                    value="basico" /> Básico
+                            <input type="radio" name="conhecimentoBackend" value="basico" /> Nenhum
                         </label>
+
+                        <label>
+                            <input type="radio" name="conhecimentoBackend" value="intermediário" /> Médio
+                        </label>
+
+                        <label>
+                            <input type="radio" name="conhecimentoBackend" value="avancado" /> Alto
+                        </label>
+
                     </div>
 
-                    <div className="radio">
-                        <label>
-                            <input type="radio" name="nivelProg"
-                    value="intermediário" /> Intermediário
-                        </label>
-                    </div>
-
-                    <div className="radio">
-                        <label>
-                            <input type="radio" name="nivelProg"
-                    value="avancado" /> Avançado
-                        </label>
-                    </div>
                 </div>
 
                 <div className="question">
-                    <label>3. Qual o seu nível de conhecimento em programação?</label>
+                    <label>3. Você tem interesse sobre frontend?</label>
 
                     <div className="radio">
                         <label>
-                            <input type="radio" name="nivelProg"
-                    value="basico" /> Básico
+                            <input type="radio" name="conhecimentoFrontend" value="basico" /> Nenhum
                         </label>
+
+                        <label>
+                            <input type="radio" name="conhecimentoFrontend" value="intermediário" /> Médio
+                        </label>
+
+                        <label>
+                            <input type="radio" name="conhecimentoFrontend" value="avancado" /> Alto
+                        </label>
+
                     </div>
 
-                    <div className="radio">
-                        <label>
-                            <input type="radio" name="nivelProg"
-                    value="intermediário" /> Intermediário
-                        </label>
-                    </div>
-
-                    <div className="radio">
-                        <label>
-                            <input type="radio" name="nivelProg"
-                    value="avancado" /> Avançado
-                        </label>
-                    </div>
                 </div>
                 
-                <button onClick={handleSubmit}>Enviar</button>
+                <button className="buttonEnviar" onClick={handleSubmit}>ENVIAR</button>
             </div>
             
         </div>
