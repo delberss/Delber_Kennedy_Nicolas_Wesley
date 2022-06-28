@@ -31,13 +31,50 @@ class Ranking extends Component {
         for (let i = 0; i < this.state.usuarios.length; i++) {
             let nome = this.state.usuarios[i]['nome'];
             let xp = this.state.usuarios[i]['experiencia'];
-            userList.push(
-                <tr>
-                    <td class="rank">{i+1}</td>
-                    <td class="team">{nome}</td>
-                    <td class="points">{xp}</td>
-                </tr>
-            );
+            if(i ==0){
+                userList.push(
+                    <tr>
+                        <td class="rank" id="first">{i+1}
+                            <span class="material-symbols-outlined">workspace_premium</span>
+                        </td>
+                        <td class="team">{nome}</td>
+                        <td class="points">{xp}</td>
+                    </tr>
+                );
+            }
+            else if(i==1){
+                userList.push(
+                    <tr>
+                        <td class="rank" id="second">{i+1}
+                            <span class="material-symbols-outlined">workspace_premium</span>
+                        </td>
+                        <td class="team">{nome}</td>
+                        <td class="points">{xp}</td>
+                    </tr>
+                );
+            }
+            else if(i==2){
+                userList.push(
+                    <tr>
+                        <td class="rank" id="third">{i+1}
+                            <span class="material-symbols-outlined">workspace_premium</span>
+                        </td>
+                        <td class="team">{nome}</td>
+                        <td class="points">{xp}</td>
+                    </tr>
+                );
+            }
+            
+            else{
+                userList.push(
+                    <tr>
+                        <td class="rank">{i+1}</td>
+                        <td class="team">{nome}</td>
+                        <td class="points">{xp}</td>
+                    </tr>
+                );
+            }
+            
         }
         return userList;
     }
@@ -47,9 +84,9 @@ class Ranking extends Component {
         return (<div>
             <Header />
             <div className="content">
-            <div class="container">
+            <div class="container_ranking">
                     <header>
-                        <h1>RANKING TOP 15</h1>
+                        <h1>RANKING TOP 20</h1>
                     </header>
                     <div class="wrapper">
                         <table>
