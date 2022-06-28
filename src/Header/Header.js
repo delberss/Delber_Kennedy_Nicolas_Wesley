@@ -3,7 +3,7 @@ import "../Header/styles.css"
 function Header(){
     return(
         <div className="header">
-            
+
             <h2>Jornada do Desenvolvedor</h2>
             <div className="menu">
                 <ul className="items">
@@ -19,11 +19,11 @@ function Header(){
                     <li>
                         <a href="/jornadas">JORNADAS</a>
                     </li>
-                    
+
                 </ul>
             </div>
 
-            <div className="login">
+            <div id="login_off" className="login_off">
                 <li>
                     <a href="/signin">ENTRAR</a>
                 </li>
@@ -33,7 +33,32 @@ function Header(){
                 </li>
             </div>
 
-            
+            <div id="login_on" className="login_on">
+
+                <div className="dataUser">
+
+                    <div className="nameAndPhoto">
+                        <strong className="nomeUser">NOME</strong>
+                        <img className="photoUser" src="https://cdn-icons-png.flaticon.com/512/17/17004.png" alt="foto de perfil"/> 
+                    </div>
+
+
+                    <div className="pontuacao">
+                        <strong className="xp">0 pontos</strong>
+                    </div>
+
+                </div>
+
+
+                <div className="buttonLogout">
+                    <li>
+                        <a href="/sobre">SAIR</a>
+                    </li>
+                </div>
+
+            </div>
+
+
         </div>
     )
 }
