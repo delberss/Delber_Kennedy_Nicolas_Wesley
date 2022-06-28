@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import './style.css'
 import Header from "../../../Header/Header";
 import Footer from '../../../Footer/Footer';
-import '../../../Content/styles.css'
+import '../../Jornadas/styleJornada.css'
 
 class Frontend extends Component {
     constructor(props) {
@@ -33,8 +32,14 @@ class Frontend extends Component {
         for (let i = 0; i < this.state.frontend.length; i++) {
             let id = this.state.frontend[i]['id'];
             let nome = this.state.frontend[i]['nome'];
+            let ref = "";
+            if(nome == 'Internet') 
+                ref = "/jornadafront/internet"
+            if(nome == 'Bancos de Dados NoSQL') 
+                ref = "/jornadaback/bancoNoSQL"
+
             frontList.push(
-                <a  href="#">
+                <a href={ref}>
                     <li key={id}>{nome}</li>
                 </a>
             );
@@ -48,7 +53,12 @@ class Frontend extends Component {
                 <Header/>
                 <div className="content">
                     <h2>Frontend</h2>
-                    <div className="frontend">
+                    <div className="voltar">
+                        <a  href="/jornadas">
+                            <span class="material-symbols-outlined">arrow_back</span>
+                        </a>
+                    </div>
+                    <div className="topico">
                         <ul>
                             {this.frontJsonToList()}
                         </ul>
@@ -65,4 +75,3 @@ class Frontend extends Component {
 
 
 export default Frontend;
-
