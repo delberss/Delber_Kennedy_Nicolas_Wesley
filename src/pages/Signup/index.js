@@ -44,7 +44,7 @@ function Signup() {
   return (
     <div className="content">
       <div id="signup">
-        <h1 className="title">Cadastro do Sistema</h1>
+        <h1 className="title">CADASTRO DO SISTEMA</h1>
         <form className="form" onSubmit={handleSubmit}>
 
           <div className="field">

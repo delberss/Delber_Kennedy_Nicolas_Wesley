@@ -5,22 +5,19 @@ import { useNavigate } from "react-router-dom"
 
 function Signin() {
     const handleSubmit = (e) => {
-
+        var requestOptions = {
+        method: 'GET',
         
+        redirect: 'follow'
+        };
 
-var requestOptions = {
-  method: 'GET',
-  
-  redirect: 'follow'
-};
+        fetch("https://trabalhoengsw.herokuapp.com/usuarios/get/all", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
 
-fetch("https://trabalhoengsw.herokuapp.com/usuarios/login?pword=senha123&email=joaquim@joaquimcom&senha=12345", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-
-        e.preventDefault();
-        navigate("/formulario1");
+            e.preventDefault();
+            navigate("/formulario1");
     };
 
     const handleBack = (e) => {
@@ -35,7 +32,7 @@ fetch("https://trabalhoengsw.herokuapp.com/usuarios/login?pword=senha123&email=j
     return (
         <div className="content">
             <div id="signin">
-                <h1 className="title">Login do Sistema</h1>
+                <h1 className="title">LOGIN DO SISTEMA</h1>
                 <form className="form" onSubmit={handleSubmit}>
                     <div className="field">
                         <label htmlFor="email">Email</label>
@@ -55,8 +52,6 @@ fetch("https://trabalhoengsw.herokuapp.com/usuarios/login?pword=senha123&email=j
 
             </div>
         </div>
-
-
     )
 }
 
