@@ -20,7 +20,7 @@ router.get('/login', async (req, res) => {
     if(result.rowCount == 1){
       res.status(200).send(result.rows);
     }else{
-    res.status(200).send('usuario inexistente');
+    res.status(401).send('usuario inexistente');
     client.release();}
   } catch (err) {
     console.error(err);
