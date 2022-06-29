@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import Home from '../pages/Home'
 import Sobre from '../pages/Sobre'
@@ -16,28 +16,42 @@ import Internet from '../pages/Jornadas/Backend/topicos/Internet'
 import BancoNoSQL from '../pages/Jornadas/Backend/topicos/BancoNoSQL'
 
 
-function Rotas(){
-    return(
-        <BrowserRouter>
-            <Routes>
-                <Route path='/' exact element={<Home/>} />
-                <Route path='/sobre' element={<Sobre/>} />
-                <Route path='/ranking' element={<Ranking/>} />
-                <Route path='/jornadas' element={<Jornadas/>} />
-                <Route path='/signin' element={<Signin/>} />
-                <Route path='/signup' element={<Signup/>} />
-                <Route path='/formulario1' element={<Formulario1/>} />
-                <Route path='/jornadaback' element={<Backend/>} />
-                <Route path='/jornadafront' element={<Frontend/>} />
+class Rotas extends Component {
+    constructor(props, state) {
+        super(props);
+        this.state = {
+            user: [{"id":-1,"nome":"","email":"","curso":"","senha":"","experiencia":0,"caminhoatual":-1,"caminhoback":{},"caminhofront":{}}],
 
-                
-                <Route path='/jornadaback/internet' element={<Internet/>} />
-                <Route path='/jornadaback/bancoNoSQL' element={<BancoNoSQL/>} />
+        }
+    }
 
-            </Routes>
-            
-        </BrowserRouter>
-    )
+
+    changeUserId(valor) {
+        this.setState({ user: valor });
+    }
+    render() {
+        return (
+            <BrowserRouter>
+                <Routes>
+                    <Route path='/' exact element={<Home user={this.state.user} />} />
+                    <Route path='/sobre' element={<Sobre user={this.state.user} />} />
+                    <Route path='/ranking' element={<Ranking user={this.state.user} />} />
+                    <Route path='/jornadas' element={<Jornadas user={this.state.user} />} />
+                    <Route path='/signin' element={<Signin user={this.state.user} changeUserId={this.changeUserId} />} />
+                    <Route path='/signup' element={<Signup user={this.state.user} />} />
+                    <Route path='/formulario1' element={<Formulario1 user={this.state.user} />} />
+                    <Route path='/jornadaback' element={<Backend user={this.state.user}  />} />
+                    <Route path='/jornadafront' element={<Frontend user={this.state.user} />} />
+
+
+                    <Route path='/jornadaback/internet' element={<Internet user={this.state.user} />} />
+                    <Route path='/jornadaback/bancoNoSQL' element={<BancoNoSQL user={this.state.user} />} />
+
+                </Routes>
+
+            </BrowserRouter>
+        )
+    }
 }
 
 export default Rotas;

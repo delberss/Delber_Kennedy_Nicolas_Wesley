@@ -1,58 +1,62 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 import "./styles.css"
 
-import { useNavigate } from "react-router-dom"
-
-function Signin() {
-    const handleSubmit = (e) => {
+function loga(state) {
         var requestOptions = {
-        method: 'GET',
-        
-        redirect: 'follow'
+            method: 'GET',
+            redirect: 'follow',
+            mode : 'cors'
         };
 
-        fetch("https://trabalhoengsw.herokuapp.com/usuarios/get/all", requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
-
-            e.preventDefault();
-            navigate("/formulario1");
-    };
-
-    const handleBack = (e) => {
-        e.preventDefault()
-        navigate("/jornadas");
+        var url = "https://trabalhoengsw.herokuapp.com/usuarios/login?senha=";
+        url = url + state.password;
+        url = url + "&email=";
+        url = url + state.email;
+        fetch(url, requestOptions)
+            .then(response => response.text())
+            .then(result =>  (result == "usuario inexistente" )? console.log('falhou') :  console.log(result) )
+            .catch(error => console.log('error', error));
     }
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
 
-    const navigate = useNavigate();
+class Signin extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            user: props.user,
+            email: "",
+            password: "",
+            userTemp : []
+        }
+    }
 
-    return (
-        <div className="content">
-            <div id="signin">
-                <h1 className="title">LOGIN DO SISTEMA</h1>
-                <form className="form" onSubmit={handleSubmit}>
-                    <div className="field">
-                        <label htmlFor="email">Email</label>
-                        <input type="email" name="email" placeholder="Digite seu e-mail" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                    </div>
 
-                    <div className="field">
-                        <label htmlFor="Password">Senha</label>
-                        <input type="password" name="password" placeholder="Digite sua senha" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                    </div>
+    render() {
+        return (
+            <div className="content">
+                <div id="signin">
+                    <h1 className="title">LOGIN DO SISTEMA</h1>
+                    <form className="form" >
+                        <div className="field">
+                            <label htmlFor="email">Email</label>
+                            <input type="email" name="email" placeholder="Digite seu e-mail" id="email" value={this.state.email}
+                             onChange={(e) => this.setState({ email: (e.target.value) })} />
+                        </div>
 
-                    <div className="actions">
-                        <button type="submit">Entrar</button>
-                        <button type="submit" onClick={handleBack}>Voltar</button>
-                    </div>
-                </form>
+                        <div className="field">
+                            <label htmlFor="Password">Senha</label>
+                            <input type="password" name="password" placeholder="Digite sua senha" id="password" value={this.state.password}
+                             onChange={(e) => this.setState({ password: (e.target.value) })} />
+                        </div>
+                        <div className="actions">
+                            <button type="submit" onClick={loga(this.state)}>Entrar</button>
+                            <button type="submit" >Voltar</button>
+                        </div>
+                    </form>
 
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
 
 export default Signin;
