@@ -9,11 +9,17 @@ import Jornadas from '../pages/Jornadas'
 import Signin from '../pages/Signin'
 import Signup from '../pages/Signup'
 import Formulario1 from '../pages/Formulario1'
+
 import Backend from '../pages/Jornadas/Backend'
 import Frontend from '../pages/Jornadas/Frontend'
 
-import Internet from '../pages/Jornadas/Backend/topicos/Internet'
+import InternetBack from '../pages/Jornadas/Backend/topicos/Internet'
+import SistemaControleVersaoBack from '../pages/Jornadas/Backend/topicos/SistemaControleVersao'
 import BancoNoSQL from '../pages/Jornadas/Backend/topicos/BancoNoSQL'
+import ConhecimentoBasicoFront from '../pages/Jornadas/Backend/topicos/ConhecimentoBasicoFrontend'
+
+import InternetFront from '../pages/Jornadas/Frontend/topicos/Internet'
+import SistemaControleVersaoFront from '../pages/Jornadas/Frontend/topicos/SistemaControleVersao'
 
 
 class Rotas extends Component {
@@ -43,13 +49,19 @@ class Rotas extends Component {
                     <Route path='/signin' element={<Signin user={this.state.user} changeUser={this.changeUser} />} />
                     <Route path='/signup' element={<Signup user={this.state.user} />} />
                     <Route path='/formulario1' element={<Formulario1 user={this.state.user} />} />
-                    <Route path='/jornadaback' element={<Backend user={this.state.user}  />} />
-                    <Route path='/jornadafront' element={<Frontend user={this.state.user} />} />
+                    
+                    <Route path='/jornadaback' element={<Backend  user={this.state.user} />} />
+                
+                    <Route path='/jornadaback/internet' element={<InternetBack  user={this.state.user} />} />
+                    <Route path='/jornadaback/sistemaControleVersao' element={<SistemaControleVersaoBack  user={this.state.user} />} />
+                    <Route path='/jornadaback/conhecimentoBasicoFront' element={<ConhecimentoBasicoFront  user={this.state.user} />} />
+                    <Route path='/jornadaback/bancoNoSQL' element={<BancoNoSQL  user={this.state.user} />} />
 
 
-                    <Route path='/jornadaback/internet' element={<Internet user={this.state.user} />} />
-                    <Route path='/jornadaback/bancoNoSQL' element={<BancoNoSQL user={this.state.user} />} />
+                    <Route path='/jornadafront' element={<Frontend  user={this.state.user} />} />
 
+                    <Route path='/jornadafront/internet' element={<InternetFront  user={this.state.user} />} />
+                    <Route path='/jornadafront/sistemaControleVersao' element={<SistemaControleVersaoFront  user={this.state.user} />} />
                 </Routes>
 
             </BrowserRouter>
