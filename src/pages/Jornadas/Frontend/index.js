@@ -35,8 +35,9 @@ class Frontend extends Component {
             let ref = "";
             if(nome == 'Internet') 
                 ref = "/jornadafront/internet"
-            if(nome == 'Bancos de Dados NoSQL') 
-                ref = "/jornadaback/bancoNoSQL"
+
+            if(nome == 'Sistemas de Controle de Versão') 
+                ref = "/jornadafront/sistemaControleVersao"
 
             frontList.push(
                 <a href={ref}>

@@ -36,6 +36,13 @@ class Backend extends Component {
             let ref = "";
             if(nome == 'Internet') 
                 ref = "/jornadaback/internet"
+
+            if(nome == 'Sistemas de Controle de Versão') 
+                ref = "/jornadaback/sistemaControleVersao"
+
+            if(nome == 'Conhecimento básico de Front') 
+                ref = "/jornadaback/conhecimentoBasicoFront"
+
             if(nome == 'Bancos de Dados NoSQL') 
                 ref = "/jornadaback/bancoNoSQL"
 
