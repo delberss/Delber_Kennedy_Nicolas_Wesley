@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Header from "../../../../../Header/Header";
 import '../../../../Jornadas/styleTopico.css'
 
-class BancoNoSQL extends Component {
+class SistemaControleVersao extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -33,9 +33,9 @@ class BancoNoSQL extends Component {
                 <>
                 <Header />
                 <div className="content">
-                    <h2>BANCO DE DADOS NOSQL</h2>
+                    <h2>SISTEMAS DE CONTROLE DE VERSÃO</h2>
                     <div className="voltar">
-                        <a  href="/jornadaback">
+                        <a  href="/jornadafront">
                             <span class="material-symbols-outlined">arrow_back</span>
                         </a>
                     </div>
@@ -43,39 +43,30 @@ class BancoNoSQL extends Component {
 
                         <div className="checkbox">
                             <label>
-                                <input type="checkbox" name="p1_bancoNoSQL" value="p1_bancoNoSQL" /> Comandos SQL
+                                <input type="checkbox" name="p1_sistemaControleVersao" value="p1_sistemaControleVersao" /> Introdução ao sistema de controle de versão
                             </label>
 
                             <label>
-                                <input type="checkbox" name="p2_bancoNoSQL" value="p2_bancoNoSQL" /> Comandos SQL
+                                <input type="checkbox" name="p2_sistemaControleVersao" value="p2_sistemaControleVersao" /> Curso intensivo de Git e GitHub para iniciantes
                             </label>
 
                             <label>
-                                <input type="checkbox" name="p3_bancoNoSQL" value="p3_bancoNoSQL" /> Comandos SQL
-                            </label>
-
-                            <label>
-                                <input type="checkbox" name="p4_bancoNoSQL" value="p4_bancoNoSQL" /> Comandos SQL
+                                <input type="checkbox" name="p3_sistemaControleVersao" value="p3_sistemaControleVersao" /> Aprenda Git em 20 minutos
                             </label>
                         </div>
 
                         <div className="dicas">
                             <label>
-                                <a href="#">Estude</a>
+                                <a href="https://www.youtube.com/watch?v=zbKdDsNNOhg&ab_channel=Udacity" target="_blank">Assista sobre</a>
                             </label>
 
                             <label>
-                                <a href="#">Estude</a>
+                                <a href="https://www.youtube.com/watch?v=SWYqp7iY_Tc&ab_channel=TraversyMedia" target="_blank">Assista sobre</a>
                             </label>
 
                             <label>
-                                <a href="#">Estude</a>
+                                <a href="https://www.youtube.com/watch?t=21&v=Y9XZQO1n_7c&feature=youtu.be&ab_channel=CodeInsights" target="_blank">Assista sobre</a>
                             </label>
-
-                            <label>
-                                <a href="#">Estude</a>
-                            </label>
-                           
                         </div>
                         
                     </div>
@@ -88,5 +79,5 @@ class BancoNoSQL extends Component {
 
 
 
-export default BancoNoSQL;
+export default SistemaControleVersao;
 
