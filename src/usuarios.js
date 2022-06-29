@@ -131,8 +131,8 @@ router.put('/edit', async (req, res) => {
 
  
   var query = 'UPDATE usuarios SET nome =$1, email =$2, senha=$3, experiencia=$4, nivel=$5,'+
-  ' caminhoAtual=$6,caminhoFront=$7,curso = $10, caminhoBack=$8 WHERE id = $9'+
-                'VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10);';
+  ' caminhoAtual=$6,caminhoFront=$7,curso = $10, caminhoBack=$8 WHERE id = $9;';
+              
   var values = [nome,email,senha,experiencia,nivel,caminhoAtual,caminhoFront,caminhoBack,id,curso];
 
   try {
