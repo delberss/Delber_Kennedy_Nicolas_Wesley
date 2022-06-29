@@ -1,22 +1,5 @@
 import React, { Component } from "react";
-import "./styles.css"
-
-function loga(state) {
-        var requestOptions = {
-            method: 'GET',
-            redirect: 'follow',
-            mode : 'cors'
-        };
-
-        var url = "https://trabalhoengsw.herokuapp.com/usuarios/login?senha=";
-        url = url + state.password;
-        url = url + "&email=";
-        url = url + state.email;
-        fetch(url, requestOptions)
-            .then(response => response.text())
-            .then(result =>  (result == "usuario inexistente" )? console.log('falhou') :  console.log(result) )
-            .catch(error => console.log('error', error));
-    }
+import "./styles.css";
 
 class Signin extends Component {
     constructor(props) {
@@ -25,12 +8,33 @@ class Signin extends Component {
             user: props.user,
             email: "",
             password: "",
-            userTemp : []
         }
     }
+    
+    redireciona(usuario){
+        console.log(usuario);
+        
+        this.props.navigation.navigate('/formulario1');
+        
+    }
+    loga() {
+        var requestOptions = {
+            method: 'GET',
+            redirect: 'follow',
+            mode : 'cors'
+        };
 
-
+        var url = "https://trabalhoengsw.herokuapp.com/usuarios/login?senha=";
+        url = url + this.state.password;
+        url = url + "&email=";
+        url = url + this.state.email;
+        fetch(url, requestOptions)
+            .then(response => response.text())
+            .then(result =>  (result == "usuario inexistente" )? console.log('falhou') :  this.redireciona() )
+            .catch(error => console.log('error', error));
+    }
     render() {
+        
         return (
             <div className="content">
                 <div id="signin">
@@ -48,7 +52,7 @@ class Signin extends Component {
                              onChange={(e) => this.setState({ password: (e.target.value) })} />
                         </div>
                         <div className="actions">
-                            <button type="submit" onClick={loga(this.state)}>Entrar</button>
+                            <button type="button" onClick={() => this.loga()}>Entrar</button>
                             <button type="submit" >Voltar</button>
                         </div>
                     </form>
