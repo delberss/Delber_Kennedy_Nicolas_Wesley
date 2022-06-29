@@ -8,7 +8,8 @@ class Backend extends Component {
         super(props);
         this.state = {
             frontend: [],
-            backend: []
+            backend: [],
+            user: props.user
         }
     }
 
@@ -48,6 +49,7 @@ class Backend extends Component {
     }
 
     render() {
+    
         return(
                 <>
                 <Header/>

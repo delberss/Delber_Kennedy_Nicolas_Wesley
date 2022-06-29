@@ -1,66 +1,72 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./styles.css";
 
-class Signin extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            user: props.user,
-            email: "",
-            password: "",
-        }
-    }
-    
-    redireciona(usuario){
-        console.log(usuario);
-        
-        this.props.navigation.navigate('/formulario1');
-        
-    }
-    loga() {
+function Signin(props) {
+
+    const [email, setEmail] = useState();
+    const [password, setSenha] = useState();
+    const [usuario, setUsuario] = useState();
+
+    const navigate = useNavigate();
+
+    const loga = async () => {
         var requestOptions = {
             method: 'GET',
             redirect: 'follow',
-            mode : 'cors'
+            mode: 'cors'
         };
 
         var url = "https://trabalhoengsw.herokuapp.com/usuarios/login?senha=";
-        url = url + this.state.password;
+        url = url + password;
         url = url + "&email=";
-        url = url + this.state.email;
-        fetch(url, requestOptions)
+        url = url + email;
+        await fetch(url, requestOptions)
             .then(response => response.text())
-            .then(result =>  (result == "usuario inexistente" )? console.log('falhou') :  this.redireciona() )
+            .then(result => (result == "usuario inexistente") ? console.log('falhou') : setUsuario(result))
             .catch(error => console.log('error', error));
-    }
-    render() {
+
+       
+       
+//       props.changeUser(usuario);
+        console.log(usuario);
+
+        console.log(JSON.parse(usuario)[0]['id']);
         
-        return (
-            <div className="content">
-                <div id="signin">
-                    <h1 className="title">LOGIN DO SISTEMA</h1>
-                    <form className="form" >
-                        <div className="field">
-                            <label htmlFor="email">Email</label>
-                            <input type="email" name="email" placeholder="Digite seu e-mail" id="email" value={this.state.email}
-                             onChange={(e) => this.setState({ email: (e.target.value) })} />
-                        </div>
+      if(JSON.parse(usuario)[0]['id'] != -1){
+        console.log('entrou');
+        navigate('/formulario1', {user :usuario});
+      }
 
-                        <div className="field">
-                            <label htmlFor="Password">Senha</label>
-                            <input type="password" name="password" placeholder="Digite sua senha" id="password" value={this.state.password}
-                             onChange={(e) => this.setState({ password: (e.target.value) })} />
-                        </div>
-                        <div className="actions">
-                            <button type="button" onClick={() => this.loga()}>Entrar</button>
-                            <button type="submit" >Voltar</button>
-                        </div>
-                    </form>
-
-                </div>
-            </div>
-        )
     }
+
+
+    return (
+        <div className="content">
+            <div id="signin">
+                <h1 className="title">LOGIN DO SISTEMA</h1>
+                <form className="form" >
+                    <div className="field">
+                        <label htmlFor="email">Email</label>
+                        <input type="email" name="email" placeholder="Digite seu e-mail" id="email" value={email}
+                            onChange={(e) => {setEmail(e.target.value) }} />
+                    </div>
+
+                    <div className="field">
+                        <label htmlFor="Password">Senha</label>
+                        <input type="password" name="password" placeholder="Digite sua senha" id="password" value={password}
+                            onChange={(e) => {setSenha(e.target.value)}} />
+                    </div>
+                    <div className="actions">
+                        <button type="button" onClick={() => loga()}>Entrar</button>
+                        <button type="submit" >Voltar</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    )
+
 }
 
 export default Signin;

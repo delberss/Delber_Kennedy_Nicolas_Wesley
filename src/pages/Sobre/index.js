@@ -5,10 +5,10 @@ import "./styles.css";
 import '../../Content/styles.css'
 
 
-function Sobre(){
+function Sobre(props){
     return(
         <div>
-            <Header/>
+            <Header user = {props.user}/>
             
             <div className="content">
                 <div className="sobre">

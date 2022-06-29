@@ -25,7 +25,7 @@ function Signup() {
       redirect: 'follow'
     };
 
-    fetch("https://trabalhoengsw.herokuapp.com/usuarios/insert?pword=senha123", requestOptions)
+    fetch("https://trabalhoengsw.herokuapp.com/usuarios/insert", requestOptions)
       .then(response => response.text())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));

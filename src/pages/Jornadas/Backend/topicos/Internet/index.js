@@ -6,8 +6,7 @@ class Internet extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            frontend: [],
-            backend: []
+            subtopicos: []
         }
     }
 
@@ -17,16 +16,22 @@ class Internet extends Component {
             redirect: 'follow',
             mode: 'cors'
         };
+        
 
         fetch("https://trabalhoengsw.herokuapp.com/caminhos/get/topicos?idCaminho=1", requestOptions)
             .then(response => response.text())
             .then(result => {
-                this.setState({ backend: JSON.parse(result) })
+                this.setState({ subtopicos: JSON.parse(result) })
             })
             .catch(error => console.log('error', error));
     }
 
+    usuariosJsonToList() {
+        const userList = [];
+        for (let i = 0; i < this.state.usuarios.length; i++) {
 
+        }
+    }
 
     render() {
         return(

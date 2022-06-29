@@ -17,17 +17,20 @@ import BancoNoSQL from '../pages/Jornadas/Backend/topicos/BancoNoSQL'
 
 
 class Rotas extends Component {
-    constructor(props, state) {
+    constructor(props) {
         super(props);
+        this.changeUser = this.changeUser.bind(this);
         this.state = {
-            user: [{"id":-1,"nome":"","email":"","curso":"","senha":"","experiencia":0,"caminhoatual":-1,"caminhoback":{},"caminhofront":{}}],
-
+            user: [{"id":-1,"nome":"teste","email":"teste@teste.com","curso":"","senha":"","experiencia":0,"caminhoatual":-1,"caminhoback":{},"caminhofront":{}}],
+            
         }
     }
 
 
-    changeUserId(valor) {
+    changeUser(valor) {
         this.setState({ user: valor });
+        console.log('bbbb');
+        console.log(this.user);
     }
     render() {
         return (
@@ -37,7 +40,7 @@ class Rotas extends Component {
                     <Route path='/sobre' element={<Sobre user={this.state.user} />} />
                     <Route path='/ranking' element={<Ranking user={this.state.user} />} />
                     <Route path='/jornadas' element={<Jornadas user={this.state.user} />} />
-                    <Route path='/signin' element={<Signin user={this.state.user} changeUserId={this.changeUserId} />} />
+                    <Route path='/signin' element={<Signin user={this.state.user} changeUser={this.changeUser} />} />
                     <Route path='/signup' element={<Signup user={this.state.user} />} />
                     <Route path='/formulario1' element={<Formulario1 user={this.state.user} />} />
                     <Route path='/jornadaback' element={<Backend user={this.state.user}  />} />

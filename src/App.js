@@ -1,11 +1,12 @@
 import './App.css';
+import React, {Component} from 'react';
 
 import Rotas from './Routes/Rotas';
 
 
+class App extends Component {
 
-function App() {
-
+  render(){
   return (
     <div className='container'>
 
@@ -13,7 +14,7 @@ function App() {
 
     </div>
 
-  );
+  );}
 }
 
 export default App;

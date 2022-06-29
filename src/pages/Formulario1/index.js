@@ -1,19 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import '../../Content/styles.css'
 import "./styles.css";
 
 import {useNavigate} from "react-router-dom"
 
-function Formulario1(){
+function Formulario1(props){
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        navigate("/jornadas");
+        navigate("/jornadas", {user : props.user});
     };
+    const [user,setUser] = useState();
 
+    setUser(props.user);
+    
+
+    console.log('form');
+    console.log(user);
+    console.log(user[0]['id']);
+    console.log(user[0]['nome']);
 
     return(
+        
         <div className="content">
             <div className="formulario1"  onSubmit={handleSubmit}>
 

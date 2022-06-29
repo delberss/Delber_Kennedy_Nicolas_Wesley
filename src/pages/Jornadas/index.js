@@ -5,11 +5,22 @@ import Footer from '../../Footer/Footer';
 import '../../Content/styles.css'
 
 class Jornadas extends Component {
-
-    render() {
+    
+    constructor(props) {
+        
+        super(props);
+        this.state = {user : props.user};
+        console.log('jornadas');
+        console.log(this.state.user[0]['id']);
+        
+    }
+    
+    render() 
+    {   
+        
         return(
             <div>
-                <Header/>
+                <Header user={this.state.user} />
                 <div className="content">
                     <h2 className="jornadasBackFront">Jornadas</h2>
                     <div className="jornadas">
