@@ -137,6 +137,7 @@ router.put('/edit', async (req, res) => {
   try {
     const client = await pool.connect();
     const result = await client.query(query, values);
+    console.log(result);
     res.status(200).send('ok');
     client.release();
   } catch (err) {
