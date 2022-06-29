@@ -43,39 +43,30 @@ class BancoNoSQL extends Component {
 
                         <div className="checkbox">
                             <label>
-                                <input type="checkbox" name="p1_bancoNoSQL" value="p1_bancoNoSQL" /> Comandos SQL
+                                <input type="checkbox" name="p1_bancoNoSQL" value="p1_bancoNoSQL" /> NoSQL explicado
                             </label>
 
                             <label>
-                                <input type="checkbox" name="p2_bancoNoSQL" value="p2_bancoNoSQL" /> Comandos SQL
+                                <input type="checkbox" name="p2_bancoNoSQL" value="p2_bancoNoSQL" /> Como funcionam os bancos de dados NoSQL
                             </label>
 
                             <label>
-                                <input type="checkbox" name="p3_bancoNoSQL" value="p3_bancoNoSQL" /> Comandos SQL
-                            </label>
-
-                            <label>
-                                <input type="checkbox" name="p4_bancoNoSQL" value="p4_bancoNoSQL" /> Comandos SQL
+                                <input type="checkbox" name="p3_bancoNoSQL" value="p3_bancoNoSQL" /> SQL vs NoSQL explicado
                             </label>
                         </div>
 
                         <div className="dicas">
                             <label>
-                                <a href="#">Estude</a>
+                                <a href="https://www.mongodb.com/nosql-explained" target="_blank">Leia sobre</a>
                             </label>
 
                             <label>
-                                <a href="#">Estude</a>
+                                <a href="https://www.youtube.com/watch?v=0buKQHokLK8&ab_channel=SimplyExplained" target="_blank">Assista sobre</a>
                             </label>
 
                             <label>
-                                <a href="#">Estude</a>
+                                <a href="https://www.youtube.com/watch?v=ruz-vK8IesE" target="_blank">Assista sobre</a>
                             </label>
-
-                            <label>
-                                <a href="#">Estude</a>
-                            </label>
-                           
                         </div>
                         
                     </div>
