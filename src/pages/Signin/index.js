@@ -40,6 +40,11 @@ function Signin(props) {
 
     }
 
+    const handleBack = (e) => {
+        e.preventDefault()
+        navigate("/jornadas");
+      }
+
 
     return (
         <div className="content">
@@ -59,7 +64,7 @@ function Signin(props) {
                     </div>
                     <div className="actions">
                         <button type="button" onClick={() => loga()}>Entrar</button>
-                        <button type="submit" >Voltar</button>
+                        <button type="submit" onClick={handleBack}>Voltar</button>
                     </div>
                 </form>
 
