@@ -33,13 +33,11 @@ router.post('/insert', async (req, res) => {
 
 
 router.get('/get/all', async (req, res) => {
-     
-        var id = req.query.id == "" ? null : req.query.id;
+
         const query = 'SELECT * FROM feedbackTopico;';
-        const values = [id];
         try {
             const client = await pool.connect();
-            const resultado_query = await client.query(query, values);
+            const resultado_query = await client.query(query);
             var resultado_final = resultado_query.rows;
             res.send(resultado_final);
             client.release();
