@@ -6,12 +6,10 @@ import '../../Content/styles.css'
 
 class Jornadas extends Component {
     
-    constructor(props) {
+    constructor() {
         
-        super(props);
-        this.state = {user : props.user};
-        console.log('jornadas');
-        console.log(this.state.user[0]['id']);
+        super();
+        this.state = {user :  JSON.parse(window.sessionStorage.getItem("usuario"))};
         
     }
     
@@ -20,7 +18,7 @@ class Jornadas extends Component {
         
         return(
             <div>
-                <Header user={this.state.user} />
+                <Header   />
                 <div className="content">
                     <h2 className="jornadasBackFront">Jornadas</h2>
                     <div className="jornadas">

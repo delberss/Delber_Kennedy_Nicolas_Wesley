@@ -1,12 +1,12 @@
-import React, { Component, useState } from "react";
+import React, {useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
 
-function Signin(props) {
+function Signin() {
 
     const [email, setEmail] = useState();
     const [password, setSenha] = useState();
-    const [usuario, setUsuario] = useState();
+
 
     const navigate = useNavigate();
 
@@ -16,29 +16,21 @@ function Signin(props) {
             redirect: 'follow',
             mode: 'cors'
         };
-
+        
         var url = "https://trabalhoengsw.herokuapp.com/usuarios/login?senha=";
         url = url + password;
         url = url + "&email=";
         url = url + email;
-        await fetch(url, requestOptions)
-            .then(response => response.text())
-            .then(result => (result == "usuario inexistente") ? console.log('falhou') : setUsuario(result))
-            .catch(error => console.log('error', error));
-
-       
-       
-//       props.changeUser(usuario);
-        console.log(usuario);
-
-        console.log(JSON.parse(usuario)[0]['id']);
         
-      if(JSON.parse(usuario)[0]['id'] != -1){
-        console.log('entrou');
-        navigate('/formulario1', {user :usuario});
+        fetch(url, requestOptions)
+            .then(response => response.text())
+            .then(result => (result == "usuario inexistente") ? console.log('falhou') : window.sessionStorage.setItem("usuario",result))
+            .catch(error => console.log('error', error));
+        navigate('/jornadas');
+        
       }
 
-    }
+    
 
     const handleBack = (e) => {
         e.preventDefault()

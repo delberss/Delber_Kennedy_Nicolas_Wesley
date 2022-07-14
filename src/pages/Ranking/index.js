@@ -5,13 +5,14 @@ import "../Ranking/styles.css";
 
 class Ranking extends Component {
     constructor(props) {
+
         super(props);
         this.state = {
             usuarios: [],
-            user : props.user
+            user : window.sessionStorage.getItem("usuario")
         }
-        console.log('ranking');
-        console.log(this.state.user[0]['id']);
+        // console.log('ranking');
+        // console.log(JSON.parse(this.state.user)[0]['nome']);
     }
 
     componentDidMount() {

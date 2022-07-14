@@ -25,43 +25,44 @@ import SistemaControleVersaoFront from '../pages/Jornadas/Frontend/topicos/Siste
 class Rotas extends Component {
     constructor(props) {
         super(props);
-        this.changeUser = this.changeUser.bind(this);
         this.state = {
             user: [{"id":-1,"nome":"teste","email":"teste@teste.com","curso":"","senha":"","experiencia":0,"caminhoatual":-1,"caminhoback":{},"caminhofront":{}}],
             
         }
+        if(window.sessionStorage.getItem("usuario") == null)
+        {
+
+            window.sessionStorage.setItem("usuario",JSON.stringify(this.state.user));
+        }
     }
 
 
-    changeUser(valor) {
-        this.setState({ user: valor });
-        console.log('bbbb');
-        console.log(this.user);
-    }
+
     render() {
+       
         return (
             <BrowserRouter>
                 <Routes>
-                    <Route path='/' exact element={<Home user={this.state.user} />} />
-                    <Route path='/sobre' element={<Sobre user={this.state.user} />} />
-                    <Route path='/ranking' element={<Ranking user={this.state.user} />} />
-                    <Route path='/jornadas' element={<Jornadas user={this.state.user} />} />
-                    <Route path='/signin' element={<Signin user={this.state.user} changeUser={this.changeUser} />} />
-                    <Route path='/signup' element={<Signup user={this.state.user} />} />
-                    <Route path='/formulario1' element={<Formulario1 user={this.state.user} />} />
+                    <Route path='/' exact element={<Home   />} />
+                    <Route path='/sobre' element={<Sobre   />} />
+                    <Route path='/ranking' element={<Ranking   />} />
+                    <Route path='/jornadas' element={<Jornadas   />} />
+                    <Route path='/signin' element={<Signin   />} />
+                    <Route path='/signup' element={<Signup   />} />
+                    <Route path='/formulario1' element={<Formulario1   />} />
                     
-                    <Route path='/jornadaback' element={<Backend  user={this.state.user} />} />
+                    <Route path='/jornadaback' element={<Backend    />} />
                 
-                    <Route path='/jornadaback/internet' element={<InternetBack  user={this.state.user} />} />
-                    <Route path='/jornadaback/sistemaControleVersao' element={<SistemaControleVersaoBack  user={this.state.user} />} />
-                    <Route path='/jornadaback/conhecimentoBasicoFront' element={<ConhecimentoBasicoFront  user={this.state.user} />} />
-                    <Route path='/jornadaback/bancoNoSQL' element={<BancoNoSQL  user={this.state.user} />} />
+                    <Route path='/jornadaback/internet' element={<InternetBack    />} />
+                    <Route path='/jornadaback/sistemaControleVersao' element={<SistemaControleVersaoBack    />} />
+                    <Route path='/jornadaback/conhecimentoBasicoFront' element={<ConhecimentoBasicoFront    />} />
+                    <Route path='/jornadaback/bancoNoSQL' element={<BancoNoSQL    />} />
 
 
-                    <Route path='/jornadafront' element={<Frontend  user={this.state.user} />} />
+                    <Route path='/jornadafront' element={<Frontend    />} />
 
-                    <Route path='/jornadafront/internet' element={<InternetFront  user={this.state.user} />} />
-                    <Route path='/jornadafront/sistemaControleVersao' element={<SistemaControleVersaoFront  user={this.state.user} />} />
+                    <Route path='/jornadafront/internet' element={<InternetFront    />} />
+                    <Route path='/jornadafront/sistemaControleVersao' element={<SistemaControleVersaoFront    />} />
                 </Routes>
 
             </BrowserRouter>
