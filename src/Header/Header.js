@@ -67,31 +67,20 @@ class Header extends Component {
                         </li>
                     </div>
                 }
+
                 {this.state.logado &&
                     <div id="login_on" className="login_on">
-
-                        <div className="dataUser">
-
-                            <div className="nameAndPhoto">
-                                <strong className="nomeUser" > {this.state.nome}</strong>
-                                <img className="photoUser" src="https://cdn-icons-png.flaticon.com/512/17/17004.png" alt="foto de perfil" />
-                            </div>
-
-
-                            <div className="pontuacao">
-                                <strong className="xp ">{this.state.pontos} pontos</strong>
-                            </div>
-
+                        <div>
+                            <span className="nomeUser">{this.state.nome}</span> <br></br>
+                            <img className="photoUser" src="https://cdn-icons-png.flaticon.com/512/17/17004.png" alt="foto de perfil" /><br></br>
+                            <span className="xp">{this.state.pontos} pontos</span>
                         </div>
 
-
-                        <div className="buttonLogout">
-                            <li>
+                        <div>
                             <button type="button" onClick={() => this.logout()}>SAIR</button>
-                            </li>
                         </div>
-
-                    </div>}
+                    </div>
+                }
 
 
             </div>

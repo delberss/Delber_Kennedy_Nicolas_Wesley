@@ -34,14 +34,20 @@ li{
   color: white;
 }
 
+li a {
+  text-decoration: none;
+  color: white;
+}
+
 .items li{
   padding: 0 10px;
 }
 
-.login_off{
+/*LOGIN OFF*/
+
+.login_off {
   display: flex;
 }
-
 
 .login_off li{
   border: 1px solid white;
@@ -51,42 +57,42 @@ li{
   margin: 10px;
 }
 
-.login_on {
-  display: flex;
-  align-items: center;
-  width: 15%;
-}
-
-.login_on .dataUser{
-  margin-right: 20px;
-}
-
-.buttonLogout li:hover{
-  text-align: center;
-  background: rgba(0, 0, 0, 0.311);
-  width: 50px;
-  border-radius: 30px;
-}
-
-.login_on .dataUser .xp{
-  font-size: 18px;
-}
-
-.login_on .photoUser {
-  width: 50px;
-  height: 50px;
-  border-radius: 60px;
-}
-
-li a {
-  text-decoration: none;
-  color: white;
-}
-
 .menu li:hover,
 .login_off li:hover{
   padding: 10px;
   background: rgba(0, 0, 0, 0.311);
   transition: 100ms;
   border-radius: 4px;
+}
+
+/*LOGIN ON*/
+
+.login_on{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login_on div{
+  padding: 10px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.login_on div img{
+  width: 50px;
+}
+
+.login_on button{
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
+  background-color: rgb(17, 49, 50);
+}
+
+.login_on button:hover{
+  cursor: pointer;
+  color: black;
+  background: white;
 }
