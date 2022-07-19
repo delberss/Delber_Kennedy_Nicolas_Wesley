@@ -1,0 +1,40 @@
+.bemVindoHome{
+
+}
+
+.nameUser{
+    color: rgb(7, 103, 103);
+}
+
+.box_home{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.box_home h3{
+    margin-bottom: 10px;
+}
+
+.jornadaIndicada, .facaLogin{
+    border: 1px solid white;
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px;
+    text-transform: uppercase;
+    width: 50%;
+    margin: auto;
+}
+
+.photoHand {
+    width: 30px;
+}
+
+.jornadasHome {
+    display: flex;
+}
+
+.jornadasHome a{
+    margin: 10px;
+}

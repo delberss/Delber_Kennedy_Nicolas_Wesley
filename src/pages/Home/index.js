@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Header from "../../Header/Header";
 import Footer from '../../Footer/Footer';
 import '../../Content/styles.css'
+import './styles.css'
 
 class Home extends Component{
     constructor(props)
@@ -36,18 +37,49 @@ class Home extends Component{
     };
     }
     
+    opcaoDeJornada(){
+        console.log("entrei na opcao!");
+        if(this.state.strcaminhoatual == "BackEnd"){
+           return(
+            <>
+            <a className="box-backend" href="/jornadaback">
+                                <strong>Backend</strong>
+            </a>
+            </>
+            
+            
+           ) 
+        }
+        else{
+            <a className="box-frontend" href="/jornadafront">
+                                <strong>Frontend</strong>
+                            </a>
+        }
+        
+    }
+
     render(){
         return(
         <div>
             <Header />  
             <div className="content">
-                {this.state.logado &&<div className="box">
+                {this.state.logado &&
+                
+                <div className="box_home">
                     <h2>HOME</h2>
-                    <h3>BEM-VINDO {this.state.nome}</h3>
-                    <h4>A sua jornada de estudos atual é {this.state.strcaminhoatual}</h4>
+                    <h3 className="bemVindoHome">Seja bem-vindo(a), <i className="nameUser">{this.state.nome}</i></h3>
+                    <h3 className="jornadaIndicada">Jornada de estudo indicada:</h3>
+
+                    <div className="jornadasHome">
+                        <div className="jornadas">
+                            {this.opcaoDeJornada()}
+                        </div>
+                    </div>
                 </div>}
-                {!this.state.logado &&<div className="box">
+                {!this.state.logado &&
+                <div className="box">
                     <h2>HOME</h2>
+                    <h3 className="facaLogin" >Faça o seu login!</h3>
                 </div>}
             </div>
             <Footer/>
