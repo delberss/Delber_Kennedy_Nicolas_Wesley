@@ -2,10 +2,48 @@
     text-align: center;
     width: 80%;
     margin: 10px auto;
+    border: 10px solid rgba(255, 255, 255, 0.573);
+    border-radius: 20px;
+    padding: 10px;
 }
 
 .sobre p{
     font-size: 18px;
     line-height: 35px;
-    text-align: justify;
+}
+
+ .social-medias ul{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+ .social-medias li,
+ .social-medias li a
+{
+    padding: 10px;
+    list-style: none;
+}
+
+ .social-medias li a{
+    font-size: 2rem;
+    color: black;
+}
+
+ .social-medias li a:hover{
+    list-style: none;
+    transition: 0.9s;
+    font-size: 2.5rem;
+    height: 10px;
+}
+
+.social-medias li:hover{
+    background-color: rgba(48, 122, 142, 0.527);
+    border-radius: 80px;
+}
+
+.sobre .contato{
+    margin-top: 20px;
 }

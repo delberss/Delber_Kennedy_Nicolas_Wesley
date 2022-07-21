@@ -5,6 +5,7 @@ import "./styles.css";
 import '../../Content/styles.css'
 
 
+
 function Sobre(props){
     return(
         <div>
@@ -20,8 +21,22 @@ function Sobre(props){
                     assim nosso projeto tem o objetivo de incentivá-los a estudarem determinadas
                     linguagens e ferramentas tecnológicas. Cada etapa/ferramenta contará pontos na plataforma.
                     </p>
+
+                    <div class="social-medias">
+                        <h2 className="contato">ACESSE NOSSO GITHUB</h2>
+                        <ul>
+                        
+                            <li>
+                                <a href="https://github.com/delberss/Delber_Kennedy_Nicolas_Wesley" rel="noopener noreferrer" target={"_blank"}><i class="fa fa-github"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+
                 </div>
+
+                
             </div>
+            
             <Footer/>
         </div>
         

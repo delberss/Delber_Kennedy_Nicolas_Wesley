@@ -10,8 +10,6 @@ import Signin from '../pages/Signin'
 import Signup from '../pages/Signup'
 import Formulario1 from '../pages/Formulario1'
 
-import InternetFront from '../pages/Jornadas/Frontend/topicos/Internet'
-import SistemaControleVersaoFront from '../pages/Jornadas/Frontend/topicos/SistemaControleVersao'
 
 
 class Rotas extends Component {
@@ -42,9 +40,6 @@ class Rotas extends Component {
                     <Route path='/signup' element={<Signup   />} />
                     <Route path='/formulario1' element={<Formulario1   />} />
                    
-
-                    <Route path='/jornadafront/internet' element={<InternetFront    />} />
-                    <Route path='/jornadafront/sistemaControleVersao' element={<SistemaControleVersaoFront    />} />
                 </Routes>
             </BrowserRouter>
         )
