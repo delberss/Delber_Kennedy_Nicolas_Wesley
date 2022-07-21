@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
    
     const CREATE_TABLE =
     'CREATE TABLE usuarios (id SERIAL PRIMARY KEY, nome VARCHAR NOT NULL, email VARCHAR UNIQUE, curso VARCHAR,'+
-    'senha VARCHAR NOT NULL, experiencia INTEGER, caminhoAtual INTEGER,caminhoBack JSONB,caminhoFront JSONB);'+
+    'senha VARCHAR NOT NULL, experiencia INTEGER, caminhoAtual INTEGER,topicosConcluidos JSONB,subtopicosConcluidos JSONB);'+
     'CREATE TABLE caminhos (id SERIAL PRIMARY KEY, nome VARCHAR, descricao VARCHAR);'+
     'CREATE TABLE topicos (id SERIAL PRIMARY KEY, nome varchar NOT NULL, descricao VARCHAR);'+
     'CREATE TABLE subtopicos (id SERIAL PRIMARY KEY, nome VARCHAR NOT NULL, descricao VARCHAR);'+
