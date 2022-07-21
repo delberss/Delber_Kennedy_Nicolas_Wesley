@@ -43,15 +43,16 @@ class Header extends Component {
                         <li>
                             <a href="/">HOME</a>
 
-                        </li>
-                        <li >
-                            <a href="/sobre">SOBRE</a>
-                        </li>
+                        </li>  
+                        <li>
+                            <a href="/jornadas">JORNADAS </a>
+                        </li>                     
                         <li>
                             <a href="/ranking">RANKING</a>
                         </li>
-                        <li>
-                            <a href="/jornadas">JORNADAS </a>
+
+                        <li >
+                            <a href="/sobre">SOBRE</a>
                         </li>
 
                     </ul>
