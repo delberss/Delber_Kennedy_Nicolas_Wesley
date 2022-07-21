@@ -78,7 +78,7 @@ class Home extends Component {
                             </div>
                         </div>}
                     {!this.state.logado &&
-                        <div className="box">
+                        <div className="box_home">
                             <h2>HOME</h2>
                             <h3 className="facaLogin" >Faça o seu login!</h3>
                         </div>}

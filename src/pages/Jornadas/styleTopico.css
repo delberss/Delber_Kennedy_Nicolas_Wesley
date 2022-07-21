@@ -1,17 +1,3 @@
-.subtopicos {
-    background-color: white;
-    border-radius: 30px;
-
-    width: 80%;
-    margin: auto;
-    padding: 20px;
-
-    display: flex;
-    justify-content: space-around;
-    text-align: left;
-
-}
-
 .checkbox{
     display: flex;
     flex-direction: column;

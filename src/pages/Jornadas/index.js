@@ -3,6 +3,9 @@ import '../Jornadas/style.css'
 import Header from "../../Header/Header";
 import Footer from '../../Footer/Footer';
 import '../../Content/styles.css'
+import '../Jornadas/styleJornada.css'
+import '../Jornadas/styleTopico.css'
+import '../Jornadas/styleSubtopicos.css'
 
 class Jornadas extends Component {
 
@@ -92,11 +95,13 @@ class Jornadas extends Component {
                 let id = this.state.subT[i]['id'];
                 let nome = this.state.subT[i]['nome'];
                 List.push(
-                    <li key={id}>
-                    <div><button onClick={() => { this.subTConcluido(id) }}>Concluido</button></div>
-                    <div>{nome}</div>
-                    <div><label></label></div>
-                    <a href="https://google.com" target="_blank">Assista sobre</a>
+                    <li className="subtopicos" key={id}>
+                        <div>
+                            <button className="buttonConcluido" onClick={() => { this.subTConcluido(id) }}>Concluido</button>
+                        </div>
+                        <div>{nome}</div>
+                        <div><label></label></div>
+                        <a className="dicas" href="https://google.com" target="_blank">Veja sobre</a>
                     </li>
                 );
             }
@@ -117,13 +122,13 @@ class Jornadas extends Component {
                 <div className="content">
                     <h2 className="jornadasBackFront">Jornadas</h2>
                     <div className="jornadas">
-                        <button className="box-backend" onClick={() => { this.setState({ valorSwitch: 'b' }) }}>
+                        <a className="box-backend" onClick={() => { this.setState({ valorSwitch: 'b' }) }}>
                             <strong>Backend</strong>
-                        </button>
+                        </a>
 
-                        <button className="box-frontend" onClick={() => { this.setState({ valorSwitch: 'f' }) }}>
+                        <a className="box-frontend" onClick={() => { this.setState({ valorSwitch: 'f' }) }}>
                             <strong>Frontend</strong>
-                        </button>
+                        </a>
 
                     </div>
                 </div>
@@ -135,7 +140,6 @@ class Jornadas extends Component {
 
     volta() {
         this.setState({ valorSwitch: 'j' })
-
     }
 
     renderBackend() {
@@ -143,7 +147,7 @@ class Jornadas extends Component {
             <>
                 <Header />
                 <div className="content">
-                    <h2>Backend</h2>
+                    <h2>Tópicos Backend</h2>
                     <div className="voltar" onClick={() => { this.volta() }}>
 
                         <span className="material-symbols-outlined">arrow_back</span>
@@ -168,13 +172,13 @@ class Jornadas extends Component {
             <>
                 <Header />
                 <div className="content">
-                    <h2>Topicos</h2>
+                    <h2>ASSUNTOS</h2>
                     <div className="voltar" onClick={() => { this.volta() }}>
 
                         <span className="material-symbols-outlined">arrow_back</span>
 
                     </div>
-                    <div className="topico">
+                    <div className="subtopicos">
                         <ul>
                             {this.topicosJsonToList(3)}
 
@@ -192,7 +196,7 @@ class Jornadas extends Component {
             <>
                 <Header />
                 <div className="content">
-                    <h2>Frontend</h2>
+                    <h2>Tópicos Frontend</h2>
                     <div className="voltar" onClick={() => { this.volta() }}>
 
                         <span className="material-symbols-outlined">arrow_back</span>

@@ -18,12 +18,11 @@
 }
 
 .jornadaIndicada, .facaLogin{
-    border: 1px solid white;
-    background-color: white;
-    border-radius: 5px;
-    padding: 5px;
+    background-color: rgba(16, 103, 127, 0.575);
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
     text-transform: uppercase;
-    width: 50%;
     margin: auto;
 }
 
