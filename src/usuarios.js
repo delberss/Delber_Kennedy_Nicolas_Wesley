@@ -40,13 +40,13 @@ router.post('/insert', async (req, res) => {
   var curso = req.body.curso == "" ? null : req.body.curso;
   var experiencia = req.body.experiencia == "" ? null : req.body.experiencia;
   var caminhoAtual = req.body.caminhoAtual == "" ? null : req.body.caminhoAtual;
-  var caminhoFront = req.body.caminhoFront == "" ? null : req.body.caminhoFront;
-  var caminhoBack = req.body.caminhoBack == "" ? null : req.body.caminhoBack;
+  var subtopicosConcluidos = req.body.subtopicosConcluidos == "" ? null : req.body.subtopicosConcluidos;
+  var  topicosConcluidos = req.body. topicosConcluidos == "" ? null : req.body. topicosConcluidos;
 
  
-  var query = 'INSERT INTO usuarios(nome, email, senha, experiencia, caminhoAtual,caminhoFront,'+
-  ' caminhoBack,curso) VALUES ($1,$2,$3,$4,$5,$6,$7,$8);';
-  var values = [nome,email,senha,experiencia,caminhoAtual,caminhoFront,caminhoBack,curso];
+  var query = 'INSERT INTO usuarios(nome, email, senha, experiencia, caminhoAtual,subtopicosConcluidos,'+
+  '  topicosConcluidos,curso) VALUES ($1,$2,$3,$4,$5,$6,$7,$8);';
+  var values = [nome,email,senha,experiencia,caminhoAtual,subtopicosConcluidos, topicosConcluidos,curso];
 
   try {
     const client = await pool.connect();
@@ -124,15 +124,15 @@ router.put('/edit', async (req, res) => {
   var senha = req.body.senha == "" ? null : req.body.senha;
   var experiencia = req.body.experiencia == "" ? null : req.body.experiencia;
   var caminhoAtual = req.body.caminhoAtual == "" ? null : req.body.caminhoAtual;
-  var caminhoFront = req.body.caminhoFront == "" ? null : req.body.caminhoFront;
-  var caminhoBack = req.body.caminhoBack == "" ? null : req.body.caminhoBack;
+  var subtopicosConcluidos = req.body.subtopicosConcluidos == "" ? null : req.body.subtopicosConcluidos;
+  var topicosConcluidos = req.body. topicosConcluidos == "" ? null : req.body. topicosConcluidos;
   var curso = req.body.curso == "" ? null : req.body.curso;
 
  
   var query = 'UPDATE usuarios SET nome =$1, email =$2, senha=$3, experiencia=$4, '+
-  ' caminhoAtual=$5,caminhoFront=$6,curso = $7, caminhoBack=$8 WHERE id = $9;';
+  ' caminhoAtual=$5,subtopicosConcluidos=$6,curso = $7,  topicosConcluidos=$8 WHERE id = $9;';
               
-  var values = [nome,email,senha,experiencia,caminhoAtual,caminhoFront,curso,caminhoBack,id];
+  var values = [nome,email,senha,experiencia,caminhoAtual,subtopicosConcluidos,curso, topicosConcluidos,id];
 
   try {
     const client = await pool.connect();
