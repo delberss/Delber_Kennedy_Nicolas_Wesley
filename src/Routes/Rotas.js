@@ -10,9 +10,6 @@ import Signin from '../pages/Signin'
 import Signup from '../pages/Signup'
 import Formulario1 from '../pages/Formulario1'
 
-import InternetFront from '../pages/Jornadas/Frontend/topicos/Internet'
-import SistemaControleVersaoFront from '../pages/Jornadas/Frontend/topicos/SistemaControleVersao'
-
 
 class Rotas extends Component {
     constructor(props) {
@@ -34,17 +31,14 @@ class Rotas extends Component {
         return (
             <BrowserRouter>
                 <Routes>
-                    <Route path='/' exact element={<Home   />} />
-                    <Route path='/sobre' element={<Sobre   />} />
-                    <Route path='/ranking' element={<Ranking   />} />
-                    <Route path='/jornadas' element={<Jornadas   />} />
-                    <Route path='/signin' element={<Signin   />} />
-                    <Route path='/signup' element={<Signup   />} />
-                    <Route path='/formulario1' element={<Formulario1   />} />
-                   
-
-                    <Route path='/jornadafront/internet' element={<InternetFront    />} />
-                    <Route path='/jornadafront/sistemaControleVersao' element={<SistemaControleVersaoFront    />} />
+                    <Route path='/' exact element={<Home />} />
+                    <Route path='/sobre' element={<Sobre />} />
+                    <Route path='/ranking' element={<Ranking />} />
+                    <Route path='/jornadas' element={<Jornadas />} />
+                    <Route path='/signin' element={<Signin />} />
+                    <Route path='/signup' element={<Signup />} />
+                    <Route path='/formulario1' element={<Formulario1 />} />
+                
                 </Routes>
             </BrowserRouter>
         )

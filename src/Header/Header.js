@@ -30,6 +30,7 @@ class Header extends Component {
         const userVazio =  [{"id":-1,"nome":"teste","email":"teste@teste.com","curso":"","senha":"","experiencia":0,"caminhoatual":-1,"caminhoback":{},"caminhofront":{}}];
           
         window.sessionStorage.setItem("usuario",JSON.stringify(userVazio));
+        this.setState({logado : false})
     }
     render() {
       
@@ -53,6 +54,9 @@ class Header extends Component {
 
                         <li >
                             <a href="/sobre">SOBRE</a>
+                        </li>
+                        <li >
+                            <a href="/formulario1">Form</a>
                         </li>
 
                     </ul>

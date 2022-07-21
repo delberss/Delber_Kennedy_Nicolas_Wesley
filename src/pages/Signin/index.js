@@ -6,11 +6,13 @@ function Signin() {
 
     const [email, setEmail] = useState();
     const [password, setSenha] = useState();
+    const [sucesso, setSucesso] = useState();
 
 
     const navigate = useNavigate();
 
     const loga = async () => {
+        setSucesso( false);
         var requestOptions = {
             method: 'GET',
             redirect: 'follow',
@@ -21,20 +23,21 @@ function Signin() {
         url = url + password;
         url = url + "&email=";
         url = url + email;
-        
+
         fetch(url, requestOptions)
-            .then(response => response.text())
-            .then(result => (result == "usuario inexistente") ? console.log('falhou') : window.sessionStorage.setItem("usuario",result))
-            .catch(error => console.log('error', error));
-        navigate('/jornadas');
-        
+        .then(response => response.text())
+        .then(result => (result == "usuario inexistente") ? (alert('email/senha invalidos'),setSucesso(false)) : (window.sessionStorage.setItem("usuario",result),setSucesso(true)))
+        .catch(error => console.log('error', error));
+        if(sucesso){
+        navigate('/');
       }
+    }
 
     
 
     const handleBack = (e) => {
         e.preventDefault()
-        navigate("/jornadas");
+        navigate("/");
       }
 
 
