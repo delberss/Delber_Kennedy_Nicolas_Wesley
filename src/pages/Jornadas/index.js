@@ -105,7 +105,7 @@ class Jornadas extends Component {
         //this.setState({list : <ul>list</ul>});
         return List;
     }
-
+    //TODO : aqui salva no db que o usuario marcou como concluido um subtopico
     subTConcluido(id) {
         console.log(id);
     }
