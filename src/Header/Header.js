@@ -27,7 +27,7 @@ class Header extends Component {
     }
 
     logout = () => {
-        const userVazio =  [{"id":-1,"nome":"teste","email":"teste@teste.com","curso":"","senha":"","experiencia":0,"caminhoatual":-1,"caminhoback":{},"caminhofront":{}}];
+        const userVazio =  [{"id":-1,"nome":"teste","email":"teste@teste.com","curso":"","senha":"","experiencia":0,"caminhoatual":-1,"subtopicosConcluidos":{},"topicosConcluidos":{}}];
           
         window.sessionStorage.setItem("usuario",JSON.stringify(userVazio));
         this.setState({logado : false})

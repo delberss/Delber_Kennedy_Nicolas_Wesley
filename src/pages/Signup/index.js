@@ -14,10 +14,12 @@ function Signup() {
     urlencoded.append("nome", e.target.nome.value);
     urlencoded.append("email", e.target.email.value);
     urlencoded.append("senha", e.target.password.value);
+    urlencoded.append("curso",e.target.curso.value)
     urlencoded.append("experiencia", "0");
     urlencoded.append("caminhoAtual", "1");
+    urlencoded.append("topicosConcluidos", JSON.stringify([{'id':99999,'valor': false}]));
+    urlencoded.append("subtopicosConcluidos",JSON.stringify([{'id':99999,'valor': false}]));
 
-    
 
 
     var requestOptions = {

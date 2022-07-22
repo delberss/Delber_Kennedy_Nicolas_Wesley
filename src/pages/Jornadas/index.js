@@ -6,6 +6,7 @@ import '../../Content/styles.css'
 import '../Jornadas/styleJornada.css'
 import '../Jornadas/styleTopico.css'
 import '../Jornadas/styleSubtopicos.css'
+import { __esModule } from "@testing-library/jest-dom/dist/matchers";
 
 class Jornadas extends Component {
 
@@ -53,7 +54,7 @@ class Jornadas extends Component {
             redirect: 'follow',
             mode: 'cors'
         };
-        console.log(this.state.idSubT);
+
         let url = "https://trabalhoengsw.herokuapp.com/topicos/get/subtopicos?idTopico=" + this.state.idSubT;
         fetch(url, requestOptions)
             .then(response => response.text())
@@ -69,6 +70,7 @@ class Jornadas extends Component {
         const List = [];
         //backend
         if (opc === 1) {
+            console.log('rendering b')
             for (let i = 0; i < this.state.topBack.length; i++) {
                 let id = this.state.topBack[i]['id'];
                 let nome = this.state.topBack[i]['nome'];
@@ -76,10 +78,10 @@ class Jornadas extends Component {
                     <li key={id} onClick={() => { this.setState({ valorSwitch: 's', idSubT: id }) }}>{nome}</li>
                 );
             }
-            console.log('op1')
         }
         //frontend
         if (opc === 2) {
+            console.log('rendering f')
             for (let i = 0; i < this.state.topFront.length; i++) {
                 let id = this.state.topFront[i]['id'];
                 let nome = this.state.topFront[i]['nome'];
@@ -87,10 +89,10 @@ class Jornadas extends Component {
                     <li key={id} onClick={() => { this.setState({ valorSwitch: 's', idSubT: id }) }}>{nome}</li>
                 );
             }
-            console.log('op2')
         }
         //subtopicos
         if (opc === 3) {
+            console.log('rendering subtopicos')
             for (let i = 0; i < this.state.subT.length; i++) {
                 let id = this.state.subT[i]['id'];
                 let nome = this.state.subT[i]['nome'];
@@ -101,20 +103,55 @@ class Jornadas extends Component {
                         </div>
                         <div>{nome}</div>
                         <div><label></label></div>
-                        <a className="dicas" href="https://google.com" target="_blank">Veja sobre</a>
+                        <a className="dicas" href="https://google.com" target="_blank" rel="noreferrer">Veja sobre</a>
                     </li>
                 );
             }
-            console.log('op3')
         }
-        //this.setState({list : <ul>list</ul>});
         return List;
+    }
+    atualizaUserDb(usr) {
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+        var urlencoded = new URLSearchParams();
+        urlencoded.append("nome", usr[0]['nome']);
+        urlencoded.append("id", usr[0]['id']);
+        urlencoded.append("email", usr[0]['email']);
+        urlencoded.append("senha", usr[0]['senha']);
+        urlencoded.append("experiencia", usr[0]['experiencia']);
+        urlencoded.append("caminhoAtual", usr[0]['caminhoAtual']);
+        urlencoded.append("topicosConcluidos", usr[0]['topicosconcluidos']);
+        urlencoded.append("subtopicosConcluidos", usr[0]['subtopicosconcluidos']);
+        urlencoded.append("curso", usr[0]['curso']);
+
+        var requestOptions = {
+            method: 'PUT',
+            headers: myHeaders,
+            body: urlencoded,
+            redirect: 'follow'
+        };
+
+        fetch("https://trabalhoengsw.herokuapp.com/usuarios/edit", requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => (console.log('error', error),alert("erro de conexão, tente novamente")));
+
     }
     //TODO : aqui salva no db que o usuario marcou como concluido um subtopico
     subTConcluido(id) {
-        console.log(id);
+        console.log('opa');
+        console.log(this.state.user[0]['subtopicosconcluidos']);
+        let b = [... this.state.user[0]['subtopicosconcluidos'], { 'id': id, 'valor': true }];
+        let aux = this.state.user;
+        aux[0]['subtopicosconcluidos']= b;
+        this.setState({ user: aux });
+        this.atualizaUserDb(aux);
     }
 
+    volta() {
+        this.setState({ valorSwitch: 'j' })
+    }
     renderSelecaoJornada() {
         return (
             <div>
@@ -136,10 +173,6 @@ class Jornadas extends Component {
             </div>
 
         );
-    }
-
-    volta() {
-        this.setState({ valorSwitch: 'j' })
     }
 
     renderBackend() {
@@ -204,7 +237,7 @@ class Jornadas extends Component {
                     </div>
                     <div className="topico">
                         <ul>
-                            {this.topicosJsonToList(2)}
+                            {() => {this.topicosJsonToList(2)}}
 
                         </ul>
                     </div>
