@@ -26,9 +26,9 @@ router.get('/', async (req, res) => {
     'CREATE TABLE IF NOT EXISTS caminhoContemConteudo (id SERIAL PRIMARY KEY,caminho INTEGER REFERENCES caminhos,'+
     ' conteudo INTEGER REFERENCES conteudos ON DELETE CASCADE, UNIQUE(caminho,conteudo));'+
     'CREATE TABLE IF NOT EXISTS topicoContemConteudo (id SERIAL PRIMARY KEY,topico INTEGER REFERENCES topicos,'+
-    ' conteudo INTEGER REFERENCES conteudos ON DELETE CASCADE, UNIQUE(caminho,conteudo));'+
+    ' conteudo INTEGER REFERENCES conteudos ON DELETE CASCADE, UNIQUE(topico,conteudo));'+
     'CREATE TABLE IF NOT EXISTS subtopicoContemConteudo (id SERIAL PRIMARY KEY,subtopico INTEGER REFERENCES subtopicos,'+
-    ' conteudo INTEGER REFERENCES conteudos ON DELETE CASCADE, UNIQUE(caminho,conteudo));';
+    ' conteudo INTEGER REFERENCES conteudos ON DELETE CASCADE, UNIQUE(subtopico,conteudo));';
 
     try {
       const client = await pool.connect();
