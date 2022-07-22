@@ -154,7 +154,7 @@ router.get('/get/all/topico', async (req, res) => {
 router.get('/get/all/subtopico', async (req, res) => {
      
         var id = req.query.idSubtopico == "" ? null : req.query.idSubtopico;
-        const query = 'SELECT * FROM subtopicoContemConteudo WHERE subtopico = $1;';
+        const query = 'SELECT conteudos.* FROM conteudos JOIN subtopicoContemConteudo ON conteudos.id = subtopicoContemConteudo.conteudo WHERE subtopicoContemConteudo.subtopico = $1;';
         const values = [id];
         try {
             const client = await pool.connect();

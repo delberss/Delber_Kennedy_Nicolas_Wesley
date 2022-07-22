@@ -384,3 +384,17 @@ COMMIT;
 
 
 --INSERT INTO conteudos(tipo,link,titulo) VALUES('','','');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto','https://www.vox.com/2014/6/16/18076282/the-internet','A internet explicada');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto','http://web.stanford.edu/class/msande91si/www-spr04/readings/week1/InternetWhitepaper.htm','Como a internet funciona?');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video','https://roadmap.sh/guides/what-is-internet','Introdução a internet');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video','https://www.youtube.com/watch?v=TNQsmPf24go','Como a internet funciona?');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video','https://www.youtube.com/watch?v=7_LPdttKXPc','Como a internet funciona em 5 minutos');
+
+--INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('','');
+
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','1');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','2');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','3');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','4');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','5');
+
