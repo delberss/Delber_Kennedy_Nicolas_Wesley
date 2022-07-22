@@ -119,7 +119,7 @@ router.get('/ranking/get', async (req, res) => {
 router.put('/edit', async (req, res) => {
   
   var nome = req.body.nome == "" ? null : req.body.nome;
-  var id = req.body.id == "" ? null : req.query.id;
+  var id = req.body.id == "" ? null : parseint(req.query.id);
   var email = req.body.email == "" ? null : req.body.email;
   var senha = req.body.senha == "" ? null : req.body.senha;
   var experiencia = req.body.experiencia == "" ? null : req.body.experiencia;
