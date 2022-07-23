@@ -1,0 +1,43 @@
+.materiais{
+    margin-top: 20px;
+}
+
+.materiais ul{
+    margin-bottom: 20px;
+}
+
+.materiais a{
+    text-decoration: none;
+}
+
+.materiais li{
+    margin-bottom: 8px;
+    padding: 3px;
+}
+
+.materiais li:hover{
+    background: rgba(0, 0, 0, 0.311);
+    border-radius: 20px;
+    transition: 100ms;
+}
+
+
+.conclusaoSubtopico {
+    display: flex;
+    justify-content: center;
+}
+
+.buttonConcluido{
+    margin-left: 10px;
+    border: none;
+    padding: 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.buttonConcluido:hover{
+    background-color: rgb(16, 103, 127);
+    transition: 100ms;
+    color: white;
+}
