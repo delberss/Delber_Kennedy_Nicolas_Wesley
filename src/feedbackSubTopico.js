@@ -116,7 +116,7 @@ router.put('/edit', async (req, res) => {
         var subtopico= req.body.idSubTopico == "" ? null : req.body.idSubTopico;
         var conteudo = req.body.conteudo == "" ? null : req.body.conteudo;
         var criado = req.body.criado == "" ? null : req.body.criado;
-        var editado = 'NOW';
+        var editado = 'NOW()';
 
 
         var query = 'UPDATE feedbackSubTopico(usuario,subtopico,conteudo,criado,editado) WHERE id = $1 ' +

@@ -120,7 +120,7 @@ router.put('/edit', async (req, res) => {
         var caminho = req.body.idCaminho == "" ? null : req.body.idCaminho;
         var conteudo = req.body.conteudo == "" ? null : req.body.conteudo;
         var criado = req.body.criado == "" ? null : req.body.criado;
-        var editado = 'NOW';
+        var editado = 'NOW()';
 
 
         var query = 'UPDATE feedbackCaminho(usuario,caminho,conteudo,criado,editado) WHERE id = $1 ' +
