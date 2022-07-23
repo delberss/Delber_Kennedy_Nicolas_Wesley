@@ -22,6 +22,9 @@ router.post('/insert', async (req, res) => {
             // primeiro tenta inserir o topico
             const client = await pool.connect();
             const result = await client.query(query, values);
+
+    res.status(200).send('ok');
+    client.release();
         } catch (err) {
             console.error(err);
             res.send("Error " + err);
