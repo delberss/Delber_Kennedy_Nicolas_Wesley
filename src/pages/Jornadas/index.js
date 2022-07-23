@@ -173,10 +173,11 @@ class Jornadas extends Component {
                 List.push(
                     <li className="materiais" key={id}>
                         <div>{this.state.materialST[i]['tipo']}</div>
-                        <div><a href= {this.state.materialST[i]['link']} rel="noopener noreferrer" target={"_blank"}>{this.state.materialST[i]['titulo']}</a></div>
-                   
-                        <hr></hr>
 
+                        <div><a href={this.state.materialST[i]['link']} rel="noopener noreferrer"
+                            target={"_blank"}>{this.state.materialST[i]['titulo']}</a></div>
+
+                        <hr></hr>
 
                     </li>
                 );
