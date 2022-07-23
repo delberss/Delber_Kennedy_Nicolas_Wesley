@@ -1,11 +1,15 @@
 import React, { Component } from "react";
-import '../Jornadas/style.css'
+
 import Header from "../../Header/Header";
 import Footer from '../../Footer/Footer';
+
 import '../../Content/styles.css'
-import '../Jornadas/styleJornada.css'
-import '../Jornadas/styleTopico.css'
+import '../Jornadas/style.css'
+import '../Jornadas/styleJornadas.css'
+import '../Jornadas/styleMateriais.css'
 import '../Jornadas/styleSubtopicos.css'
+import '../Jornadas/styleTopicos.css'
+
 import { __esModule } from "@testing-library/jest-dom/dist/matchers";
 
 
@@ -126,7 +130,7 @@ class Jornadas extends Component {
                 let id = this.state.topBack[i]['id'];
                 let nome = this.state.topBack[i]['nome'];
                 List.push(
-                    <li key={id} onClick={() => {
+                    <li className="topico" key={id} onClick={() => {
                         this.setState({ valorSwitch: 's', idT: id });
                         this.carregaSubtopicos(id);
                     }}>{nome}</li>
@@ -140,7 +144,7 @@ class Jornadas extends Component {
                 let id = this.state.topFront[i]['id'];
                 let nome = this.state.topFront[i]['nome'];
                 List.push(
-                    <li key={id} onClick={() => {
+                    <li className="topico" key={id} onClick={() => {
                         this.setState({ valorSwitch: 's', idT: id });
                         this.carregaSubtopicos(id);
                     }}>{nome}</li>
@@ -154,7 +158,7 @@ class Jornadas extends Component {
                 let id = this.state.subT[i]['id'];
                 let nome = this.state.subT[i]['nome'];
                 List.push(
-                    <li className="subtopicos" key={id}>
+                    <li className="subtopico" key={id}>
 
                         <div onClick={() => {
                             this.setState({ valorSwitch: 'd', idSubT: id });
@@ -171,7 +175,7 @@ class Jornadas extends Component {
             for (let i = 0; i < this.state.materialST.length; i++) {
                 let id = this.state.materialST[i]['id'];
                 List.push(
-                    <li className="materiais" key={id}>
+                    <li className="material" key={id}>
                         <a href={this.state.materialST[i]['link']} rel="noopener noreferrer"
                         target={"_blank"}>{this.state.materialST[i]['titulo']} - {this.state.materialST[i]['tipo']}
                         </a>
@@ -292,7 +296,6 @@ class Jornadas extends Component {
     //por enquanto ela sempre volta pra pagina que escolhe entre as jornadas
     //TODO : melhorar, para que volte a pagina anterior
     volta() {
-
         console.log('fn volta');
         this.setState({ valorSwitch: 'j' })
     }
@@ -337,7 +340,7 @@ class Jornadas extends Component {
                         <span className="material-symbols-outlined">arrow_back</span>
 
                     </div>
-                    <div className="topico">
+                    <div className="topicos">
                         <ul>
                             {this.JsonToList(1)}
 
@@ -371,7 +374,7 @@ class Jornadas extends Component {
 
                         <div className="voltar" onClick={() => { this.volta() }}>
 
-                            <span id="arrow_materiais" className="material-symbols-outlined">arrow_back</span>
+                            <span className="material-symbols-outlined">arrow_back</span>
 
                         </div>
        
@@ -381,9 +384,12 @@ class Jornadas extends Component {
 
                         <div><h4>{this.state.detST[0]['descricao']}</h4></div>
 
-                        <ul className="ul_materiais">
-                            {this.JsonToList(4)}
-                        </ul>
+                        <div className="materiais">
+                            <ul>
+                                {this.JsonToList(4)}
+                            </ul>
+                        </div>
+                        
                         <div>
                             <div className="field_anotacoes">
 
@@ -399,7 +405,7 @@ class Jornadas extends Component {
             );
         }
     }
-    renderSubT() {
+    renderSubT(paginaAnterior) {
 
         console.log('fn rendersubt');
         return (
@@ -412,7 +418,7 @@ class Jornadas extends Component {
                         <span className="material-symbols-outlined">arrow_back</span>
 
                     </div>
-                    <div className="ul_subtopicos">
+                    <div className="subtopicos">
                         <ul>
                             {this.JsonToList(3)}
 
@@ -446,7 +452,7 @@ class Jornadas extends Component {
                         <span className="material-symbols-outlined">arrow_back</span>
 
                     </div>
-                    <div className="topico">
+                    <div className="topicos">
                         <ul>
                             {this.JsonToList(2)}
 
@@ -490,32 +496,26 @@ class Jornadas extends Component {
             case 'f': {
                 return (
                     this.renderFrontend());
-                break;
             }
             case 'b': {
                 return (
                     this.renderBackend());
-                break;
             }
             case 'j': {
                 return (
                     this.renderSelecaoJornada());
-                break;
             }
             case 's': {
                 return (
-                    this.renderSubT());
-                break;
+                    this.renderSubT(this.pagina));
             }
             case 'd': {
                 return (
                     this.renderSubTDetalhes());
-                break;
             }
             default: {
                 return (
                     this.renderLoading());
-                break;
             }
         };
 
