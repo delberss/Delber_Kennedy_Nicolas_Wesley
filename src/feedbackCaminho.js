@@ -18,7 +18,7 @@ router.post('/insert', async (req, res) => {
         var editado = 'NOW()';
 
         var query = 'INSERT INTO feedbackCaminho(usuario,caminho,conteudo)' +
-            'VALUES ($1,$2,$3,$4,$5)';
+            'VALUES ($1,$2,$3)';
         var values = [usuario,caminho,conteudo];
 
         try {
