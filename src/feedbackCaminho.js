@@ -8,8 +8,8 @@ var router = express.Router();
 router.post('/insert', async (req, res) => {
      
 
-        var usuario = req.body.descricao == "" ? null : req.body.descricao;
-        var caminho = req.body.idCaminho == "" ? null : req.body.idCaminho;
+        var usuario = req.body.usuario == "" ? null : req.body.usuario;
+        var caminho = req.body.caminho == "" ? null : req.body.caminho;
         var conteudo = req.body.conteudo == "" ? null : req.body.conteudo;
         var criado = 'NOW()';
         var editado = 'NOW';
