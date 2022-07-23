@@ -14,7 +14,7 @@ router.post('/insert', async (req, res) => {
         var criado = 'NOW()';
         var editado = 'NOW';
 
-        var query = 'INSERT INTO feedbackSubTopico(usuario,subtopico,conteudo,criado,editado)' +
+        var query = 'INSERT INTO feedbackSubTopico(usuario,subtopico,conteudo,criadoEm,editadoEm)' +
             'VALUES ($1,$2,$3,$4,$5)';
         var values = [usuario,subtopico,conteudo,criado,editado];
 
