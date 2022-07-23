@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
     'CREATE TABLE IF NOT EXISTS feedbackSubtopico(id SERIAL PRIMARY KEY, usuario INTEGER REFERENCES usuarios ON DELETE CASCADE,' +
     'subtopico INTEGER REFERENCES subtopicos ON DELETE CASCADE,  criadoEm TIMESTAMP, editadoEm TIMESTAMP, conteudo VARCHAR, UNIQUE(subtopico,usuario)) ;' +
     'CREATE TABLE IF NOT EXISTS feedbackTopico(id SERIAL PRIMARY KEY, usuario INTEGER REFERENCES usuarios ON DELETE CASCADE,' +
-    'topico INTEGER REFERENCES topicos ON DELETE CASCADE , criadoEm TIMESTAMP, editadoEm TIMESTAMP, conteudo VARCHAR UNIQUE(topico,usuario));' +
+    'topico INTEGER REFERENCES topicos ON DELETE CASCADE , criadoEm TIMESTAMP, editadoEm TIMESTAMP, conteudo VARCHAR , UNIQUE(topico,usuario));' +
     'CREATE TABLE IF NOT EXISTS feedbackCaminho(id SERIAL PRIMARY KEY, usuario INTEGER REFERENCES usuarios ON DELETE CASCADE, ' +
     'caminho INTEGER REFERENCES caminhos ON DELETE CASCADE, criadoEm TIMESTAMP, editadoEm TIMESTAMP, conteudo VARCHAR, UNIQUE(caminho,usuario));' +
     'CREATE TABLE IF NOT EXISTS caminhoContemConteudo (id SERIAL PRIMARY KEY,caminho INTEGER REFERENCES caminhos,' +
