@@ -172,13 +172,9 @@ class Jornadas extends Component {
                 let id = this.state.materialST[i]['id'];
                 List.push(
                     <li className="materiais" key={id}>
-                        <div>{this.state.materialST[i]['tipo']}</div>
-
-                        <div><a href={this.state.materialST[i]['link']} rel="noopener noreferrer"
-                            target={"_blank"}>{this.state.materialST[i]['titulo']}</a></div>
-
-                        <hr></hr>
-
+                        <a href={this.state.materialST[i]['link']} rel="noopener noreferrer"
+                        target={"_blank"}>{this.state.materialST[i]['titulo']} - {this.state.materialST[i]['tipo']}
+                        </a>
                     </li>
                 );
             }
@@ -331,8 +327,6 @@ class Jornadas extends Component {
     }
 
     renderBackend() {
-        console.log('fn renderbackend');
-        console.log('idcam = ' + this.state.idCam);
         return (
             <>
                 <Header />
@@ -350,12 +344,13 @@ class Jornadas extends Component {
                         </ul>
                     </div>
                     <div>
-                        <div className="field">
+                        <div className="field_anotacoes">
 
                             <input type="anotacoes" name="anotacoes" value={this.state.anotacao}
                                 placeholder="Insira suas anotações aqui" id="anotacoes" onChange={e => { this.setState({ anotacao: e.target.value }) }} />
+                            <button onClick={() => { this.salvaAnotacao(1) }}>Salvar Anotações</button>
                         </div>
-                        <button onClick={() => { this.salvaAnotacao(1) }}>Salvar Anotações</button>
+                        
                     </div>
                 </div>
                 <Footer />
@@ -372,32 +367,33 @@ class Jornadas extends Component {
                 <>
                     <Header />
                     <div className="content">
-                        <h2>Detalhes</h2>
+                        <h2>Materiais de estudo - {this.state.detST[0]['nome']}</h2>
+
                         <div className="voltar" onClick={() => { this.volta() }}>
 
-                            <span className="material-symbols-outlined">arrow_back</span>
+                            <span id="arrow_materiais" className="material-symbols-outlined">arrow_back</span>
 
                         </div>
-                        <div>
+       
+                        <div className="conclusaoSubtopico">
                             <button className="buttonConcluido" >Concluido</button>
                         </div>
-                        <div><h3>{this.state.detST[0]['nome']}</h3></div>
-                        <div><h4>{this.state.detST[0]['descricao']}</h4></div>
-                        <div><h4>Materiais de estudo :</h4></div>
 
-                        <ul>
+                        <div><h4>{this.state.detST[0]['descricao']}</h4></div>
+
+                        <ul className="ul_materiais">
                             {this.JsonToList(4)}
                         </ul>
                         <div>
-                            <div className="field">
+                            <div className="field_anotacoes">
 
                                 <input type="anotacoes" name="anotacoes"
                                     placeholder="Insira suas anotações aqui" id="anotacoes" />
+                                <button>Salvar Anotações</button>
                             </div>
-                            <button>Salvar Anotações</button>
                         </div>
 
-                    </div>console.log('idcam = ' +this.state.idCam);
+                    </div>
                     <Footer />
                 </>
             );
@@ -416,19 +412,21 @@ class Jornadas extends Component {
                         <span className="material-symbols-outlined">arrow_back</span>
 
                     </div>
-                    <div className="subtopicos">
+                    <div className="ul_subtopicos">
                         <ul>
                             {this.JsonToList(3)}
 
                         </ul>
                     </div>
                     <div>
-                        <div className="field">
+                        <div className="field_anotacoes">
 
                             <input type="anotacoes" name="anotacoes"
                                 placeholder="Insira suas anotações aqui" id="anotacoes" />
+
+                            <button>Salvar Anotações</button>
                         </div>
-                        <button>Salvar Anotações</button>
+                        
                     </div>
 
                 </div>
@@ -438,8 +436,6 @@ class Jornadas extends Component {
     }
 
     renderFrontend() {
-        console.log('fn renderfrontend');
-        console.log('idcam = ' + this.state.idCam);
         return (
             <>
                 <Header />

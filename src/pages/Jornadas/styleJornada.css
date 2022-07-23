@@ -41,10 +41,11 @@
 
 .topico li{
     margin-bottom: 8px;
+    padding: 3px;
 }
 
 .topico li:hover{
     background: rgba(0, 0, 0, 0.311);
-    border-radius: 4px;
+    border-radius: 20px;
     transition: 100ms;
 }

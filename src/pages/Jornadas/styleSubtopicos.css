@@ -1,34 +1,31 @@
-.subtopicos ul {
+.ul_subtopicos ul {
     display: flex;
     flex-direction: column;
     justify-content: center;
-
+    align-items: center;
 
     border-radius: 30px;
 
     width: 80%;
-    margin: auto;
+    margin: -50px auto 30px;
     padding: 20px;
 
     background-color: rgb(16, 103, 127);
 
 }
 
-.subtopicos li{
+.ul_subtopicos li{
     display: flex;
+    padding: 8px;
     justify-content: space-between;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     text-align: left;
+    border-radius: 20px;
 }
 
-.subtopicos .buttonConcluido{
-    border: none;
-    padding: 5px;
-    background-color: rgb(48, 122, 142);
-    text-transform: uppercase;
-    cursor: pointer;
-    border-radius: 10px;
-    color: white;
+.ul_subtopicos li:hover{
+    background: rgba(0, 0, 0, 0.311);
+    transition: 100ms;
 }
 
 .subtopicos .dicas{
@@ -42,4 +39,58 @@
 .subtopicos .buttonConcluido:hover{
     transition: 0.6s;
     background-color: rgba(0, 0, 0, 0.521);
+}
+
+
+.ul_materiais{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 30px;
+
+    width: 80%;
+    margin: 10px auto;
+    padding: 20px;
+
+    background-color: rgb(16, 103, 127);
+}
+
+.ul_materiais li{
+    display: flex;
+    padding: 8px;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    border-radius: 20px;
+}
+
+.ul_materiais li:hover{
+    background: rgba(0, 0, 0, 0.311);
+    transition: 100ms;
+}
+
+
+.conclusaoSubtopico {
+    display: flex;
+    justify-content: center;
+}
+
+.buttonConcluido{
+    margin-left: 10px;
+    border: none;
+    padding: 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.buttonConcluido:hover{
+    background-color: rgb(16, 103, 127);
+    transition: 100ms;
+    color: white;
+}
+
+#arrow_materiais{
+    margin-top: -45px;
 }
