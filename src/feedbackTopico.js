@@ -12,7 +12,7 @@ router.post('/insert', async (req, res) => {
         var topico = req.body.idTopico == "" ? null : req.body.idTopico;
         var conteudo = req.body.conteudo == "" ? null : req.body.conteudo;
         var criado = 'NOW()';
-        var editado = 'NOW';
+        var editado = 'NOW()';
 
         var query = 'INSERT INTO feedbackTopico(usuario,topico,conteudo,criadoEm,editadoEm)' +
             'VALUES ($1,$2,$3,$4,$5)';

@@ -15,7 +15,7 @@ router.post('/insert', async (req, res) => {
         var caminho = req.body.caminho == "" ? null : req.body.caminho;
         var conteudo = req.body.conteudo == "" ? null : req.body.conteudo;
         var criado = 'NOW()';
-        var editado = 'NOW';
+        var editado = 'NOW()';
 
         var query = 'INSERT INTO feedbackCaminho(usuario,caminho,conteudo,criadoEm,editadoEm)' +
             'VALUES ($1,$2,$3,$4,$5)';
