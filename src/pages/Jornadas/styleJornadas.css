@@ -1,0 +1,30 @@
+.box-backend,
+.box-frontend{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(16, 103, 127);
+    padding: 20px;
+    height: 350px;
+    width: 350px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.jornadas{
+    display: flex;
+    box-sizing: border-box;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.jornadasBackFront{
+    font-size: 35px;
+}
+
+.jornadas a{
+    font-size: 35px;
+    text-decoration: none;
+    color: rgb(61, 223, 180);
+    text-transform: uppercase;
+}
