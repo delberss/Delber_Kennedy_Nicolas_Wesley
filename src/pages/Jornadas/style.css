@@ -1,42 +1,42 @@
-.jornadas{
-    display: flex;
-    box-sizing: border-box;
-    justify-content: space-around;
-    width: 100%;
-}
-
-.jornadasBackFront{
-    font-size: 35px;
-}
-
-.jornadas a{
-    font-size: 35px;
-    text-decoration: none;
-    color: rgb(61, 223, 180);
-    text-transform: uppercase;
-}
-
-
-.box-backend,
-.box-frontend{
+/* STYLES QUE SÃO UTILIZADOS EM MAIS DE UMA "PAGINA" DE JORNADA*/
+.topicos,
+.subtopicos,
+.materiais {
+    background-color: rgb(16, 103, 127);
     display: flex;
     justify-content: center;
-    align-items: center;
-    background-color: rgb(16, 103, 127);
-    padding: 20px;
-    height: 350px;
-    width: 350px;
+    margin: auto;
+    height: 100%;
+    max-width: 60%;
     border-radius: 10px;
+    padding: 10px;
+}
+
+.voltar {
+    display: block;
+    position: absolute;
+    width: 50px;
+    margin: 5px 20px;
     cursor: pointer;
 }
 
+.material-symbols-outlined{
+    background-color: rgb(16, 103, 127);
+    font-size: 45px;
+    border-radius: 25px;
+    color:white;
+}
 
+.material-symbols-outlined:hover{
+    transition: 1s;
+    background-color: white;
+    color: rgb(16, 103, 127);
+}
 
 .field_anotacoes{
     display: flex;
-    flex-direction: column;
     align-items: center;
-    width: 30%;
+    width: 50%;
     margin: auto;
 }
 
@@ -45,11 +45,13 @@
 {
     width: 100%;
     margin-top: 20px;
-    padding: 20px;    
+    padding: 20px;
     outline: none;
     border-radius: 5px;
     border: none;
+    margin-left: 20px;
 }
+
 
 .field_anotacoes button:hover{
     cursor: pointer;
