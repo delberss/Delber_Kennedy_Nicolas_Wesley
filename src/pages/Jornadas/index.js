@@ -24,15 +24,15 @@ class Jornadas extends Component {
             topBack: [],
             subT: [],
             idSubT: 1,
-            idCam: page !=null ? (page ==='b'? 1 : 2) : 1,
+            idCam: page != null ? (page === 'b' ? 1 : 2) : 1,
             idT: 1,
             valorSwitch: page != null ? page : 'j',
             detST: [],
             materialST: [],
-            anotacao : ""
+            anotacao: ""
 
         };
-        
+
     }
     //na primeira vez que for usar esse component vai ser utilizado carrega os topicos dos 2 caminhos
     componentDidMount() {
@@ -56,9 +56,8 @@ class Jornadas extends Component {
                 this.setState({ topFront: JSON.parse(result) })
             })
             .catch(error => console.log('error', error));
-            //Nâo tenho certeza se isso aqui é suficiente
-        if(this.state.valorSwitch != 'j')
-        {
+        //Nâo tenho certeza se isso aqui é suficiente
+        if (this.state.valorSwitch != 'j') {
             this.carregaAnotacao(1);
 
         }
@@ -127,7 +126,10 @@ class Jornadas extends Component {
                 let id = this.state.topBack[i]['id'];
                 let nome = this.state.topBack[i]['nome'];
                 List.push(
-                    <li key={id} onClick={() => { this.setState({ valorSwitch: 's', idT: id }); this.carregaSubtopicos(id); }}>{nome}</li>
+                    <li key={id} onClick={() => {
+                        this.setState({ valorSwitch: 's', idT: id });
+                        this.carregaSubtopicos(id);
+                    }}>{nome}</li>
                 );
             }
         }
@@ -138,7 +140,10 @@ class Jornadas extends Component {
                 let id = this.state.topFront[i]['id'];
                 let nome = this.state.topFront[i]['nome'];
                 List.push(
-                    <li key={id} onClick={() => { this.setState({ valorSwitch: 's', idT: id }); this.carregaSubtopicos(id); }}>{nome}</li>
+                    <li key={id} onClick={() => {
+                        this.setState({ valorSwitch: 's', idT: id });
+                        this.carregaSubtopicos(id);
+                    }}>{nome}</li>
                 );
             }
         }
@@ -151,7 +156,10 @@ class Jornadas extends Component {
                 List.push(
                     <li className="subtopicos" key={id}>
 
-                        <div onClick={() => { this.setState({ valorSwitch: 'd', idSubT: id }); this.detalhesST(id) }}>{nome}</div>
+                        <div onClick={() => {
+                            this.setState({ valorSwitch: 'd', idSubT: id });
+                            this.detalhesST(id)
+                        }}>{nome}</div>
 
                     </li>
                 );
@@ -165,8 +173,8 @@ class Jornadas extends Component {
                 List.push(
                     <li className="materiais" key={id}>
                         <div>{this.state.materialST[i]['tipo']}</div>
-                        <div>{this.state.materialST[i]['titulo']}</div>
-                        <div>{this.state.materialST[i]['link']}</div>
+                        <div><a href= {this.state.materialST[i]['link']} rel="noopener noreferrer" target={"_blank"}>{this.state.materialST[i]['titulo']}</a></div>
+                   
                         <hr></hr>
 
 
@@ -181,64 +189,63 @@ class Jornadas extends Component {
     //tipo =1 para caminho, 2 para topico,3 para subtopíco
     salvaAnotacao(tipo) {
         console.log('fn salvaanotacao');
-        if(this.state.user[0]['id']== -1)
-        {
+        if (this.state.user[0]['id'] == -1) {
             alert('É necessario estar logado');
         }
-        else
-        {if (tipo === 1) {
-            let sucesso = false;
-            var myHeaders = new Headers();
-            myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+        else {
+            if (tipo === 1) {
+                let sucesso = false;
+                var myHeaders = new Headers();
+                myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
-            var urlencoded = new URLSearchParams();
-            urlencoded.append("usuario", this.state.user[0]['id']);
-            urlencoded.append("caminho", this.state.idCam);
-            urlencoded.append("conteudo", this.state.anotacao);
+                var urlencoded = new URLSearchParams();
+                urlencoded.append("usuario", this.state.user[0]['id']);
+                urlencoded.append("caminho", this.state.idCam);
+                urlencoded.append("conteudo", this.state.anotacao);
 
-            var requestOptions = {
-                method: 'POST',
-                headers: myHeaders,
-                body: urlencoded,
-                redirect: 'follow',
-                mode:'cors'
-            };
+                var requestOptions = {
+                    method: 'POST',
+                    headers: myHeaders,
+                    body: urlencoded,
+                    redirect: 'follow',
+                    mode: 'cors'
+                };
 
-            fetch("https://trabalhoengsw.herokuapp.com/feedbackcaminhos/insert", requestOptions)
-                .then(response => response.text())
-                .then(result => {console.log(result);result == 'ok'? sucesso = true : sucesso = false})
-                .catch(error => console.log('error', error));
-                console.log('result = '+ sucesso);
+                fetch("https://trabalhoengsw.herokuapp.com/feedbackcaminhos/insert", requestOptions)
+                    .then(response => response.text())
+                    .then(result => { console.log(result); result == 'ok' ? sucesso = true : sucesso = false })
+                    .catch(error => console.log('error', error));
+                console.log('result = ' + sucesso);
+            }
+            if (tipo === 2) { }
+            if (tipo === 3) { }
         }
-        if (tipo === 2) { }
-        if (tipo === 3) { }}
     }
     //TODO
     //tipo =1 para caminho, 2 para topico,3 para subtopíco
-    carregaAnotacao(tipo){
+    carregaAnotacao(tipo) {
         console.log('fn carregaanotacao');
-        let temp ="";
-        if (tipo === 1) { 
+        let temp = "";
+        if (tipo === 1) {
             var requestOptions = {
                 method: 'GET',
                 redirect: 'follow',
-                mode :'cors'
-              };
-              let url = "https://trabalhoengsw.herokuapp.com/feedbackcaminhos/get/all/user/caminho?usuario="+ this.state.user[0]['id'];
-              url = url + "&caminho=" + this.state.idCam; 
-              fetch(url, requestOptions)
+                mode: 'cors'
+            };
+            let url = "https://trabalhoengsw.herokuapp.com/feedbackcaminhos/get/all/user/caminho?usuario=" + this.state.user[0]['id'];
+            url = url + "&caminho=" + this.state.idCam;
+            fetch(url, requestOptions)
                 .then(response => response.text())
-                .then(result => {temp = JSON.stringify(result);console.log('resul15t = ' +result)})
+                .then(result => { temp = JSON.stringify(result); console.log('resul15t = ' + result) })
                 .catch(error => console.log('error', error));
-                console.log('temp ='+ temp);
-                if(temp == null )
-                {
-                    console.log('opa1')
-                }
-                else{
-                    console.log('anotacao = ' +temp)
-                    this.setState({anotacao:temp});
-                }
+            console.log('temp =' + temp);
+            if (temp == null) {
+                console.log('opa1')
+            }
+            else {
+                console.log('anotacao = ' + temp)
+                this.setState({ anotacao: temp });
+            }
         }
         if (tipo === 2) { }
         if (tipo === 3) { }
@@ -300,11 +307,17 @@ class Jornadas extends Component {
                 <div className="content">
                     <h2 className="jornadasBackFront">Jornadas</h2>
                     <div className="jornadas">
-                        <a className="box-backend" onClick={() => { this.setState({ valorSwitch: 'b', idCam: 1 });this.carregaAnotacao(1) }}>
+                        <a className="box-backend" onClick={() => {
+                            this.setState({ valorSwitch: 'b', idCam: 1 });
+                            this.carregaAnotacao(1)
+                        }}>
                             <strong>Backend</strong>
                         </a>
 
-                        <a className="box-frontend" onClick={() => { this.setState({ valorSwitch: 'f', idCam: 2 });this.carregaAnotacao(1) }}>
+                        <a className="box-frontend" onClick={() => {
+                            this.setState({ valorSwitch: 'f', idCam: 2 });
+                            this.carregaAnotacao(1)
+                        }}>
                             <strong>Frontend</strong>
                         </a>
 
@@ -318,7 +331,7 @@ class Jornadas extends Component {
 
     renderBackend() {
         console.log('fn renderbackend');
-        console.log('idcam = ' +this.state.idCam);
+        console.log('idcam = ' + this.state.idCam);
         return (
             <>
                 <Header />
@@ -338,9 +351,10 @@ class Jornadas extends Component {
                     <div>
                         <div className="field">
 
-                            <input type="anotacoes" name="anotacoes" value = {this.state.anotacao}placeholder="Insira suas anotações aqui" id="anotacoes" onChange={ e => {this.setState({anotacao : e.target.value})}}/>
+                            <input type="anotacoes" name="anotacoes" value={this.state.anotacao}
+                                placeholder="Insira suas anotações aqui" id="anotacoes" onChange={e => { this.setState({ anotacao: e.target.value }) }} />
                         </div>
-                        <button onClick={() => {this.salvaAnotacao(1)}}>Salvar Anotações</button>
+                        <button onClick={() => { this.salvaAnotacao(1) }}>Salvar Anotações</button>
                     </div>
                 </div>
                 <Footer />
@@ -376,7 +390,8 @@ class Jornadas extends Component {
                         <div>
                             <div className="field">
 
-                                <input type="anotacoes" name="anotacoes" placeholder="Insira suas anotações aqui" id="anotacoes" />
+                                <input type="anotacoes" name="anotacoes"
+                                    placeholder="Insira suas anotações aqui" id="anotacoes" />
                             </div>
                             <button>Salvar Anotações</button>
                         </div>
@@ -409,7 +424,8 @@ class Jornadas extends Component {
                     <div>
                         <div className="field">
 
-                            <input type="anotacoes" name="anotacoes" placeholder="Insira suas anotações aqui" id="anotacoes" />
+                            <input type="anotacoes" name="anotacoes"
+                                placeholder="Insira suas anotações aqui" id="anotacoes" />
                         </div>
                         <button>Salvar Anotações</button>
                     </div>
@@ -422,7 +438,7 @@ class Jornadas extends Component {
 
     renderFrontend() {
         console.log('fn renderfrontend');
-        console.log('idcam = ' +this.state.idCam);
+        console.log('idcam = ' + this.state.idCam);
         return (
             <>
                 <Header />
@@ -442,7 +458,8 @@ class Jornadas extends Component {
                     <div>
                         <div className="field">
 
-                            <input type="anotacoes" name="anotacoes" placeholder="Insira suas anotações aqui" id="anotacoes" />
+                            <input type="anotacoes" name="anotacoes"
+                                placeholder="Insira suas anotações aqui" id="anotacoes" />
                         </div>
                         <button>Salvar Anotações</button>
                     </div>
