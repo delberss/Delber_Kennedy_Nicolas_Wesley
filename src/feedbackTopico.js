@@ -67,6 +67,25 @@ router.get('/get/all/user', async (req, res) => {
     }
      
  );
+ router.get('/get/all/user/topico', async (req, res) => {
+     
+    var id = req.query.usuario == "" ? null : req.query.usuario;
+    var caminho = req.query.subtopico == "" ? null : req.query.subtopico;
+    const query = 'SELECT * FROM feedbacktopico WHERE usuario= $1 AND topico = $2;';
+    const values = [id,caminho];
+    try {
+        const client = await pool.connect();
+        const resultado_query = await client.query(query, values);
+        var resultado_final = resultado_query.rows;
+        res.send(resultado_final);
+        client.release();
+    } catch (err) {
+        console.error(err);
+        res.send("Error " + err);
+    }
+}
+ 
+);
 
 router.get('/get', async (req, res) => {
      

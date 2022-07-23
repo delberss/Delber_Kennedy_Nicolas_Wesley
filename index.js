@@ -12,6 +12,9 @@ var usuarios = require('./src/usuarios'),
     topicos = require('./src/topicos'),
     conteudos = require('./src/conteudos'),
     subtopicos = require('./src/subtopicos'),
+    feedbackCaminho = require('./src/feedbackCaminho'),
+    feedbackSubTopico = require('./src/feedbackSubTopico'),
+    feedbackTopico = require('./src/feedbackTopico'),
     caminhos = require('./src/caminhos');
 
 
@@ -21,10 +24,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(require('body-parser').urlencoded({ extended: false }));
 app.use('/createDb', createDb);
 app.use('/usuarios', usuarios);
-app.use('/topicos', topicos);
 app.use('/conteudos', conteudos);
+app.use('/topicos', topicos);
 app.use('/subtopicos', subtopicos);
 app.use('/caminhos', caminhos);
+app.use('/feedbacktopicos', feedbacktopicos);
+app.use('/feedbacksubtopicos', feedbacksubtopicos);
+app.use('/feedbackcaminhos', feedbackcaminhos);
 app.use('/wakeup', (req, res) => { res.send("ok"); });
 app.listen(process.env.PORT || 5000, function () {
     console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);

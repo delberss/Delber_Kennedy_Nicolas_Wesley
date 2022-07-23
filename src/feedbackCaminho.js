@@ -68,6 +68,26 @@ router.get('/get/all/user', async (req, res) => {
     }
      
  );
+ router.get('/get/all/user/caminho', async (req, res) => {
+     
+    var id = req.query.usuario == "" ? null : req.query.usuario;
+    var caminho = req.query.caminho == "" ? null : req.query.usuario;
+    const query = 'SELECT * FROM feedbackCaminho WHERE usuario= $1 AND caminho = $2;';
+    const values = [id,caminho];
+    try {
+        const client = await pool.connect();
+        const resultado_query = await client.query(query, values);
+        var resultado_final = resultado_query.rows;
+        res.send(resultado_final);
+        client.release();
+    } catch (err) {
+        console.error(err);
+        res.send("Error " + err);
+    }
+}
+ 
+);
+
 
 router.get('/get', async (req, res) => {
      
