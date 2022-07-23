@@ -17,9 +17,9 @@ router.post('/insert', async (req, res) => {
         var criado = 'NOW()';
         var editado = 'NOW()';
 
-        var query = 'INSERT INTO feedbackCaminho(usuario,caminho,conteudo,criadoEm,editadoEm)' +
+        var query = 'INSERT INTO feedbackCaminho(usuario,caminho,conteudo)' +
             'VALUES ($1,$2,$3,$4,$5)';
-        var values = [usuario,caminho,conteudo,criado,editado];
+        var values = [usuario,caminho,conteudo];
 
         try {
             const client = await pool.connect();
