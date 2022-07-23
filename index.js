@@ -28,9 +28,9 @@ app.use('/conteudos', conteudos);
 app.use('/topicos', topicos);
 app.use('/subtopicos', subtopicos);
 app.use('/caminhos', caminhos);
-app.use('/feedbacktopicos', feedbacktopicos);
-app.use('/feedbacksubtopicos', feedbacksubtopicos);
-app.use('/feedbackcaminhos', feedbackcaminhos);
+app.use('/feedbacktopicos', feedbackTopico);
+app.use('/feedbacksubtopicos', feedbackSubTopico);
+app.use('/feedbackcaminhos', feedbackCaminho);
 app.use('/wakeup', (req, res) => { res.send("ok"); });
 app.listen(process.env.PORT || 5000, function () {
     console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
