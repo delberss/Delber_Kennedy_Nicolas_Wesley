@@ -9,17 +9,9 @@ function Formulario1(props){
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        navigate("/jornadas", {user : props.user});
+        navigate("/", {user : props.user});
     };
-    const [user,setUser] = useState();
-
-    setUser(props.user);
-    
-
-    console.log('form');
-    console.log(user);
-    console.log(user[0]['id']);
-    console.log(user[0]['nome']);
+    const [user,setUser] = useState(JSON.parse(window.sessionStorage.getItem("usuario")));
 
     return(
         

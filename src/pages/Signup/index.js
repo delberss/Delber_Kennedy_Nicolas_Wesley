@@ -31,7 +31,7 @@ function Signup() {
 
     fetch("https://trabalhoengsw.herokuapp.com/usuarios/insert", requestOptions)
       .then(response => response.text())
-      .then(result => console.log(result))
+      .then(result => {console.log(result)})
       .catch(error => console.log('error', error));
 
     e.preventDefault();
