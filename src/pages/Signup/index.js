@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 function Signup() {
 
   const handleSubmit = (e) => {
+    var erro = false;
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
@@ -32,10 +33,16 @@ function Signup() {
     fetch("https://trabalhoengsw.herokuapp.com/usuarios/insert", requestOptions)
       .then(response => response.text())
       .then(result => {console.log(result)})
-      .catch(error => console.log('error', error));
+      .catch(error => {erro = true});
+      
 
     e.preventDefault();
+    if(!erro){
     navigate("/jornadas");
+    }
+    else{
+      alert('Aconteceu algum erro inesperado, tente novamente');
+    }
   };
 
   const handleBack = (e) => {

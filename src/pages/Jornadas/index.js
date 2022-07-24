@@ -33,7 +33,7 @@ class Jornadas extends Component {
             valorSwitch: page != null ? page : 'j',
             detST: [],
             materialST: [],
-            anotacao: ""
+            anotacao: [{ 'conteudo': '', 'id': -1 }]
 
         };
 
@@ -61,7 +61,7 @@ class Jornadas extends Component {
             })
             .catch(error => console.log('error', error));
         //Nâo tenho certeza se isso aqui é suficiente
-        if (this.state.valorSwitch != 'j') {
+        if (this.state.valorSwitch == 'b' || this.state.valorSwitch == 'f') {
             this.carregaAnotacao(1);
 
         }
@@ -177,7 +177,7 @@ class Jornadas extends Component {
                 List.push(
                     <li className="material" key={id}>
                         <a href={this.state.materialST[i]['link']} rel="noopener noreferrer"
-                        target={"_blank"}>{this.state.materialST[i]['titulo']} - {this.state.materialST[i]['tipo']}
+                            target={"_blank"}>{this.state.materialST[i]['titulo']} - {this.state.materialST[i]['tipo']}
                         </a>
                     </li>
                 );
@@ -186,6 +186,7 @@ class Jornadas extends Component {
         }
         return List;
     }
+
     //TODO
     //tipo =1 para caminho, 2 para topico,3 para subtopíco
     salvaAnotacao(tipo) {
@@ -194,29 +195,59 @@ class Jornadas extends Component {
             alert('É necessario estar logado');
         }
         else {
+
             if (tipo === 1) {
-                let sucesso = false;
-                var myHeaders = new Headers();
-                myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
-                var urlencoded = new URLSearchParams();
-                urlencoded.append("usuario", this.state.user[0]['id']);
-                urlencoded.append("caminho", this.state.idCam);
-                urlencoded.append("conteudo", this.state.anotacao);
+                if (this.state.anotacao[0]['id'] == -1) {
+                    console.log('nova');
+                    var myHeaders = new Headers();
+                    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
-                var requestOptions = {
-                    method: 'POST',
-                    headers: myHeaders,
-                    body: urlencoded,
-                    redirect: 'follow',
-                    mode: 'cors'
-                };
+                    var urlencoded = new URLSearchParams();
+                    urlencoded.append("usuario", this.state.user[0]['id']);
+                    urlencoded.append("caminho", this.state.idCam);
+                    urlencoded.append("conteudo", this.state.anotacao[0]['conteudo']);
 
-                fetch("https://trabalhoengsw.herokuapp.com/feedbackcaminhos/insert", requestOptions)
-                    .then(response => response.text())
-                    .then(result => { console.log(result); result == 'ok' ? sucesso = true : sucesso = false })
-                    .catch(error => console.log('error', error));
-                console.log('result = ' + sucesso);
+                    var requestOptions = {
+                        method: 'POST',
+                        headers: myHeaders,
+                        body: urlencoded,
+                        redirect: 'follow'
+                    };
+
+                    fetch("https://trabalhoengsw.herokuapp.com/feedbackcaminhos/insert", requestOptions)
+                        .then(response => response.text())
+                        .then(result => { alert('Anotação salva'); })
+                        .catch(error => { alert('Erro inesperado ao salvar a anotação') });
+                }
+                else {
+                    console.log('velha');
+                    console.log(this.state.anotacao[0]['id']);
+
+                    console.log(JSON.stringify('json = ' + this.state.anotacao));
+                    var myHeaders = new Headers();
+                    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+                    var urlencoded = new URLSearchParams();
+                    urlencoded.append("id", this.state.anotacao[0]['id']);
+                    urlencoded.append("usuario", this.state.user[0]['id']);
+                    urlencoded.append("idCaminho", this.state.idCam);
+                    urlencoded.append("conteudo", this.state.anotacao[0]['conteudo']);
+                    urlencoded.append("criado", this.state.anotacao[0]['criado']);
+
+                    var requestOptions = {
+                        method: 'PUT',
+                        headers: myHeaders,
+                        body: urlencoded,
+                        redirect: 'follow',
+                        mode: 'cors'
+                    };
+
+                    fetch("https://trabalhoengsw.herokuapp.com/feedbackcaminhos/edit", requestOptions)
+                        .then(response => response.text())
+                        .then(result => { alert('Anotação salva'); })
+                        .catch(error => { alert('Erro inesperado ao salvar a anotação') });
+                }
             }
             if (tipo === 2) { }
             if (tipo === 3) { }
@@ -225,31 +256,35 @@ class Jornadas extends Component {
     //TODO
     //tipo =1 para caminho, 2 para topico,3 para subtopíco
     carregaAnotacao(tipo) {
-        console.log('fn carregaanotacao');
-        let temp = "";
-        if (tipo === 1) {
-            var requestOptions = {
-                method: 'GET',
-                redirect: 'follow',
-                mode: 'cors'
-            };
-            let url = "https://trabalhoengsw.herokuapp.com/feedbackcaminhos/get/all/user/caminho?usuario=" + this.state.user[0]['id'];
-            url = url + "&caminho=" + this.state.idCam;
-            fetch(url, requestOptions)
-                .then(response => response.text())
-                .then(result => { temp = JSON.stringify(result); console.log('resul15t = ' + result) })
-                .catch(error => console.log('error', error));
-            console.log('temp =' + temp);
-            if (temp == null) {
-                console.log('opa1')
-            }
-            else {
-                console.log('anotacao = ' + temp)
-                this.setState({ anotacao: temp });
-            }
+        console.log('fn carregaanotacao'+ this.state.idCam);
+        if (this.state.user[0]['id'] == -1) {
+            console.log('não logado');
+            this.setState({ anotacao: [{ 'conteudo': '', 'id': -1 }] });
         }
-        if (tipo === 2) { }
-        if (tipo === 3) { }
+        else {
+            if (tipo === 1) {
+                console.log('aaa1');
+                var requestOptions = {
+                    method: 'GET',
+                    redirect: 'follow',
+                    mode: 'cors'
+                };
+                let url = "https://trabalhoengsw.herokuapp.com/feedbackcaminhos/get/all/user/caminho?usuario=" + this.state.user[0]['id'];
+                url = url + "&caminho=" + this.state.idCam;
+                console.log(url);
+                fetch(url, requestOptions)
+                    .then(response => response.text())
+                    .then(result => {
+                        this.setState({ anotacao: JSON.parse(result).length == 0 ? [{ 'conteudo': "", 'id': -1 }] : JSON.parse(result) });
+                        console.log(JSON.parse(result));
+                        console.log(result);
+                    })
+                    .catch(error => console.log('error', error));
+
+            }
+            if (tipo === 2) { }
+            if (tipo === 3) { }
+        }
     }
 
 
@@ -297,7 +332,7 @@ class Jornadas extends Component {
     //TODO : melhorar, para que volte a pagina anterior
     volta() {
         console.log('fn volta');
-        this.setState({ valorSwitch: 'j' })
+        this.setState({ valorSwitch: 'j' ,anotacao: [{ 'conteudo': '', 'id': -1 }] })
     }
     renderSelecaoJornada() {
         console.log('renderselecaojornada');
@@ -308,14 +343,14 @@ class Jornadas extends Component {
                     <h2 className="jornadasBackFront">Jornadas</h2>
                     <div className="jornadas">
                         <a className="box-backend" onClick={() => {
-                            this.setState({ valorSwitch: 'b', idCam: 1 });
+                            this.setState({ valorSwitch: 'b', idCam: 1,anotacao: [{ 'conteudo': '', 'id': -1 }] });
                             this.carregaAnotacao(1)
                         }}>
                             <strong>Backend</strong>
                         </a>
 
                         <a className="box-frontend" onClick={() => {
-                            this.setState({ valorSwitch: 'f', idCam: 2 });
+                            this.setState({ valorSwitch: 'f', idCam: 2,anotacao: [{ 'conteudo': '', 'id': -1 }] });
                             this.carregaAnotacao(1)
                         }}>
                             <strong>Frontend</strong>
@@ -349,11 +384,17 @@ class Jornadas extends Component {
                     <div>
                         <div className="field_anotacoes">
 
-                            <input type="anotacoes" name="anotacoes" value={this.state.anotacao}
-                                placeholder="Insira suas anotações aqui" id="anotacoes" onChange={e => { this.setState({ anotacao: e.target.value }) }} />
+                            <input type="anotacoes" name="anotacoes" value={this.state.anotacao[0]['conteudo']}
+                                placeholder="Insira suas anotações aqui" id="anotacoes" onChange={e => {
+
+                                    var a = this.state.anotacao[0];
+                                    a['conteudo'] = e.target.value;
+                                    this.setState({ anotacao: [a] });
+
+                                }} />
                             <button onClick={() => { this.salvaAnotacao(1) }}>Salvar Anotações</button>
                         </div>
-                        
+
                     </div>
                 </div>
                 <Footer />
@@ -377,7 +418,7 @@ class Jornadas extends Component {
                             <span className="material-symbols-outlined">arrow_back</span>
 
                         </div>
-       
+
                         <div className="conclusaoSubtopico">
                             <button className="buttonConcluido" >Concluido</button>
                         </div>
@@ -389,7 +430,7 @@ class Jornadas extends Component {
                                 {this.JsonToList(4)}
                             </ul>
                         </div>
-                        
+
                         <div>
                             <div className="field_anotacoes">
 
@@ -432,7 +473,7 @@ class Jornadas extends Component {
 
                             <button>Salvar Anotações</button>
                         </div>
-                        
+
                     </div>
 
                 </div>
@@ -459,12 +500,20 @@ class Jornadas extends Component {
                         </ul>
                     </div>
                     <div>
-                        <div className="field">
+                        <div className="field_anotacoes">
 
-                            <input type="anotacoes" name="anotacoes"
-                                placeholder="Insira suas anotações aqui" id="anotacoes" />
+                            <input type="anotacoes" name="anotacoes" value={this.state.anotacao[0]['conteudo']}
+                                placeholder="Insira suas anotações aqui" id="anotacoes" onChange={e => {
+
+                                    var a = this.state.anotacao[0];
+                                    a['conteudo'] = e.target.value;
+                                    this.setState({ anotacao: [a] });
+
+                                }} />
+                            <button onClick={() => { this.salvaAnotacao(1) }}>Salvar Anotações</button>
                         </div>
-                        <button>Salvar Anotações</button>
+
+                        
                     </div>
 
                 </div>
