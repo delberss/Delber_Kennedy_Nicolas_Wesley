@@ -135,8 +135,8 @@ router.put('/edit', async (req, res) => {
 
     var query = 'UPDATE feedbackCaminho' +
         ' SET usuario =$1,caminho = $2,conteudo=$3 ' +
-        'WHERE id = $6 ';
-    var values = [usuario, caminho, conteudo, criado, editado,id];
+        'WHERE id = $4 ';
+    var values = [usuario, caminho, conteudo,id];
 
     try {
         const client = await pool.connect();
