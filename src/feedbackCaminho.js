@@ -119,7 +119,7 @@ router.get('/get', async (req, res) => {
 router.put('/edit', async (req, res) => {
 
     var id = req.body.id == "" ? null : req.body.id;
-    var usuario = req.body.descricao == "" ? null : req.body.descricao;
+    var usuario = req.body.usuario == "" ? null : req.body.usuario;
     var caminho = req.body.idCaminho == "" ? null : req.body.idCaminho;
     var conteudo = req.body.conteudo == "" ? null : req.body.conteudo;
     var criado = req.body.criado == "" ? null : req.body.criado;
