@@ -77,7 +77,7 @@ router.get('/get/all/user', async (req, res) => {
 router.get('/get/all/user/caminho', async (req, res) => {
 
     var id = req.query.usuario == "" ? null : req.query.usuario;
-    var caminho = req.query.caminho == "" ? null : req.query.usuario;
+    var caminho = req.query.caminho == "" ? null : req.query.caminho;
     const query = 'SELECT * FROM feedbackCaminho WHERE usuario= $1 AND caminho = $2;';
     const values = [id, caminho];
     try {
