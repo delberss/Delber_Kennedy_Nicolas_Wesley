@@ -131,11 +131,10 @@ router.put('/edit', async (req, res) => {
 
     console.log(caminho);
     console.log(conteudo);
-    console.log(editado);
-    console.log(criado);
+
 
     var query = 'UPDATE feedbackCaminho' +
-        ' SET usuario =$1,caminho = $2,conteudo=$3,criadoEm=$4,editadoEm=$5 ' +
+        ' SET usuario =$1,caminho = $2,conteudo=$3 ' +
         'WHERE id = $6 ';
     var values = [usuario, caminho, conteudo, criado, editado,id];
 
