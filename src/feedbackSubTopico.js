@@ -115,16 +115,16 @@ router.get('/get', async (req, res) => {
 router.put('/edit', async (req, res) => {
      
         var id = req.body.id == "" ? null : req.body.id;
-        var usuario = req.body.descricao == "" ? null : req.body.descricao;
+        var usuario = req.body.usuario == "" ? null : req.body.usuario;
         var subtopico= req.body.idSubTopico == "" ? null : req.body.idSubTopico;
         var conteudo = req.body.conteudo == "" ? null : req.body.conteudo;
         var criado = req.body.criado == "" ? null : req.body.criado;
         var editado = 'NOW()';
 
 
-        var query = 'UPDATE feedbackSubTopico(usuario,subtopico,conteudo,criado,editado) WHERE id = $1 ' +
-            'VALUES ($1,$2,$3,$4,$5,$6);';
-        var values = [id, usuario,subtopico,conteudo,criado,editado];
+        var query = 'UPDATE feedbackSubTopico'+
+        'SET usuario = $1,subtopico = $2,conteudo=$3 WHERE id = $4;';
+        var values = [usuario,subtopico,conteudo,id];
 
         try {
             const client = await pool.connect();

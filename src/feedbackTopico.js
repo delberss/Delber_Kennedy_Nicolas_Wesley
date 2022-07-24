@@ -73,7 +73,7 @@ router.get('/get/all/user', async (req, res) => {
  router.get('/get/all/user/topico', async (req, res) => {
      
     var id = req.query.usuario == "" ? null : req.query.usuario;
-    var caminho = req.query.subtopico == "" ? null : req.query.subtopico;
+    var caminho = req.query.topico == "" ? null : req.query.topico;
     const query = 'SELECT * FROM feedbacktopico WHERE usuario= $1 AND topico = $2;';
     const values = [id,caminho];
     try {
@@ -112,16 +112,17 @@ router.get('/get', async (req, res) => {
 router.put('/edit', async (req, res) => {
      
         var id = req.body.id == "" ? null : req.body.id;
-        var usuario = req.body.descricao == "" ? null : req.body.descricao;
+        var usuario = req.body.usuario == "" ? null : req.body.usuario;
         var topico = req.body.idTopico == "" ? null : req.body.idTopico;
         var conteudo = req.body.conteudo == "" ? null : req.body.conteudo;
         var criado = req.body.criado == "" ? null : req.body.criado;
         var editado = 'NOW()';
 
 
-        var query = 'UPDATE feedbackTopico(usuario,topico,conteudo,criado,editado) WHERE id = $1 ' +
-            'VALUES ($1,$2,$3,$4,$5,$6);';
-        var values = [id, usuario,topico,conteudo,criado,editado];
+        var query = 'UPDATE feedbackTopico'+
+        'SET usuario = $1,topico=$2,conteudo=$3 WHERE id = $4 ' +
+            'VALUES ($1,$2,$3,$4);';
+        var values = [usuario,topico,conteudo,id];
 
         try {
             const client = await pool.connect();
