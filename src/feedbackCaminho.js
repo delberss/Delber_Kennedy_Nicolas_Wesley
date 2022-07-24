@@ -122,8 +122,6 @@ router.put('/edit', async (req, res) => {
     var usuario = req.body.usuario == "" ? null : req.body.usuario;
     var caminho = req.body.idCaminho == "" ? null : req.body.idCaminho;
     var conteudo = req.body.conteudo == "" ? null : req.body.conteudo;
-    var criado = req.body.criado == "" ? null : req.body.criado;
-    var editado = 'NOW()';
 
     console.log(id);
 
