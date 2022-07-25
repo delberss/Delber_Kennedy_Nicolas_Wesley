@@ -120,10 +120,11 @@ router.put('/edit', async (req, res) => {
 
 
     var query = 'UPDATE feedbackTopico' +
-        'SET usuario = $1 , topico = $2 , conteudo =$3 '+
+        ' SET usuario = $1 , topico = $2 , conteudo =$3 '+
         'WHERE id = $4 ;' ;
         
     var values = [usuario, topico, conteudo, id];
+
 
     try {
         const client = await pool.connect();
