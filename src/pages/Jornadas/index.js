@@ -40,7 +40,7 @@ class Jornadas extends Component {
     }
     //na primeira vez que for usar esse component vai ser utilizado carrega os topicos dos 2 caminhos
     componentDidMount() {
-        console.log('fn componentDidMount')
+        //console.log('fn componentDidMount')
         var requestOptions = {
             method: 'GET',
             redirect: 'follow',
@@ -52,14 +52,14 @@ class Jornadas extends Component {
             .then(result => {
                 this.setState({ topBack: JSON.parse(result) })
             })
-            .catch(error => console.log('error', error));
+            .catch(error => {console.log('error', error);alert('Erro de conexão')});
 
         fetch("https://trabalhoengsw.herokuapp.com/caminhos/get/topicos?idCaminho=2", requestOptions)
             .then(response => response.text())
             .then(result => {
                 this.setState({ topFront: JSON.parse(result) })
             })
-            .catch(error => console.log('error', error));
+            .catch(error => {console.log('error', error);alert('Erro de conexão')});
         //Nâo tenho certeza se isso aqui é suficiente
         if (this.state.valorSwitch == 'b' || this.state.valorSwitch == 'f') {
             this.carregaAnotacao(1);
@@ -69,9 +69,9 @@ class Jornadas extends Component {
 
     //pega os subtopicos de um determinado topico do bd e coloca em state.subT
     carregaSubtopicos(id) {
-        console.log('fn carregasubtopicos')
+        //console.log('fn carregasubtopicos')
         this.setState({ valorSwitch: 'c' });
-        console.log('carrega subtopico');
+
         var requestOptions = {
             method: 'GET',
             redirect: 'follow',
@@ -84,7 +84,7 @@ class Jornadas extends Component {
             .then(result => {
                 this.setState({ subT: JSON.parse(result) })
             })
-            .catch(error => console.log('error', error));
+            .catch(error => {console.log('error', error);alert('Erro de conexão')});
 
         this.setState({ valorSwitch: 's' });
 
@@ -92,18 +92,17 @@ class Jornadas extends Component {
     //pega do db as informações de um subtopico especifico e coloca em state.detST e pega os materiais de estudo
     //e coloca em state.materialST
     detalhesST(id) {
-        console.log('fn detalhesST')
+        //console.log('fn detalhesST')
         var requestOptions = {
             method: 'GET',
             redirect: 'follow',
             mode: 'cors'
         };
         let url = "https://trabalhoengsw.herokuapp.com/subtopicos/get?id=" + id;
-        console.log(url);
         fetch(url, requestOptions)
             .then(response => response.text())
-            .then(result => { this.setState({ detST: JSON.parse(result) }); console.log(result) })
-            .catch(error => console.log('error', error));
+            .then(result => { this.setState({ detST: JSON.parse(result) }) })
+            .catch(error => {console.log('error', error);alert('Erro de conexão')});
 
         var requestOptions = {
             method: 'GET',
@@ -114,46 +113,54 @@ class Jornadas extends Component {
         fetch(url, requestOptions)
             .then(response => response.text())
             .then(result => { this.setState({ materialST: JSON.parse(result) }) })
-            .catch(error => console.log('error', error));
-
+            .catch(error => {console.log('error', error);alert('Erro de conexão')});
 
 
     }
     //converte um json para uma lista de atributos html dependendo do valor de opc passado
     JsonToList(opc) {
-        console.log('fn jsontolist')
         const List = [];
         //backend
         if (opc === 1) {
-            console.log('rendering b')
+            //console.log('criando lista topicos backend')
             for (let i = 0; i < this.state.topBack.length; i++) {
                 let id = this.state.topBack[i]['id'];
                 let nome = this.state.topBack[i]['nome'];
                 List.push(
                     <li className="topico" key={id} onClick={() => {
-                        this.setState({ valorSwitch: 's', idT: id });
-                        this.carregaSubtopicos(id);
+                        this.setState({ valorSwitch: 's', idT: id, anotacao: [{ 'conteudo': '', 'id': -1 }] },
+                            () => {
+                                this.carregaAnotacao(2);
+                                this.carregaSubtopicos(id);
+                            });
+                        //console.log('clicou num topico no back');
                     }}>{nome}</li>
                 );
             }
         }
         //frontend
         if (opc === 2) {
-            console.log('rendering f')
+            //console.log('criando lista topicos')
             for (let i = 0; i < this.state.topFront.length; i++) {
                 let id = this.state.topFront[i]['id'];
                 let nome = this.state.topFront[i]['nome'];
                 List.push(
                     <li className="topico" key={id} onClick={() => {
-                        this.setState({ valorSwitch: 's', idT: id });
-                        this.carregaSubtopicos(id);
+                        this.setState({ valorSwitch: 's', idT: id, anotacao: [{ 'conteudo': '', 'id': -1 }] },
+                            () => {
+                                this.carregaAnotacao(2);
+                                this.carregaSubtopicos(id);
+
+                            });
+                        //console.log('clicou num topico no front');
+
                     }}>{nome}</li>
                 );
             }
         }
         //subtopicos
         if (opc === 3) {
-            console.log('rendering subtopicos')
+            //console.log('criando lista subtopicos de um topico especifico')
             for (let i = 0; i < this.state.subT.length; i++) {
                 let id = this.state.subT[i]['id'];
                 let nome = this.state.subT[i]['nome'];
@@ -161,8 +168,13 @@ class Jornadas extends Component {
                     <li className="subtopico" key={id}>
 
                         <div onClick={() => {
-                            this.setState({ valorSwitch: 'd', idSubT: id });
-                            this.detalhesST(id)
+                            this.setState({ valorSwitch: 'd', idSubT: id, anotacao: [{ 'conteudo': '', 'id': -1 }] },
+                                () => {
+                                    this.carregaAnotacao(3);
+                                    this.detalhesST(id);
+
+                                });
+                           
                         }}>{nome}</div>
 
                     </li>
@@ -171,7 +183,7 @@ class Jornadas extends Component {
         }
         //materiais subtopicos
         if (opc === 4) {
-
+            //console.log('criando lista de detalhes de um subtopico')
             for (let i = 0; i < this.state.materialST.length; i++) {
                 let id = this.state.materialST[i]['id'];
                 List.push(
@@ -199,7 +211,7 @@ class Jornadas extends Component {
             if (tipo === 1) {
 
                 if (this.state.anotacao[0]['id'] == -1) {
-                    console.log('nova');
+                    console.log('nova, tipo 1');
                     var myHeaders = new Headers();
                     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
@@ -217,14 +229,14 @@ class Jornadas extends Component {
 
                     fetch("https://trabalhoengsw.herokuapp.com/feedbackcaminhos/insert", requestOptions)
                         .then(response => response.text())
-                        .then(result => { alert('Anotação salva'); })
+                        .then(result => { alert('Anotação salva caminho'); })
                         .catch(error => { alert('Erro inesperado ao salvar a anotação') });
                 }
                 else {
-                    console.log('velha');
+                    console.log('velha tipo1');
                     console.log(this.state.anotacao[0]['id']);
 
-                    console.log(JSON.stringify('json = ' + this.state.anotacao));
+                    console.log('json state antigo anotacao tipo1= ' +JSON.stringify( this.state.anotacao));
                     var myHeaders = new Headers();
                     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
@@ -245,25 +257,146 @@ class Jornadas extends Component {
 
                     fetch("https://trabalhoengsw.herokuapp.com/feedbackcaminhos/edit", requestOptions)
                         .then(response => response.text())
-                        .then(result => { alert('Anotação salva'); })
+                        .then(result => { alert('Anotação salva caminho'); })
                         .catch(error => { alert('Erro inesperado ao salvar a anotação') });
                 }
+
             }
-            if (tipo === 2) { }
-            if (tipo === 3) { }
+            if (tipo === 2) {
+                console.log('idT=', this.state.idT);
+
+
+                console.log('json anotacao, tipo 2 = ' +JSON.stringify( this.state.anotacao));
+                if (this.state.anotacao[0]['id'] == -1) {
+                    console.log('nova anotação topico');
+
+                    var myHeaders = new Headers();
+                    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+                    var urlencoded = new URLSearchParams();
+                    urlencoded.append("usuario", this.state.user[0]['id']);
+                    urlencoded.append("idTopico", this.state.idT);
+                    urlencoded.append("conteudo", this.state.anotacao[0]['conteudo']);
+                   
+
+                    var requestOptions = {
+                        method: 'POST',
+                        headers: myHeaders,
+                        body: urlencoded,
+                        redirect: 'follow'
+                    };
+
+                    fetch("https://trabalhoengsw.herokuapp.com/feedbacktopicos/insert", requestOptions)
+                        .then(response => response.text())
+                        .then(result => { alert('Anotação salva topico'+ result); })
+                        .catch(error => { alert('Erro inesperado ao salvar a anotação') });
+                }
+                else {
+                    console.log('velha tipo 2');
+                    console.log(this.state.anotacao[0]['id']);
+
+                    console.log('json anotacao tipo 2 caso ano ja existente = ' + JSON.stringify(+ this.state.anotacao));
+                    var myHeaders = new Headers();
+                    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+                    var urlencoded = new URLSearchParams();
+                    urlencoded.append("id", this.state.anotacao[0]['id']);
+                    urlencoded.append("usuario", this.state.user[0]['id']);
+                    urlencoded.append("idTopico", this.state.idT);
+                    urlencoded.append("conteudo", this.state.anotacao[0]['conteudo']);
+                    urlencoded.append("criado", this.state.anotacao[0]['criado']);
+
+                    var requestOptions = {
+                        method: 'PUT',
+                        headers: myHeaders,
+                        body: urlencoded,
+                        redirect: 'follow',
+                        mode: 'cors'
+                    };
+
+                    fetch("https://trabalhoengsw.herokuapp.com/feedbacktopicos/edit", requestOptions)
+                        .then(response => response.text())
+                        .then(result => { alert('Anotação salva topico'+ result); })
+                        .catch(error => { alert('Erro inesperado ao salvar a anotação') });
+                }
+
+            }
+            if (tipo === 3) {
+
+                console.log('idT=', this.state.idT);
+
+
+                console.log('json anotacao, tipo 3 = ' +JSON.stringify( this.state.anotacao));
+                if (this.state.anotacao[0]['id'] == -1) {
+                    console.log('nova anotação subtopico');
+
+                    var myHeaders = new Headers();
+                    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+                    var urlencoded = new URLSearchParams();
+                    urlencoded.append("usuario", this.state.user[0]['id']);
+                    urlencoded.append("idSubTopico", this.state.idSubT);
+                    urlencoded.append("conteudo", this.state.anotacao[0]['conteudo']);
+                   
+
+                    var requestOptions = {
+                        method: 'POST',
+                        headers: myHeaders,
+                        body: urlencoded,
+                        redirect: 'follow'
+                    };
+
+                    fetch("https://trabalhoengsw.herokuapp.com/feedbacksubtopicos/insert", requestOptions)
+                        .then(response => response.text())
+                        .then(result => { alert('Anotação salva topico'+ result); })
+                        .catch(error => { alert('Erro inesperado ao salvar a anotação') });
+                }
+                else {
+                    console.log('velha tipo 3');
+                    console.log(this.state.anotacao[0]['id']);
+
+                    console.log('json anotacao tipo 3 caso ano ja existente = ' + JSON.stringify(+ this.state.anotacao));
+                    var myHeaders = new Headers();
+                    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+                    var urlencoded = new URLSearchParams();
+                    urlencoded.append("id", this.state.anotacao[0]['id']);
+                    urlencoded.append("usuario", this.state.user[0]['id']);
+                    urlencoded.append("idSubTopico", this.state.idSubT);
+                    urlencoded.append("conteudo", this.state.anotacao[0]['conteudo']);
+                    urlencoded.append("criado", this.state.anotacao[0]['criado']);
+
+                    var requestOptions = {
+                        method: 'PUT',
+                        headers: myHeaders,
+                        body: urlencoded,
+                        redirect: 'follow',
+                        mode: 'cors'
+                    };
+
+                    fetch("https://trabalhoengsw.herokuapp.com/feedbacksubtopicos/edit", requestOptions)
+                        .then(response => response.text())
+                        .then(result => { alert('Anotação salva subtopico '+ result); })
+                        .catch(error => { alert('Erro inesperado ao salvar a anotação') });
+                }
+
+             }
         }
     }
     //TODO
     //tipo =1 para caminho, 2 para topico,3 para subtopíco
-    carregaAnotacao(tipo) {
-        console.log('fn carregaanotacao'+ this.state.idCam);
+    async carregaAnotacao(tipo) {
+        console.log('fn carregaanotacao cam =' + this.state.idCam);
+        console.log('fn carregaanotacao t =' + this.state.idT);
+        console.log('fn carregaanotacao st =' + this.state.idSubT);
+        console.log('anota antes de procurar no bd =' + this.state.anotacao[0]['conteudo']);
         if (this.state.user[0]['id'] == -1) {
             console.log('não logado');
             this.setState({ anotacao: [{ 'conteudo': '', 'id': -1 }] });
         }
         else {
             if (tipo === 1) {
-                console.log('aaa1');
+
                 var requestOptions = {
                     method: 'GET',
                     redirect: 'follow',
@@ -271,19 +404,53 @@ class Jornadas extends Component {
                 };
                 let url = "https://trabalhoengsw.herokuapp.com/feedbackcaminhos/get/all/user/caminho?usuario=" + this.state.user[0]['id'];
                 url = url + "&caminho=" + this.state.idCam;
-                console.log(url);
+                ;
                 fetch(url, requestOptions)
                     .then(response => response.text())
                     .then(result => {
                         this.setState({ anotacao: JSON.parse(result).length == 0 ? [{ 'conteudo': "", 'id': -1 }] : JSON.parse(result) });
-                        console.log(JSON.parse(result));
-                        console.log(result);
                     })
-                    .catch(error => console.log('error', error));
+                    .catch(error => {console.log('error', error);alert('Erro de conexão')});
 
             }
-            if (tipo === 2) { }
-            if (tipo === 3) { }
+            if (tipo === 2) {
+                console.log('carregaanotacao tipo == 2');
+
+                var requestOptions = {
+                    method: 'GET',
+                    redirect: 'follow',
+                    mode: 'cors'
+                };
+                let url = "https://trabalhoengsw.herokuapp.com/feedbacktopicos/get/all/user/topico?usuario=" + this.state.user[0]['id'];
+                url = url + "&topico=" + this.state.idT;
+                ;
+                fetch(url, requestOptions)
+                    .then(response => response.text())
+                    .then(result => {
+                        this.setState({ anotacao: JSON.parse(result).length == 0 ? [{ 'conteudo': "", 'id': -1 }] : JSON.parse(result) });
+                        console.log(result);
+                    })
+                    .catch(error => {console.log('error', error);alert('Erro de conexão')});
+            }
+            if (tipo === 3) {
+                console.log('carregaanotacao tipo == 3');
+
+                var requestOptions = {
+                    method: 'GET',
+                    redirect: 'follow',
+                    mode: 'cors'
+                };
+                let url = "https://trabalhoengsw.herokuapp.com/feedbacksubtopicos/get/all/user/subtopico?usuario=" + this.state.user[0]['id'];
+                url = url + "&subtopico=" + this.state.idSubT;
+                ;
+                fetch(url, requestOptions)
+                    .then(response => response.text())
+                    .then(result => {
+                        this.setState({ anotacao: JSON.parse(result).length == 0 ? [{ 'conteudo': "", 'id': -1 }] : JSON.parse(result) });
+                        console.log('result = ' + result);
+                    })
+                    .catch(error => {console.log('error', error);alert('Erro de conexão')});
+            }
         }
     }
 
@@ -332,10 +499,9 @@ class Jornadas extends Component {
     //TODO : melhorar, para que volte a pagina anterior
     volta() {
         console.log('fn volta');
-        this.setState({ valorSwitch: 'j' ,anotacao: [{ 'conteudo': '', 'id': -1 }] })
+        this.setState({ valorSwitch: 'j', anotacao: [{ 'conteudo': '', 'id': -1 }] })
     }
     renderSelecaoJornada() {
-        console.log('renderselecaojornada');
         return (
             <div>
                 <Header />
@@ -343,15 +509,16 @@ class Jornadas extends Component {
                     <h2 className="jornadasBackFront">Jornadas</h2>
                     <div className="jornadas">
                         <a className="box-backend" onClick={() => {
-                            this.setState({ valorSwitch: 'b', idCam: 1,anotacao: [{ 'conteudo': '', 'id': -1 }] });
-                            this.carregaAnotacao(1)
+                            this.setState({ valorSwitch: 'b', idCam: 1, anotacao: [{ 'conteudo': '', 'id': -1 }] }
+                                , () => { this.carregaAnotacao(1); });
                         }}>
                             <strong>Backend</strong>
                         </a>
 
                         <a className="box-frontend" onClick={() => {
-                            this.setState({ valorSwitch: 'f', idCam: 2,anotacao: [{ 'conteudo': '', 'id': -1 }] });
-                            this.carregaAnotacao(1)
+                            this.setState({ valorSwitch: 'f', idCam: 2, anotacao: [{ 'conteudo': '', 'id': -1 }] }
+                                , () => { this.carregaAnotacao(1); });
+
                         }}>
                             <strong>Frontend</strong>
                         </a>
@@ -434,10 +601,17 @@ class Jornadas extends Component {
                         <div>
                             <div className="field_anotacoes">
 
-                                <input type="anotacoes" name="anotacoes"
-                                    placeholder="Insira suas anotações aqui" id="anotacoes" />
-                                <button>Salvar Anotações</button>
+                                <input type="anotacoes" name="anotacoes" value={this.state.anotacao[0]['conteudo']}
+                                    placeholder="Insira suas anotações aqui" id="anotacoes" onChange={e => {
+
+                                        var a = this.state.anotacao[0];
+                                        a['conteudo'] = e.target.value;
+                                        this.setState({ anotacao: [a] });
+
+                                    }} />
+                                <button onClick={() => { this.salvaAnotacao(3) }}>Salvar Anotações</button>
                             </div>
+
                         </div>
 
                     </div>
@@ -468,10 +642,15 @@ class Jornadas extends Component {
                     <div>
                         <div className="field_anotacoes">
 
-                            <input type="anotacoes" name="anotacoes"
-                                placeholder="Insira suas anotações aqui" id="anotacoes" />
+                            <input type="anotacoes" name="anotacoes" value={this.state.anotacao[0]['conteudo']}
+                                placeholder="Insira suas anotações aqui" id="anotacoes" onChange={e => {
 
-                            <button>Salvar Anotações</button>
+                                    var a = this.state.anotacao[0];
+                                    a['conteudo'] = e.target.value;
+                                    this.setState({ anotacao: [a] });
+
+                                }} />
+                            <button onClick={() => { this.salvaAnotacao(2) }}>Salvar Anotações</button>
                         </div>
 
                     </div>
@@ -513,7 +692,7 @@ class Jornadas extends Component {
                             <button onClick={() => { this.salvaAnotacao(1) }}>Salvar Anotações</button>
                         </div>
 
-                        
+
                     </div>
 
                 </div>
@@ -540,7 +719,7 @@ class Jornadas extends Component {
 
     render() {
 
-        console.log('fn render');
+
         switch (this.state.valorSwitch) {
             case 'f': {
                 return (
