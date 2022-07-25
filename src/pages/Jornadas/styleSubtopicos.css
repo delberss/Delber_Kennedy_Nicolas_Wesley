@@ -1,5 +1,6 @@
 .subtopicos ul{
     margin-bottom: 20px;
+    width: 80%;
 }
 
 .subtopicos a{
@@ -16,3 +17,10 @@
     border-radius: 20px;
     transition: 100ms;
 }
+
+.subtopico{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+

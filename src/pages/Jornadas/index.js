@@ -130,10 +130,21 @@ class Jornadas extends Component {
                 let id = this.state.topBack[i]['id'];
                 let nome = this.state.topBack[i]['nome'];
                 List.push(
-                    <li className="topico" key={id} onClick={() => {
-                        this.setState({ valorSwitch: 's', idT: id });
-                        this.carregaSubtopicos(id);
-                    }}>{nome}</li>
+
+                    <div className="subtopico">
+                        <li className="topico" key={id} onClick={() => {
+                            this.setState({ valorSwitch: 's', idT: id });
+                            this.carregaSubtopicos(id);
+                                }}>{nome}
+                        </li>
+                        
+                        <div className="topicoConcluido">
+                            <span className="fa-solid fa-check"></span>
+                        </div>
+                    </div>
+
+
+                    
                 );
             }
         }
@@ -158,14 +169,21 @@ class Jornadas extends Component {
                 let id = this.state.subT[i]['id'];
                 let nome = this.state.subT[i]['nome'];
                 List.push(
-                    <li className="subtopico" key={id}>
+                    <>
+                        <div className="subtopico">
+                            <li key={id}>
 
-                        <div onClick={() => {
-                            this.setState({ valorSwitch: 'd', idSubT: id });
-                            this.detalhesST(id)
-                        }}>{nome}</div>
+                                <div onClick={() => {
+                                    this.setState({ valorSwitch: 'd', idSubT: id });
+                                    this.detalhesST(id)}}>{nome}
+                                </div>
 
-                    </li>
+                            </li>
+                            <div className="subtopicoConcluido">
+                                <span className="fa-solid fa-check"></span>
+                            </div>
+                        </div>
+                    </>
                 );
             }
         }
@@ -343,15 +361,13 @@ class Jornadas extends Component {
                     <h2 className="jornadasBackFront">Jornadas</h2>
                     <div className="jornadas">
                         <a className="box-backend" onClick={() => {
-                            this.setState({ valorSwitch: 'b', idCam: 1,anotacao: [{ 'conteudo': '', 'id': -1 }] });
-                            this.carregaAnotacao(1)
+                            this.setState({ valorSwitch: 'b', idCam: 1,anotacao: [{ 'conteudo': '', 'id': -1 }] }, () => this.carregaAnotacao(1));
                         }}>
                             <strong>Backend</strong>
                         </a>
 
                         <a className="box-frontend" onClick={() => {
-                            this.setState({ valorSwitch: 'f', idCam: 2,anotacao: [{ 'conteudo': '', 'id': -1 }] });
-                            this.carregaAnotacao(1)
+                            this.setState({ valorSwitch: 'f', idCam: 2,anotacao: [{ 'conteudo': '', 'id': -1 }] },  () => this.carregaAnotacao(1));
                         }}>
                             <strong>Frontend</strong>
                         </a>
@@ -383,15 +399,17 @@ class Jornadas extends Component {
                     </div>
                     <div>
                         <div className="field_anotacoes">
-
-                            <input type="anotacoes" name="anotacoes" value={this.state.anotacao[0]['conteudo']}
-                                placeholder="Insira suas anotações aqui" id="anotacoes" onChange={e => {
+                        <h2 className="h2_anotacoes">Anotações</h2>
+                        <textarea maxLength={300} name="anotacoes"  value={this.state.anotacao[0]['conteudo']}
+                                placeholder="Insira suas anotações aqui" id="anotacao"
+                        onChange={e => {
 
                                     var a = this.state.anotacao[0];
                                     a['conteudo'] = e.target.value;
                                     this.setState({ anotacao: [a] });
+                                }}>
+                        </textarea>
 
-                                }} />
                             <button onClick={() => { this.salvaAnotacao(1) }}>Salvar Anotações</button>
                         </div>
 
@@ -432,12 +450,22 @@ class Jornadas extends Component {
                         </div>
 
                         <div>
-                            <div className="field_anotacoes">
 
-                                <input type="anotacoes" name="anotacoes"
-                                    placeholder="Insira suas anotações aqui" id="anotacoes" />
-                                <button>Salvar Anotações</button>
+                        <div className="field_anotacoes">
+                            <h2 className="h2_anotacoes">Anotações</h2>
+                            <textarea maxLength={300} name="anotacoes"  value={this.state.anotacao[0]['conteudo']}
+                                    placeholder="Insira suas anotações aqui" id="anotacao"
+                            onChange={e => {
+
+                                        var a = this.state.anotacao[0];
+                                        a['conteudo'] = e.target.value;
+                                        this.setState({ anotacao: [a] });
+                                    }}>
+                            </textarea>
+
+                                <button onClick={() => { this.salvaAnotacao(1) }}>Salvar Anotações</button>
                             </div>
+
                         </div>
 
                     </div>
@@ -467,11 +495,18 @@ class Jornadas extends Component {
                     </div>
                     <div>
                         <div className="field_anotacoes">
+                        <h2 className="h2_anotacoes">Anotações</h2>
+                        <textarea maxLength={300} name="anotacoes"  value={this.state.anotacao[0]['conteudo']}
+                                placeholder="Insira suas anotações aqui" id="anotacao"
+                        onChange={e => {
 
-                            <input type="anotacoes" name="anotacoes"
-                                placeholder="Insira suas anotações aqui" id="anotacoes" />
+                                    var a = this.state.anotacao[0];
+                                    a['conteudo'] = e.target.value;
+                                    this.setState({ anotacao: [a] });
+                                }}>
+                        </textarea>
 
-                            <button>Salvar Anotações</button>
+                            <button onClick={() => { this.salvaAnotacao(1) }}>Salvar Anotações</button>
                         </div>
 
                     </div>
@@ -501,19 +536,19 @@ class Jornadas extends Component {
                     </div>
                     <div>
                         <div className="field_anotacoes">
-
-                            <input type="anotacoes" name="anotacoes" value={this.state.anotacao[0]['conteudo']}
-                                placeholder="Insira suas anotações aqui" id="anotacoes" onChange={e => {
+                        <h2 className="h2_anotacoes">Anotações</h2>
+                        <textarea maxLength={300} name="anotacoes"  value={this.state.anotacao[0]['conteudo']}
+                                placeholder="Insira suas anotações aqui" id="anotacao"
+                        onChange={e => {
 
                                     var a = this.state.anotacao[0];
                                     a['conteudo'] = e.target.value;
                                     this.setState({ anotacao: [a] });
+                                }}>
+                        </textarea>
 
-                                }} />
                             <button onClick={() => { this.salvaAnotacao(1) }}>Salvar Anotações</button>
                         </div>
-
-                        
                     </div>
 
                 </div>

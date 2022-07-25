@@ -4,6 +4,7 @@
 
 .nameUser{
     color: rgb(7, 103, 103);
+    font-size: 1.3rem;
 }
 
 .box_home{
@@ -17,7 +18,7 @@
     margin-bottom: 10px;
 }
 
-.jornadaIndicada, .facaLogin{
+.jornadaIndicada, .facaLogin, .bemVindoHome{
     background-color: rgba(16, 103, 127, 0.575);
     color: white;
     border-radius: 10px;
@@ -37,3 +38,4 @@
 .jornadasHome a{
     margin: 10px;
 }
+
