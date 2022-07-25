@@ -522,16 +522,28 @@ class Jornadas extends Component {
         // CRIEI UM this.state.paginaAtual que as vezes n seja necessário
         
         if(this.state.paginaAtual == "f" || this.state.paginaAtual == "b"){
-            this.setState({ valorSwitch: 'j', anotacao: [{ 'conteudo': '', 'id': -1 }] })
+            this.setState({ valorSwitch: 'j', anotacao: [{ 'conteudo': '', 'id': -1 }] });
         }
         else if(this.state.paginaAtual == "s"){
-            if( this.state.idCam == 1)
-               this.setState({ valorSwitch: 'b', anotacao: [{ 'conteudo': '', 'id': -1 }] })
-            else
-               this.setState({ valorSwitch: 'f', anotacao: [{ 'conteudo': '', 'id': -1 }] })
+            if( this.state.idCam == 1){
+                this.setState({ valorSwitch: 'b', anotacao: [{ 'conteudo': '', 'id': -1 }] },
+                () => {
+                    this.carregaAnotacao(1);
+                });
+            }
+               
+            else{
+                this.setState({ valorSwitch: 'f', anotacao: [{ 'conteudo': '', 'id': -1 }] },
+                () => {
+                    this.carregaAnotacao(1);
+                });
+            }
         }
         else{
-            this.setState({ valorSwitch: 's', anotacao: [{ 'conteudo': '', 'id': -1 }] })
+            this.setState({ valorSwitch: 's', anotacao: [{ 'conteudo': '', 'id': -1 }] },
+            () => {
+                this.carregaAnotacao(2);
+            });
         }
         
     }
@@ -658,7 +670,7 @@ class Jornadas extends Component {
                                     }}>
                             </textarea>
 
-                                <button onClick={() => { this.salvaAnotacao(1) }}>Salvar Anotações</button>
+                                <button onClick={() => { this.salvaAnotacao(3) }}>Salvar Anotações</button>
                             </div>
 
                         </div>
@@ -703,7 +715,7 @@ class Jornadas extends Component {
                                 }}>
                         </textarea>
 
-                            <button onClick={() => { this.salvaAnotacao(1) }}>Salvar Anotações</button>
+                            <button onClick={() => { this.salvaAnotacao(2) }}>Salvar Anotações</button>
                         </div>
 
                     </div>
