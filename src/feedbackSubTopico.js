@@ -122,8 +122,8 @@ router.put('/edit', async (req, res) => {
         var editado = 'NOW()';
 
 
-        var query = 'UPDATE feedbackSubTopico'+
-        'SET usuario = $1,subtopico = $2,conteudo=$3 WHERE id = $4;';
+        var query = 'UPDATE feedbackSubTopico '+
+        ' SET usuario = $1,subtopico = $2,conteudo=$3 WHERE id = $4;';
         var values = [usuario,subtopico,conteudo,id];
 
         try {
