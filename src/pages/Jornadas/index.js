@@ -25,6 +25,7 @@ class Jornadas extends Component {
         this.state = {
             user: JSON.parse(window.sessionStorage.getItem("usuario")),
             topFront: [],
+            nomeTopico: "",
             topBack: [],
             subT: [],
             idSubT: 1,
@@ -130,7 +131,7 @@ class Jornadas extends Component {
 
                     <div className="subtopico">
                         <li className="topico" key={id} onClick={() => {
-                            this.setState({ valorSwitch: 's', idT: id, anotacao: [{ 'conteudo': '', 'id': -1 }] },
+                            this.setState({ valorSwitch: 's', nomeTopico: nome, idT: id, anotacao: [{ 'conteudo': '', 'id': -1 }] },
                             () => {
                                 this.carregaAnotacao(2);
                                 this.carregaSubtopicos(id);
@@ -152,11 +153,12 @@ class Jornadas extends Component {
         if (opc === 2) {
             //console.log('criando lista topicos')
             for (let i = 0; i < this.state.topFront.length; i++) {
+                var idTopicoFront = this.state.topFront[i]['id'];
                 let id = this.state.topFront[i]['id'];
                 let nome = this.state.topFront[i]['nome'];
                 List.push(
                     <li className="topico" key={id} onClick={() => {
-                        this.setState({ valorSwitch: 's', idT: id, anotacao: [{ 'conteudo': '', 'id': -1 }] },
+                        this.setState({ valorSwitch: 's',nomeTopico: nome, idT: id, idFront: idTopicoFront, anotacao: [{ 'conteudo': '', 'id': -1 }] },
                             () => {
                                 this.carregaAnotacao(2);
                                 this.carregaSubtopicos(id);
@@ -220,12 +222,13 @@ class Jornadas extends Component {
     salvaAnotacao(tipo) {
         console.log('fn salvaanotacao');
         if (this.state.user[0]['id'] == -1) {
+            document.querySelector('.campo_anotacao').style.border = "1px solid red";
             alert('É necessario estar logado');
         }
         else {
 
             if (tipo === 1) {
-
+                document.querySelector('.campo_anotacao').style.border = "none";
                 if (this.state.anotacao[0]['id'] == -1) {
                     console.log('nova, tipo 1');
                     var myHeaders = new Headers();
@@ -245,7 +248,7 @@ class Jornadas extends Component {
 
                     fetch("https://trabalhoengsw.herokuapp.com/feedbackcaminhos/insert", requestOptions)
                         .then(response => response.text())
-                        .then(result => { alert('Anotação salva caminho'); })
+                        .then(result => { alert('Anotação salva com sucesso!'); })
                         .catch(error => { alert('Erro inesperado ao salvar a anotação') });
                 }
                 else {
@@ -273,7 +276,7 @@ class Jornadas extends Component {
 
                     fetch("https://trabalhoengsw.herokuapp.com/feedbackcaminhos/edit", requestOptions)
                         .then(response => response.text())
-                        .then(result => { alert('Anotação salva caminho'); })
+                        .then(result => { alert('Anotação salva com sucesso!'); })
                         .catch(error => { alert('Erro inesperado ao salvar a anotação') });
                 }
 
@@ -568,7 +571,7 @@ class Jornadas extends Component {
                         <div className="field_anotacoes">
                         <h2 className="h2_anotacoes">Anotações</h2>
                         <textarea maxLength={300} name="anotacoes"  value={this.state.anotacao[0]['conteudo']}
-                                placeholder="Insira suas anotações aqui" id="anotacao"
+                                placeholder="Insira suas anotações aqui" id="anotacao_back" className="campo_anotacao"
                         onChange={e => {
 
                                     var a = this.state.anotacao[0];
@@ -596,7 +599,8 @@ class Jornadas extends Component {
                 <>
                     <Header />
                     <div className="content">
-                        <h2>Materiais de estudo - {this.state.detST[0]['nome']}</h2>
+                        <h2>Materiais de estudo</h2> 
+                        <h2> {this.state.nomeTopico}: {this.state.detST[0]['nome']}</h2>
 
                         <div className="voltar" onClick={() => { this.volta() }}>
 
@@ -608,7 +612,13 @@ class Jornadas extends Component {
                             <button className="buttonConcluido" >Concluido</button>
                         </div>
 
-                        <div><h4>{this.state.detST[0]['descricao']}</h4></div>
+                        
+                        <div className="materiais descricao_materiais">
+                            Descrição: 
+                            <h4>
+                                {this.state.detST[0]['descricao']}
+                            </h4>
+                        </div>
 
                         <div className="materiais">
                             <ul>
@@ -621,7 +631,7 @@ class Jornadas extends Component {
                         <div className="field_anotacoes">
                             <h2 className="h2_anotacoes">Anotações</h2>
                             <textarea maxLength={300} name="anotacoes"  value={this.state.anotacao[0]['conteudo']}
-                                    placeholder="Insira suas anotações aqui" id="anotacao"
+                                    placeholder="Insira suas anotações aqui" id="anotacao_materiais" className="campo_anotacao"
                             onChange={e => {
 
                                         var a = this.state.anotacao[0];
@@ -641,14 +651,15 @@ class Jornadas extends Component {
             );
         }
     }
-    renderSubT(paginaAnterior) {
+    renderSubT() {
 
         console.log('fn rendersubt');
+
         return (
             <>
                 <Header />
                 <div className="content">
-                    <h2>ASSUNTOS</h2>
+                    <h2>ASSUNTOS SOBRE - {this.state.nomeTopico}</h2>
                     <div className="voltar" onClick={() => { this.volta() }}>
 
                         <span className="material-symbols-outlined">arrow_back</span>
@@ -664,7 +675,7 @@ class Jornadas extends Component {
                         <div className="field_anotacoes">
                         <h2 className="h2_anotacoes">Anotações</h2>
                         <textarea maxLength={300} name="anotacoes"  value={this.state.anotacao[0]['conteudo']}
-                                placeholder="Insira suas anotações aqui" id="anotacao"
+                                placeholder="Insira suas anotações aqui" id="anotacao_sub" className="campo_anotacao"
                         onChange={e => {
 
                                     var a = this.state.anotacao[0];
@@ -705,7 +716,7 @@ class Jornadas extends Component {
                         <div className="field_anotacoes">
                         <h2 className="h2_anotacoes">Anotações</h2>
                         <textarea maxLength={300} name="anotacoes"  value={this.state.anotacao[0]['conteudo']}
-                                placeholder="Insira suas anotações aqui" id="anotacao"
+                                placeholder="Insira suas anotações aqui" id="anotacao_front" className="campo_anotacao"
                         onChange={e => {
 
                                     var a = this.state.anotacao[0];

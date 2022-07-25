@@ -61,7 +61,7 @@
     margin: auto;
 }
 
-.field_anotacoes #anotacao,
+.field_anotacoes .campo_anotacao,
 .field_anotacoes button
 {
     height: 40%;
