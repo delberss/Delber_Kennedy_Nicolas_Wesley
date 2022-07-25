@@ -127,14 +127,24 @@ class Jornadas extends Component {
                 let id = this.state.topBack[i]['id'];
                 let nome = this.state.topBack[i]['nome'];
                 List.push(
-                    <li className="topico" key={id} onClick={() => {
-                        this.setState({ valorSwitch: 's', idT: id, anotacao: [{ 'conteudo': '', 'id': -1 }] },
+
+                    <div className="subtopico">
+                        <li className="topico" key={id} onClick={() => {
+                            this.setState({ valorSwitch: 's', idT: id, anotacao: [{ 'conteudo': '', 'id': -1 }] },
                             () => {
                                 this.carregaAnotacao(2);
                                 this.carregaSubtopicos(id);
                             });
-                        //console.log('clicou num topico no back');
-                    }}>{nome}</li>
+                                }}>{nome}
+                        </li>
+                        
+                        <div className="topicoConcluido">
+                            <span className="fa-solid fa-check"></span>
+                        </div>
+                    </div>
+
+
+                    
                 );
             }
         }
@@ -165,19 +175,25 @@ class Jornadas extends Component {
                 let id = this.state.subT[i]['id'];
                 let nome = this.state.subT[i]['nome'];
                 List.push(
-                    <li className="subtopico" key={id}>
+                    <>
+                        <div className="subtopico">
+                            <li key={id}>
 
-                        <div onClick={() => {
-                            this.setState({ valorSwitch: 'd', idSubT: id, anotacao: [{ 'conteudo': '', 'id': -1 }] },
-                                () => {
-                                    this.carregaAnotacao(3);
-                                    this.detalhesST(id);
+                                <div onClick={() => {
+                                     this.setState({ valorSwitch: 'd', idSubT: id, anotacao: [{ 'conteudo': '', 'id': -1 }] },
+                                     () => {
+                                         this.carregaAnotacao(3);
+                                         this.detalhesST(id);
+     
+                                     });}}>{nome}
+                                </div>
 
-                                });
-                           
-                        }}>{nome}</div>
-
-                    </li>
+                            </li>
+                            <div className="subtopicoConcluido">
+                                <span className="fa-solid fa-check"></span>
+                            </div>
+                        </div>
+                    </>
                 );
             }
         }
@@ -550,15 +566,17 @@ class Jornadas extends Component {
                     </div>
                     <div>
                         <div className="field_anotacoes">
-
-                            <input type="anotacoes" name="anotacoes" value={this.state.anotacao[0]['conteudo']}
-                                placeholder="Insira suas anotações aqui" id="anotacoes" onChange={e => {
+                        <h2 className="h2_anotacoes">Anotações</h2>
+                        <textarea maxLength={300} name="anotacoes"  value={this.state.anotacao[0]['conteudo']}
+                                placeholder="Insira suas anotações aqui" id="anotacao"
+                        onChange={e => {
 
                                     var a = this.state.anotacao[0];
                                     a['conteudo'] = e.target.value;
                                     this.setState({ anotacao: [a] });
+                                }}>
+                        </textarea>
 
-                                }} />
                             <button onClick={() => { this.salvaAnotacao(1) }}>Salvar Anotações</button>
                         </div>
 
@@ -599,17 +617,20 @@ class Jornadas extends Component {
                         </div>
 
                         <div>
-                            <div className="field_anotacoes">
 
-                                <input type="anotacoes" name="anotacoes" value={this.state.anotacao[0]['conteudo']}
-                                    placeholder="Insira suas anotações aqui" id="anotacoes" onChange={e => {
+                        <div className="field_anotacoes">
+                            <h2 className="h2_anotacoes">Anotações</h2>
+                            <textarea maxLength={300} name="anotacoes"  value={this.state.anotacao[0]['conteudo']}
+                                    placeholder="Insira suas anotações aqui" id="anotacao"
+                            onChange={e => {
 
                                         var a = this.state.anotacao[0];
                                         a['conteudo'] = e.target.value;
                                         this.setState({ anotacao: [a] });
+                                    }}>
+                            </textarea>
 
-                                    }} />
-                                <button onClick={() => { this.salvaAnotacao(3) }}>Salvar Anotações</button>
+                                <button onClick={() => { this.salvaAnotacao(1) }}>Salvar Anotações</button>
                             </div>
 
                         </div>
@@ -641,16 +662,18 @@ class Jornadas extends Component {
                     </div>
                     <div>
                         <div className="field_anotacoes">
-
-                            <input type="anotacoes" name="anotacoes" value={this.state.anotacao[0]['conteudo']}
-                                placeholder="Insira suas anotações aqui" id="anotacoes" onChange={e => {
+                        <h2 className="h2_anotacoes">Anotações</h2>
+                        <textarea maxLength={300} name="anotacoes"  value={this.state.anotacao[0]['conteudo']}
+                                placeholder="Insira suas anotações aqui" id="anotacao"
+                        onChange={e => {
 
                                     var a = this.state.anotacao[0];
                                     a['conteudo'] = e.target.value;
                                     this.setState({ anotacao: [a] });
+                                }}>
+                        </textarea>
 
-                                }} />
-                            <button onClick={() => { this.salvaAnotacao(2) }}>Salvar Anotações</button>
+                            <button onClick={() => { this.salvaAnotacao(1) }}>Salvar Anotações</button>
                         </div>
 
                     </div>
@@ -680,15 +703,17 @@ class Jornadas extends Component {
                     </div>
                     <div>
                         <div className="field_anotacoes">
-
-                            <input type="anotacoes" name="anotacoes" value={this.state.anotacao[0]['conteudo']}
-                                placeholder="Insira suas anotações aqui" id="anotacoes" onChange={e => {
+                        <h2 className="h2_anotacoes">Anotações</h2>
+                        <textarea maxLength={300} name="anotacoes"  value={this.state.anotacao[0]['conteudo']}
+                                placeholder="Insira suas anotações aqui" id="anotacao"
+                        onChange={e => {
 
                                     var a = this.state.anotacao[0];
                                     a['conteudo'] = e.target.value;
                                     this.setState({ anotacao: [a] });
+                                }}>
+                        </textarea>
 
-                                }} />
                             <button onClick={() => { this.salvaAnotacao(1) }}>Salvar Anotações</button>
                         </div>
 
