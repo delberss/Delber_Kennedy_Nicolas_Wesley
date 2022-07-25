@@ -6,76 +6,57 @@ var router = express.Router();
 
 
 router.post('/insert', async (req, res) => {
-     
 
-        var usuario = req.body.usuario == "" ? null : req.body.usuario;
-        var topico = req.body.idTopico == "" ? null : req.body.idTopico;
-        var conteudo = req.body.conteudo == "" ? null : req.body.conteudo;
-        var criado = 'NOW()';
-        var editado = 'NOW()';
 
-        var query = 'INSERT INTO feedbackTopico(usuario,topico,conteudo,criadoEm,editadoEm)' +
-            'VALUES ($1,$2,$3,$4,$5)';
-        var values = [usuario,topico,conteudo,criado,editado];
+    var usuario = req.body.usuario == "" ? null : req.body.usuario;
+    var topico = req.body.idTopico == "" ? null : req.body.idTopico;
+    var conteudo = req.body.conteudo == "" ? null : req.body.conteudo;
+    var criado = 'NOW()';
+    var editado = 'NOW()';
 
-        try {
-            // primeiro tenta inserir o topico
-            const client = await pool.connect();
-            const result = await client.query(query, values);
+    var query = 'INSERT INTO feedbackTopico(usuario,topico,conteudo,criadoEm,editadoEm)' +
+        'VALUES ($1,$2,$3,$4,$5)';
+    var values = [usuario, topico, conteudo, criado, editado];
 
-    res.status(200).send('ok');
-    client.release();
-        } catch (err) {
-            console.error(err);
-            res.send("Error " + err);
-        }
+    try {
+        // primeiro tenta inserir o topico
+        const client = await pool.connect();
+        const result = await client.query(query, values);
+
+        res.status(200).send('ok');
+        client.release();
+    } catch (err) {
+        console.error(err);
+        res.send("Error " + err);
     }
-     
- );
+}
+
+);
 
 
 
 router.get('/get/all', async (req, res) => {
 
-        const query = 'SELECT * FROM feedbackTopico;';
-        try {
-            const client = await pool.connect();
-            const resultado_query = await client.query(query);
-            var resultado_final = resultado_query.rows;
-            res.send(resultado_final);
-            client.release();
-        } catch (err) {
-            console.error(err);
-            res.send("Error " + err);
-        }
+    const query = 'SELECT * FROM feedbacktopico;';
+    try {
+        const client = await pool.connect();
+        const resultado_query = await client.query(query);
+        var resultado_final = resultado_query.rows;
+        res.send(resultado_final);
+        client.release();
+    } catch (err) {
+        console.error(err);
+        res.send("Error " + err);
     }
-     
- );
+}
+
+);
 
 router.get('/get/all/user', async (req, res) => {
-     
-        var id = req.query.usuario == "" ? null : req.query.usuario;
-        const query = 'SELECT * FROM feedbackTopico WHERE usuario= $1;';
-        const values = [id];
-        try {
-            const client = await pool.connect();
-            const resultado_query = await client.query(query, values);
-            var resultado_final = resultado_query.rows;
-            res.send(resultado_final);
-            client.release();
-        } catch (err) {
-            console.error(err);
-            res.send("Error " + err);
-        }
-    }
-     
- );
- router.get('/get/all/user/topico', async (req, res) => {
-     
+
     var id = req.query.usuario == "" ? null : req.query.usuario;
-    var caminho = req.query.topico == "" ? null : req.query.topico;
-    const query = 'SELECT * FROM feedbacktopico WHERE usuario= $1 AND topico = $2;';
-    const values = [id,caminho];
+    const query = 'SELECT * FROM feedbackTopico WHERE usuario= $1;';
+    const values = [id];
     try {
         const client = await pool.connect();
         const resultado_query = await client.query(query, values);
@@ -87,43 +68,84 @@ router.get('/get/all/user', async (req, res) => {
         res.send("Error " + err);
     }
 }
- 
+
+);
+router.get('/get/all/user/topico', async (req, res) => {
+
+    var id = req.query.usuario == "" ? null : req.query.usuario;
+    var caminho = req.query.topico == "" ? null : req.query.topico;
+    const query = 'SELECT * FROM feedbacktopico WHERE usuario= $1 AND topico = $2;';
+    const values = [id, caminho];
+    try {
+        const client = await pool.connect();
+        const resultado_query = await client.query(query, values);
+        var resultado_final = resultado_query.rows;
+        res.send(resultado_final);
+        client.release();
+    } catch (err) {
+        console.error(err);
+        res.send("Error " + err);
+    }
+}
+
 );
 
 router.get('/get', async (req, res) => {
-     
-        var id = req.query.id == "" ? null : req.query.id;
-        const query = 'SELECT * FROM feedbackTopico WHERE ID =$1;';
-        const values = [id];
-        try {
-            const client = await pool.connect();
-            const resultado_query = await client.query(query, values);
-            var resultado_final = resultado_query.rows;
-            res.send(resultado_final);
-            client.release();
-        } catch (err) {
-            console.error(err);
-            res.send("Error " + err);
-        }
+
+    var id = req.query.id == "" ? null : req.query.id;
+    const query = 'SELECT * FROM feedbackTopico WHERE ID =$1;';
+    const values = [id];
+    try {
+        const client = await pool.connect();
+        const resultado_query = await client.query(query, values);
+        var resultado_final = resultado_query.rows;
+        res.send(resultado_final);
+        client.release();
+    } catch (err) {
+        console.error(err);
+        res.send("Error " + err);
     }
-     
- );
+}
+
+);
 
 router.put('/edit', async (req, res) => {
-     
-        var id = req.body.id == "" ? null : req.body.id;
-        var usuario = req.body.usuario == "" ? null : req.body.usuario;
-        var topico = req.body.idTopico == "" ? null : req.body.idTopico;
-        var conteudo = req.body.conteudo == "" ? null : req.body.conteudo;
-        var criado = req.body.criado == "" ? null : req.body.criado;
-        var editado = 'NOW()';
+
+    var id = req.body.id == "" ? null : req.body.id;
+    var usuario = req.body.usuario == "" ? null : req.body.usuario;
+    var topico = req.body.idTopico == "" ? null : req.body.idTopico;
+    var conteudo = req.body.conteudo == "" ? null : req.body.conteudo;
+    var criado = req.body.criado == "" ? null : req.body.criado;
+    var editado = 'NOW()';
 
 
-        var query = 'UPDATE feedbackTopico'+
-        'SET usuario = $1,topico=$2,conteudo=$3 WHERE id = $4 ' +
-            'VALUES ($1,$2,$3,$4);';
-        var values = [usuario,topico,conteudo,id];
+    var query = 'UPDATE feedbackTopico' +
+        'SET usuario = $1,topico=$2,conteudo=$3 '+
+        'WHERE id = $4 ;' ;
+        
+    var values = [usuario, topico, conteudo, id];
 
+    try {
+        const client = await pool.connect();
+        const result = await client.query(query, values);
+        res.status(200).send('ok');
+        client.release();
+    } catch (err) {
+        console.error(err);
+        res.send("Error " + err);
+    }
+
+}
+
+);
+
+router.delete('/delete', async (req, res) => {
+
+    var id = req.body.id == "" ? null : req.body.id;
+    if (id) //verifica se id tem um valor valido, se ele for null ou undefined isso aqui retorna falso
+    {
+        var query = "DELETE FROM feedbackTopico WHERE id = $1;"
+        var values = [id];
         try {
             const client = await pool.connect();
             const result = await client.query(query, values);
@@ -133,32 +155,11 @@ router.put('/edit', async (req, res) => {
             console.error(err);
             res.send("Error " + err);
         }
-
+    } else {
+        res.send("error, invalid id");
     }
-     
- );
+}
 
-router.delete('/delete', async (req, res) => {
-     
-        var id = req.body.id == "" ? null : req.body.id;
-        if (id) //verifica se id tem um valor valido, se ele for null ou undefined isso aqui retorna falso
-        {
-            var query = "DELETE FROM feedbackTopico WHERE id = $1;"
-            var values = [id];
-            try {
-                const client = await pool.connect();
-                const result = await client.query(query, values);
-                res.status(200).send('ok');
-                client.release();
-            } catch (err) {
-                console.error(err);
-                res.send("Error " + err);
-            }
-        } else {
-            res.send("error, invalid id");
-        }
-    }
-     
- );
+);
 
 module.exports = router;
