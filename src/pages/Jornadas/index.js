@@ -26,6 +26,7 @@ class Jornadas extends Component {
             user: JSON.parse(window.sessionStorage.getItem("usuario")),
             topFront: [],
             nomeTopico: "",
+            paginaAtual: "",
             topBack: [],
             subT: [],
             idSubT: 1,
@@ -514,11 +515,25 @@ class Jornadas extends Component {
             .catch(error => (console.log('error', error), alert("erro de conexão, tente novamente")));
 
     }
-    //por enquanto ela sempre volta pra pagina que escolhe entre as jornadas
-    //TODO : melhorar, para que volte a pagina anterior
+
     volta() {
-        console.log('fn volta');
-        this.setState({ valorSwitch: 'j', anotacao: [{ 'conteudo': '', 'id': -1 }] })
+
+        //TODO CORRIGIR OS PARAMETROS DO SETSTATE - "anotacao: [{ 'conteudo': '', 'id': -1 }] }"
+        // CRIEI UM this.state.paginaAtual que as vezes n seja necessário
+        
+        if(this.state.paginaAtual == "f" || this.state.paginaAtual == "b"){
+            this.setState({ valorSwitch: 'j', anotacao: [{ 'conteudo': '', 'id': -1 }] })
+        }
+        else if(this.state.paginaAtual == "s"){
+            if( this.state.idCam == 1)
+               this.setState({ valorSwitch: 'b', anotacao: [{ 'conteudo': '', 'id': -1 }] })
+            else
+               this.setState({ valorSwitch: 'f', anotacao: [{ 'conteudo': '', 'id': -1 }] })
+        }
+        else{
+            this.setState({ valorSwitch: 's', anotacao: [{ 'conteudo': '', 'id': -1 }] })
+        }
+        
     }
     renderSelecaoJornada() {
         return (
@@ -551,6 +566,7 @@ class Jornadas extends Component {
     }
 
     renderBackend() {
+        this.state.paginaAtual = "b";
         return (
             <>
                 <Header />
@@ -590,6 +606,8 @@ class Jornadas extends Component {
         );
     }
     renderSubTDetalhes() {
+        this.state.paginaAtual = "materiais";
+
         console.log('fn rendersubtdetalhes');
         if (this.state.detST.length <= 0) {
             return (this.renderLoading());
@@ -652,6 +670,7 @@ class Jornadas extends Component {
         }
     }
     renderSubT() {
+        this.state.paginaAtual = "s";
 
         console.log('fn rendersubt');
 
@@ -696,6 +715,7 @@ class Jornadas extends Component {
     }
 
     renderFrontend() {
+        this.state.paginaAtual = "f";
         return (
             <>
                 <Header />
@@ -771,7 +791,7 @@ class Jornadas extends Component {
             }
             case 's': {
                 return (
-                    this.renderSubT(this.pagina));
+                    this.renderSubT());
             }
             case 'd': {
                 return (
