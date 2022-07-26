@@ -224,7 +224,7 @@ class Jornadas extends Component {
 
     //tipo =1 para caminho, 2 para topico,3 para subtopíco
     salvaAnotacao(tipo) {
-        console.log('fn salvaanotacao');
+        //console.log('fn salvaanotacao');
         if (this.state.user[0]['id'] == -1) {
             document.querySelector('.campo_anotacao').style.border = "1px solid red";
             alert('É necessario estar logado');
@@ -234,7 +234,7 @@ class Jornadas extends Component {
             if (tipo === 1) {
                 document.querySelector('.campo_anotacao').style.border = "none";
                 if (this.state.anotacao[0]['id'] == -1) {
-                    console.log('nova, tipo 1');
+                    //console.log('nova, tipo 1');
                     var myHeaders = new Headers();
                     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
@@ -256,10 +256,10 @@ class Jornadas extends Component {
                         .catch(error => { alert('Erro inesperado ao salvar a anotação') });
                 }
                 else {
-                    console.log('velha tipo1');
-                    console.log(this.state.anotacao[0]['id']);
+                   // console.log('velha tipo1');
+                   // console.log(this.state.anotacao[0]['id']);
 
-                    console.log('json state antigo anotacao tipo1= ' +JSON.stringify( this.state.anotacao));
+                   // console.log('json state antigo anotacao tipo1= ' +JSON.stringify( this.state.anotacao));
                     var myHeaders = new Headers();
                     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
@@ -286,12 +286,12 @@ class Jornadas extends Component {
 
             }
             if (tipo === 2) {
-                console.log('idT=', this.state.idT);
+               // console.log('idT=', this.state.idT);
 
 
-                console.log('json anotacao, tipo 2 = ' +JSON.stringify( this.state.anotacao));
+                //console.log('json anotacao, tipo 2 = ' +JSON.stringify( this.state.anotacao));
                 if (this.state.anotacao[0]['id'] == -1) {
-                    console.log('nova anotação topico');
+                   // console.log('nova anotação topico');
 
                     var myHeaders = new Headers();
                     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
@@ -315,10 +315,10 @@ class Jornadas extends Component {
                         .catch(error => { alert('Erro inesperado ao salvar a anotação') });
                 }
                 else {
-                    console.log('velha tipo 2');
-                    console.log(this.state.anotacao[0]['id']);
+                   //console.log('velha tipo 2');
+                   // console.log(this.state.anotacao[0]['id']);
 
-                    console.log('json anotacao tipo 2 caso ano ja existente = ' + JSON.stringify(+ this.state.anotacao));
+                   // console.log('json anotacao tipo 2 caso ano ja existente = ' + JSON.stringify(+ this.state.anotacao));
                     var myHeaders = new Headers();
                     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
@@ -346,12 +346,12 @@ class Jornadas extends Component {
             }
             if (tipo === 3) {
 
-                console.log('idT=', this.state.idT);
+                //console.log('idT=', this.state.idT);
 
 
-                console.log('json anotacao, tipo 3 = ' +JSON.stringify( this.state.anotacao));
+               // console.log('json anotacao, tipo 3 = ' +JSON.stringify( this.state.anotacao));
                 if (this.state.anotacao[0]['id'] == -1) {
-                    console.log('nova anotação subtopico');
+                  //  console.log('nova anotação subtopico');
 
                     var myHeaders = new Headers();
                     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
@@ -375,10 +375,10 @@ class Jornadas extends Component {
                         .catch(error => { alert('Erro inesperado ao salvar a anotação') });
                 }
                 else {
-                    console.log('velha tipo 3');
-                    console.log(this.state.anotacao[0]['id']);
+                   // console.log('velha tipo 3');
+                   // console.log(this.state.anotacao[0]['id']);
 
-                    console.log('json anotacao tipo 3 caso ano ja existente = ' + JSON.stringify(+ this.state.anotacao));
+                   // console.log('json anotacao tipo 3 caso ano ja existente = ' + JSON.stringify(+ this.state.anotacao));
                     var myHeaders = new Headers();
                     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
@@ -409,12 +409,12 @@ class Jornadas extends Component {
     
     //tipo =1 para caminho, 2 para topico,3 para subtopíco
     async carregaAnotacao(tipo) {
-        console.log('fn carregaanotacao cam =' + this.state.idCam);
-        console.log('fn carregaanotacao t =' + this.state.idT);
-        console.log('fn carregaanotacao st =' + this.state.idSubT);
-        console.log('anota antes de procurar no bd =' + this.state.anotacao[0]['conteudo']);
+       // console.log('fn carregaanotacao cam =' + this.state.idCam);
+       // console.log('fn carregaanotacao t =' + this.state.idT);
+       /// console.log('fn carregaanotacao st =' + this.state.idSubT);
+       // console.log('anota antes de procurar no bd =' + this.state.anotacao[0]['conteudo']);
         if (this.state.user[0]['id'] == -1) {
-            console.log('não logado');
+          //  console.log('não logado');
             this.setState({ anotacao: [{ 'conteudo': '', 'id': -1 }] });
         }
         else {
@@ -437,7 +437,7 @@ class Jornadas extends Component {
 
             }
             if (tipo === 2) {
-                console.log('carregaanotacao tipo == 2');
+               // console.log('carregaanotacao tipo == 2');
 
                 var requestOptions = {
                     method: 'GET',
@@ -451,12 +451,12 @@ class Jornadas extends Component {
                     .then(response => response.text())
                     .then(result => {
                         this.setState({ anotacao: JSON.parse(result).length == 0 ? [{ 'conteudo': "", 'id': -1 }] : JSON.parse(result) });
-                        console.log(result);
+                        //console.log(result);
                     })
                     .catch(error => {console.log('error', error);alert('Erro de conexão')});
             }
             if (tipo === 3) {
-                console.log('carregaanotacao tipo == 3');
+               // console.log('carregaanotacao tipo == 3');
 
                 var requestOptions = {
                     method: 'GET',
@@ -470,7 +470,7 @@ class Jornadas extends Component {
                     .then(response => response.text())
                     .then(result => {
                         this.setState({ anotacao: JSON.parse(result).length == 0 ? [{ 'conteudo': "", 'id': -1 }] : JSON.parse(result) });
-                        console.log('result = ' + result);
+                       // console.log('result = ' + result);
                     })
                     .catch(error => {console.log('error', error);alert('Erro de conexão')});
             }
@@ -484,8 +484,8 @@ class Jornadas extends Component {
     }
     
     subTConcluido(id) {
-        console.log('fn subtconcluido');
-        console.log(this.state.user[0]['subtopicosconcluidos']);
+       // console.log('fn subtconcluido');
+       // console.log(this.state.user[0]['subtopicosconcluidos']);
         let b = [... this.state.user[0]['subtopicosconcluidos'], { 'id': id, 'valor': true }];
         let aux = this.state.user;
         aux[0]['subtopicosconcluidos'] = b;
@@ -497,7 +497,7 @@ class Jornadas extends Component {
     }
     
     atualizaUserDb(usr) {
-        console.log('fn atualizauserdb');
+        //console.log('fn atualizauserdb');
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
@@ -511,7 +511,7 @@ class Jornadas extends Component {
         urlencoded.append("topicosConcluidos", JSON.stringify(usr[0]['topicosconcluidos']));
         urlencoded.append("subtopicosConcluidos", JSON.stringify(usr[0]['subtopicosconcluidos']));
         urlencoded.append("curso", usr[0]['curso']);
-        console.log('ca='+usr[0]['caminhoatual']);
+       // console.log('ca='+usr[0]['caminhoatual']);
 
         var requestOptions = {
             method: 'PUT',
@@ -632,7 +632,7 @@ class Jornadas extends Component {
     renderSubTDetalhes() {
         this.state.paginaAtual = "materiais";
 
-        console.log('fn rendersubtdetalhes');
+      //  console.log('fn rendersubtdetalhes');
         if (this.state.detST.length <= 0) {
             return (this.renderLoading());
         }
@@ -709,8 +709,10 @@ class Jornadas extends Component {
 
                         <div className="conclusaoSubtopico">
                             <button className="buttonConcluido" onClick={() => {
+                                this.state.user[0]['id'] === -1 ? 
+                                alert('É necessario estar logado para usar essa função') :
                                 this.subTConcluido(this.state.detST[0]['id']);
-                                console.log('botão subt concluido pressionado');
+                                
                                 }}>Concluido </button>
                         </div>
 
@@ -756,7 +758,7 @@ class Jornadas extends Component {
     renderSubT() {
         this.state.paginaAtual = "s";
 
-        console.log('fn rendersubt');
+        //console.log('fn rendersubt');
 
         return (
             <>
@@ -843,7 +845,7 @@ class Jornadas extends Component {
 
     renderLoading() {
 
-        console.log('fn renderloading');
+        //console.log('fn renderloading');
 
         return (<>
             <div>
