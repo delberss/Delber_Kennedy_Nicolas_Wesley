@@ -7,20 +7,9 @@
     text-decoration: none;
 }
 
-.subtopicos li{
-    margin-bottom: 8px;
-    padding: 3px;
-}
-
-.subtopicos li:hover{
-    background: rgba(0, 0, 0, 0.311);
-    border-radius: 20px;
-    transition: 100ms;
-}
 
 .subtopico{
     display: flex;
     justify-content: space-between;
     margin-bottom: 5px;
 }
-

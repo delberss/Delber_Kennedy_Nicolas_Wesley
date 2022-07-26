@@ -10,18 +10,6 @@
     text-decoration: none;
 }
 
-.materiais li{
-    margin-bottom: 8px;
-    padding: 3px;
-}
-
-.materiais li:hover{
-    background: rgba(0, 0, 0, 0.311);
-    border-radius: 20px;
-    transition: 100ms;
-}
-
-
 .conclusaoSubtopico {
     display: flex;
     justify-content: center;
@@ -33,13 +21,12 @@
     padding: 10px;
     text-transform: uppercase;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .buttonConcluido:hover{
-    background-color: rgb(16, 103, 127);
+    background-color: rgb(81, 215, 81);
     transition: 100ms;
-    color: white;
 }
 
 .descricao_materiais{

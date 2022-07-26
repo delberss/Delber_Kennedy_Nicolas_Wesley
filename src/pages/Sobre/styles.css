@@ -2,14 +2,19 @@
     text-align: center;
     width: 80%;
     margin: 10px auto;
-    border: 10px solid rgba(255, 255, 255, 0.573);
+    border: 10px solid #5734a4;;
     border-radius: 20px;
     padding: 10px;
 }
 
+.sobre h2{
+    color: #a3ffbf;
+}
+
 .sobre p{
-    font-size: 18px;
+    font-size: 1.3rem;
     line-height: 35px;
+    color: white;
 }
 
  .social-medias ul{
@@ -30,6 +35,7 @@
  .social-medias li a{
     font-size: 2rem;
     color: black;
+    border-radius: 60px;
 }
 
  .social-medias li a:hover{
@@ -40,8 +46,8 @@
 }
 
 .social-medias li:hover{
-    background-color: rgba(48, 122, 142, 0.527);
-    border-radius: 80px;
+    background-color: white;
+    border-radius: 60px;
 }
 
 .sobre .contato{

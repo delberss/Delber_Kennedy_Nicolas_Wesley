@@ -9,7 +9,7 @@
 }
 
 #signup h1 {
-    color: rgb(16, 103, 127);
+    color: white;
     margin-bottom: 20px;
 }
 
@@ -17,50 +17,62 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-
+    
     width: 100%;
-    height: 70%;
+    height: 600px;
     max-width: 480px;
     padding: 0.5rem;
 
-    background-color: #f1f1f1;
-    border-radius: 10px;
+    background-color: transparent;
+    border: 10px solid white;
+    border-radius: 40px;
 }
 
 #signup .field {
     padding-bottom: 0.5rem;
+    margin-bottom: 20px;
 }
 
 #signup .field label {
     display: block;
+    font-size: 1.3rem;
+    color: white;
 }
 
 #signup .field input{
-    width: 60%;
-    height: 30px;
+    width: 70%;
+    height: 50px;
 
-    margin: 10px auto;
+    margin: 5px auto;
     padding: 10px;
 
+    background-color: #f1f1f1;
     border: 1px solid rgb(16, 103, 127);
     border-radius: 10px;
     outline: 0;
     
 }
 
+.actions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #signup button {
-    width: 20%;
+    width: 100px;
     height: 50px;
 
     margin: 5px;
 
-    border: 1px solid rgb(16, 103, 127);
+    background-color: #a3ffbf;
+    border: none;
+    font-size: 1rem;
     border-radius: 10px;
     outline: 0;
-    text-transform: uppercase;
     cursor: pointer;
 }
 
 #signup button:hover{
-    background-color: rgb(16, 103, 127);
+    background-color: #90dea7;
 }
