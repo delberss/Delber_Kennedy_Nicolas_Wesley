@@ -601,7 +601,7 @@ class Jornadas extends Component {
                 <Header  xp={this.state.user[0]['experiencia']}/>
                 <div className="content">
                     <h2>Tópicos Backend</h2>
-                    <div className="voltar" onClick={() => { this.volta() }}>
+                    <div className="btn_voltar" onClick={() => { this.volta() }}>
 
                         <span className="material-symbols-outlined">arrow_back</span>
 
@@ -651,7 +651,7 @@ class Jornadas extends Component {
                         <h2>Materiais de estudo</h2> 
                         <h2> {this.state.nomeTopico}: {this.state.detST[0]['nome']}</h2>
 
-                        <div className="voltar" onClick={() => { this.volta() }}>
+                        <div className="btn_voltar" onClick={() => { this.volta() }}>
 
                             <span className="material-symbols-outlined">arrow_back</span>
 
@@ -706,7 +706,7 @@ class Jornadas extends Component {
                         <h2>Materiais de estudo</h2> 
                         <h2> {this.state.nomeTopico}: {this.state.detST[0]['nome']}</h2>
 
-                        <div className="voltar" onClick={() => { this.volta() }}>
+                        <div className="btn_voltar" onClick={() => { this.volta() }}>
 
                             <span className="material-symbols-outlined">arrow_back</span>
 
@@ -770,7 +770,7 @@ class Jornadas extends Component {
                 <Header  xp={this.state.user[0]['experiencia']}/>
                 <div className="content">
                     <h2>ASSUNTOS SOBRE - {this.state.nomeTopico}</h2>
-                    <div className="voltar" onClick={() => { this.volta() }}>
+                    <div className="btn_voltar" onClick={() => { this.volta() }}>
 
                         <span className="material-symbols-outlined">arrow_back</span>
 
@@ -812,7 +812,7 @@ class Jornadas extends Component {
                 <Header  xp={this.state.user[0]['experiencia']}/>
                 <div className="content">
                     <h2>Tópicos Frontend</h2>
-                    <div className="voltar" onClick={() => { this.volta() }}>
+                    <div className="btn_voltar" onClick={() => { this.volta() }}>
 
                         <span className="material-symbols-outlined">arrow_back</span>
 

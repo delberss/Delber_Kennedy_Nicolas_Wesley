@@ -68,8 +68,12 @@ class Home extends Component {
 
                         <div className="box_home">
                             <h2>HOME</h2>
-                            <h3 className="bemVindoHome">Seja bem-vindo(a), <i className="nameUser">{this.state.nome}</i></h3>
-                            <h3 className="jornadaIndicada">Jornada de estudo indicada:</h3>
+                            
+                            <div className="welcome">
+                                <h3 className="bemVindoHome">Seja bem-vindo(a), <i className="nameUser">{this.state.nome}</i></h3>
+                                <h3 className="jornadaIndicada">Jornada(s) de estudo indicada(s):</h3>
+                            </div>
+                            
 
                             <div className="jornadasHome">
                                 <div className="jornadas">
