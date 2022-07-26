@@ -78,7 +78,7 @@ class Header extends Component {
                         <div>
                             <span className="nomeUser">{this.state.nome}</span> <br></br>
                             <img className="photoUser" src="https://cdn-icons-png.flaticon.com/512/17/17004.png" alt="foto de perfil" /><br></br>
-                            <span className="xp">{this.state.pontos} pontos</span>
+                            <span className="xp">{this.props.xp=== undefined ? this.state.pontos : this.props.xp} pontos</span>
                         </div>
 
                         <div>

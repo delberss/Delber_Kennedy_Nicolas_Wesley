@@ -35,7 +35,8 @@ class Jornadas extends Component {
             valorSwitch: page != null ? page : 'j',
             detST: [],
             materialST: [],
-            anotacao: [{ 'conteudo': '', 'id': -1 }]
+            anotacao: [{ 'conteudo': '', 'id': -1 }],
+            subTConcluido : false
 
         };
 
@@ -183,10 +184,13 @@ class Jornadas extends Component {
                             <li key={id}>
 
                                 <div onClick={() => {
-                                     this.setState({ valorSwitch: 'd', idSubT: id, anotacao: [{ 'conteudo': '', 'id': -1 }] },
+                                     this.setState({ valorSwitch: 'd',
+                                      idSubT: id, anotacao: [{ 'conteudo': '', 'id': -1 }],
+                                    subTConcluido:  this.verificaSubTConcluido(id) },
                                      () => {
                                          this.carregaAnotacao(3);
                                          this.detalhesST(id);
+                                         //this.verificaSubTConcluido(id);
      
                                      });}}>{nome}
                                 </div>
@@ -218,7 +222,6 @@ class Jornadas extends Component {
         return List;
     }
 
-    //TODO
     //tipo =1 para caminho, 2 para topico,3 para subtopíco
     salvaAnotacao(tipo) {
         console.log('fn salvaanotacao');
@@ -403,7 +406,7 @@ class Jornadas extends Component {
              }
         }
     }
-    //TODO
+    
     //tipo =1 para caminho, 2 para topico,3 para subtopíco
     async carregaAnotacao(tipo) {
         console.log('fn carregaanotacao cam =' + this.state.idCam);
@@ -474,18 +477,25 @@ class Jornadas extends Component {
         }
     }
 
-
-    //TODO : aqui salva no db que o usuario marcou como concluido um subtopico
+    verificaSubTConcluido(id){
+        let a = this.state.user[0]['subtopicosconcluidos'].find(el => el.id === id);
+        return a === undefined ? false : a['valor'];
+       
+    }
+    
     subTConcluido(id) {
         console.log('fn subtconcluido');
         console.log(this.state.user[0]['subtopicosconcluidos']);
         let b = [... this.state.user[0]['subtopicosconcluidos'], { 'id': id, 'valor': true }];
         let aux = this.state.user;
         aux[0]['subtopicosconcluidos'] = b;
-        this.setState({ user: aux });
+        aux[0]['experiencia'] ++;
+        this.setState({ user: aux,subTConcluido :true });
+        window.sessionStorage.setItem("usuario",JSON.stringify(aux));
         this.atualizaUserDb(aux);
+       
     }
-    //TODO
+    
     atualizaUserDb(usr) {
         console.log('fn atualizauserdb');
         var myHeaders = new Headers();
@@ -497,21 +507,23 @@ class Jornadas extends Component {
         urlencoded.append("email", usr[0]['email']);
         urlencoded.append("senha", usr[0]['senha']);
         urlencoded.append("experiencia", usr[0]['experiencia']);
-        urlencoded.append("caminhoAtual", usr[0]['caminhoAtual']);
-        urlencoded.append("topicosConcluidos", usr[0]['topicosconcluidos']);
-        urlencoded.append("subtopicosConcluidos", usr[0]['subtopicosconcluidos']);
+        urlencoded.append("caminhoAtual", usr[0]['caminhoatual']);
+        urlencoded.append("topicosConcluidos", JSON.stringify(usr[0]['topicosconcluidos']));
+        urlencoded.append("subtopicosConcluidos", JSON.stringify(usr[0]['subtopicosconcluidos']));
         urlencoded.append("curso", usr[0]['curso']);
+        console.log('ca='+usr[0]['caminhoatual']);
 
         var requestOptions = {
             method: 'PUT',
             headers: myHeaders,
             body: urlencoded,
-            redirect: 'follow'
+            redirect: 'follow',
+            mode : 'cors'
         };
 
         fetch("https://trabalhoengsw.herokuapp.com/usuarios/edit", requestOptions)
             .then(response => response.text())
-            .then(result => console.log(result))
+            .then(result => console.log('result' + result))
             .catch(error => (console.log('error', error), alert("erro de conexão, tente novamente")));
 
     }
@@ -550,7 +562,7 @@ class Jornadas extends Component {
     renderSelecaoJornada() {
         return (
             <div>
-                <Header />
+                <Header  xp={this.state.user[0]['experiencia']}/>
                 <div className="content">
                     <h2 className="jornadasBackFront">Jornadas</h2>
                     <div className="jornadas">
@@ -581,7 +593,7 @@ class Jornadas extends Component {
         this.state.paginaAtual = "b";
         return (
             <>
-                <Header />
+                <Header  xp={this.state.user[0]['experiencia']}/>
                 <div className="content">
                     <h2>Tópicos Backend</h2>
                     <div className="voltar" onClick={() => { this.volta() }}>
@@ -625,9 +637,11 @@ class Jornadas extends Component {
             return (this.renderLoading());
         }
         else {
-            return (
+            if(this.state.subTConcluido)
+            {
+                return(
                 <>
-                    <Header />
+                    <Header xp={this.state.user[0]['experiencia']}/>
                     <div className="content">
                         <h2>Materiais de estudo</h2> 
                         <h2> {this.state.nomeTopico}: {this.state.detST[0]['nome']}</h2>
@@ -639,7 +653,62 @@ class Jornadas extends Component {
                         </div>
 
                         <div className="conclusaoSubtopico">
-                            <button className="buttonConcluido" >Concluido</button>
+                            <h4> subt já concluido</h4>
+                        </div>
+
+                        
+                        <div className="materiais descricao_materiais">
+                            Descrição: 
+                            <h4>
+                                {this.state.detST[0]['descricao']}
+                            </h4>
+                        </div>
+
+                        <div className="materiais">
+                            <ul>
+                                {this.JsonToList(4)}
+                            </ul>
+                        </div>
+
+                        <div>
+
+                        <div className="field_anotacoes">
+                            <h2 className="h2_anotacoes">Anotações</h2>
+                            <textarea maxLength={300} name="anotacoes"  value={this.state.anotacao[0]['conteudo']}
+                                    placeholder="Insira suas anotações aqui" id="anotacao_materiais" className="campo_anotacao"
+                            onChange={e => {
+
+                                        var a = this.state.anotacao[0];
+                                        a['conteudo'] = e.target.value;
+                                        this.setState({ anotacao: [a] });
+                                    }}>
+                            </textarea>
+
+                                <button onClick={() => { this.salvaAnotacao(3) }}>Salvar Anotações</button>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <Footer />
+                </>);
+            }
+            else{
+            return (
+                <>
+                    <Header xp={this.state.user[0]['experiencia']}/>
+                    <div className="content">
+                        <h2>Materiais de estudo</h2> 
+                        <h2> {this.state.nomeTopico}: {this.state.detST[0]['nome']}</h2>
+
+                        <div className="voltar" onClick={() => { this.volta() }}>
+
+                            <span className="material-symbols-outlined">arrow_back</span>
+
+                        </div>
+
+                        <div className="conclusaoSubtopico">
+                            <button className="buttonConcluido" onClick={() => {this.subTConcluido(this.state.detST[0]['id'])}}>Concluido </button>
                         </div>
 
                         
@@ -678,7 +747,7 @@ class Jornadas extends Component {
                     </div>
                     <Footer />
                 </>
-            );
+            );}
         }
     }
     renderSubT() {
@@ -688,7 +757,7 @@ class Jornadas extends Component {
 
         return (
             <>
-                <Header />
+                <Header  xp={this.state.user[0]['experiencia']}/>
                 <div className="content">
                     <h2>ASSUNTOS SOBRE - {this.state.nomeTopico}</h2>
                     <div className="voltar" onClick={() => { this.volta() }}>
@@ -730,7 +799,7 @@ class Jornadas extends Component {
         this.state.paginaAtual = "f";
         return (
             <>
-                <Header />
+                <Header  xp={this.state.user[0]['experiencia']}/>
                 <div className="content">
                     <h2>Tópicos Frontend</h2>
                     <div className="voltar" onClick={() => { this.volta() }}>
