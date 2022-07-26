@@ -26,7 +26,8 @@ function Signin() {
 
         fetch(url, requestOptions)
         .then(response => response.text())
-        .then(result => (result == "usuario inexistente") ? (alert('email/senha invalidos'),setSucesso(false)) : (window.sessionStorage.setItem("usuario",result),setSucesso(true)))
+        .then(result => (result == "usuario inexistente") ?
+         (alert('email/senha invalidos'),setSucesso(false), erro(result)) : (window.sessionStorage.setItem("usuario",result),setSucesso(true)))
         .catch(error => console.log('error', error));
         if(sucesso){
         navigate('/');
@@ -34,6 +35,12 @@ function Signin() {
     }
 
     
+    const erro = (e) => {
+        var email = document.querySelector("#email");
+        var password = document.querySelector("#password");
+        email.style.border = '1px solid red';
+        password.style.border = '1px solid red';
+    }
 
     const handleBack = (e) => {
         e.preventDefault()

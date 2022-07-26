@@ -38,33 +38,33 @@ class Ranking extends Component {
             if(i ==0){
                 userList.push(
                     <tr key={i}>
-                        <td className="rank" id="first">{i+1}
+                        <td className="pos_rank" id="first">{i+1}
                             <span className="material-symbols-outlined">workspace_premium</span>
                         </td>
-                        <td className="team">{nome}</td>
-                        <td className="points">{xp}</td>
+                        <td className="nome_rank">{nome}</td>
+                        <td className="pts_rank">{xp}</td>
                     </tr>
                 );
             }
             else if(i==1){
                 userList.push(
                     <tr key = {i}>
-                        <td className="rank" id="second">{i+1}
+                        <td className="pos_rank" id="second">{i+1}
                             <span className="material-symbols-outlined">workspace_premium</span>
                         </td>
-                        <td className="team">{nome}</td>
-                        <td className="points">{xp}</td>
+                        <td className="nome_rank">{nome}</td>
+                        <td className="pts_rank">{xp}</td>
                     </tr>
                 );
             }
             else if(i==2){
                 userList.push(
                     <tr key = {i}>
-                        <td className="rank" id="third">{i+1}
+                        <td className="pos_rank" id="third">{i+1}
                             <span className="material-symbols-outlined">workspace_premium</span>
                         </td>
-                        <td className="team">{nome}</td>
-                        <td className="points">{xp}</td>
+                        <td className="nome_rank">{nome}</td>
+                        <td className="pts_rank">{xp}</td>
                     </tr>
                 );
             }
@@ -72,9 +72,9 @@ class Ranking extends Component {
             else{
                 userList.push(
                     <tr key ={i}>
-                        <td className="rank">{i+1}</td>
-                        <td className="team">{nome}</td>
-                        <td className="points">{xp}</td>
+                        <td className="pos_rank">{i+1}</td>
+                        <td className="nome_rank">{nome}</td>
+                        <td className="pts_rank">{xp}</td>
                     </tr>
                 );
             }
@@ -90,15 +90,15 @@ class Ranking extends Component {
             <div className="content">
             <div className="container_ranking">
                     <header>
-                        <h1>RANKING TOP 20</h1>
+                        <h2>RANKING TOP 20</h2>
                     </header>
                     <div className="wrapper">
                         <table>
                             <thead>
                                 <tr>
                                     <th>Rank</th>
-                                    <th>Nome</th>
-                                    <th>Pontos</th>
+                                    <th className="th_name">Nome</th>
+                                    <th className="th_pts">Pontos</th>
                                 </tr>
                             </thead>
                             <tbody>
