@@ -482,11 +482,17 @@ class Jornadas extends Component {
     }
 
     verificaSubTConcluido(id){
+
+        this.desmarcasubTConcluido(id);
         let a = this.state.user[0]['subtopicosconcluidos'].find(el => el.id === id);
         return a === undefined ? false : a['valor'];
        
     }
-    
+    desmarcasubTConcluido(id){
+        const a = this.state.user[0]['subtopicosconcluidos'].filter((el) => {return el.id === id});
+        console.log(a);
+    }
+
     subTConcluido(id) {
        // console.log('fn subtconcluido');
        // console.log(this.state.user[0]['subtopicosconcluidos']);
