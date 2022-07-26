@@ -708,7 +708,10 @@ class Jornadas extends Component {
                         </div>
 
                         <div className="conclusaoSubtopico">
-                            <button className="buttonConcluido" onClick={() => {this.subTConcluido(this.state.detST[0]['id'])}}>Concluido </button>
+                            <button className="buttonConcluido" onClick={() => {
+                                this.subTConcluido(this.state.detST[0]['id']);
+                                console.log('botão subt concluido pressionado');
+                                }}>Concluido </button>
                         </div>
 
                         
