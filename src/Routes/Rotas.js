@@ -16,7 +16,7 @@ class Rotas extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: [{"id":-1,"nome":"teste","email":"teste@teste.com","curso":"a","senha":"a","experiencia":0,"caminhoatual":-1,"subtopicosConcluidos":[],"topicosConcluidos":[]}],
+            user: [{"id":-1,"nome":"teste","email":"teste@teste.com","curso":"a","senha":"a","experiencia":0,"caminhoatual":-1,"subtopicosconcluidos":[{'id': 9999, 'valor':false}],"topicosconcluidos":[{'id': 9999, 'valor':false}]}],
             
         }
         if(window.sessionStorage.getItem("usuario") == null)
