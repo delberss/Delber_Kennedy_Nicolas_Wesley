@@ -128,7 +128,16 @@ router.put('/edit', async (req, res) => {
   var topicosConcluidos = req.body. topicosConcluidos == "" ? null : req.body. topicosConcluidos;
   var curso = req.body.curso == "" ? null : req.body.curso;
 
- 
+  console.log('nome = '+nome);
+
+  console.log('id='+id);
+  console.log('email ='+email);
+  console.log('sen='+senha);
+  console.log('xp='+experiencia);
+  console.log('ca='+caminhoAtual);
+  console.log('sbc='+subtopicosConcluidos);
+  console.log('tc='+topicosConcluidos);
+  console.log('curs'+curso);
   var query = 'UPDATE usuarios SET nome =$1, email =$2, senha=$3, experiencia=$4, '+
   ' caminhoAtual=$5,subtopicosConcluidos=$6,curso = $7,  topicosConcluidos=$8 WHERE id = $9;';
               
