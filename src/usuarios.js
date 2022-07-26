@@ -119,7 +119,7 @@ router.get('/ranking/get', async (req, res) => {
 router.put('/edit', async (req, res) => {
   
   var nome = req.body.nome == "" ? null : req.body.nome;
-  var id = req.body.id == "" ? null : req.query.id;
+  var id = req.body.id == "" ? null : req.body.id;
   var email = req.body.email == "" ? null : req.body.email;
   var senha = req.body.senha == "" ? null : req.body.senha;
   var experiencia = req.body.experiencia == "" ? null : req.body.experiencia;
@@ -129,7 +129,6 @@ router.put('/edit', async (req, res) => {
   var curso = req.body.curso == "" ? null : req.body.curso;
 
   console.log('nome = '+nome);
-
   console.log('id='+id);
   console.log('email ='+email);
   console.log('sen='+senha);
@@ -138,6 +137,7 @@ router.put('/edit', async (req, res) => {
   console.log('sbc='+subtopicosConcluidos);
   console.log('tc='+topicosConcluidos);
   console.log('curs'+curso);
+
   var query = 'UPDATE usuarios SET nome =$1, email =$2, senha=$3, experiencia=$4, '+
   ' caminhoAtual=$5,subtopicosConcluidos=$6,curso = $7,  topicosConcluidos=$8 WHERE id = $9;';
               
