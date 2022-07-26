@@ -1,13 +1,14 @@
 .footer{
-    background-color: rgb(80, 184, 190);
-    height: 100px;
-    min-width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 0;
-  }
-  
-  .footer p{
-    font-style: italic;
-  }
+  background-color: #263238;
+  height: 100px;
+  min-width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+.footer p{
+  font-style: italic;
+  color: white;
+}

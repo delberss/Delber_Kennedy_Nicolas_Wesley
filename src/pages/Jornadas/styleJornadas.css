@@ -3,12 +3,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(16, 103, 127);
+    background: #5734a4;
     padding: 20px;
     height: 350px;
     width: 350px;
-    border-radius: 10px;
+    border-radius: 50px;
     cursor: pointer;
+}
+
+.box-backend:hover,
+.box-frontend:hover{
+    background: #492c8a;
 }
 
 .jornadas{
@@ -25,6 +30,6 @@
 .jornadas a{
     font-size: 35px;
     text-decoration: none;
-    color: rgb(61, 223, 180);
+    color: white;
     text-transform: uppercase;
 }

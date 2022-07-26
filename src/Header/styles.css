@@ -1,5 +1,5 @@
 .header {
-  background-color: rgb(80, 184, 190);
+  background-color: #263238;
   padding: 20px;
   min-width: 100vw;
   height: 150px;
@@ -42,29 +42,42 @@ li a {
   padding: 0 10px;
 }
 
-/*LOGIN OFF*/
+/LOGIN OFF/
 
 .login_off {
   display: flex;
 }
 
-.login_off li{
-  border: 1px solid white;
+.login_off li,
+.login_on button{
+  background-color: #a3ffbf;
   text-align: center;
-  border-radius: 4px;
+  border-radius: 30px;
   padding: 10px;
   margin: 10px;
+  cursor: pointer;
+}
+
+.login_off li a {
+  color: black;
+}
+
+.menu li:hover{
+  padding: 10px;
+  background: rgba(183, 179, 179, 0.128);
+}
+
+.login_off li:hover,
+.login_on button:hover{
+  background-color: #a3ffbfeb;
 }
 
 .menu li:hover,
 .login_off li:hover{
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.311);
   transition: 100ms;
-  border-radius: 4px;
 }
 
-/*LOGIN ON*/
+/LOGIN ON/
 
 .login_on{
   display: flex;
@@ -82,16 +95,12 @@ li a {
   width: 50px;
 }
 
-.login_on button{
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
+.nomeUser,
+.xp{
   color: white;
-  background-color: rgb(17, 49, 50);
 }
 
-.login_on button:hover{
-  cursor: pointer;
-  color: black;
-  background: white;
+.campo_User:hover{
+  background: rgba(183, 179, 179, 0.128);
+  border-radius: 30px;
 }

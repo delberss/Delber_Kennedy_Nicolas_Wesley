@@ -2,7 +2,7 @@
 .topicos,
 .subtopicos,
 .materiais {
-    background-color: rgb(16, 103, 127);
+    background: #5734a4;
     display: flex;
     justify-content: center;
     margin: auto;
@@ -32,26 +32,8 @@
     border-radius: 50px;
 }
 
-.voltar {
-    display: block;
-    position: absolute;
-    width: 50px;
-    margin: 5px 20px;
-    cursor: pointer;
-}
 
-.material-symbols-outlined{
-    background-color: rgb(16, 103, 127);
-    font-size: 45px;
-    border-radius: 25px;
-    color:white;
-}
 
-.material-symbols-outlined:hover{
-    transition: 1s;
-    background-color: white;
-    color: rgb(16, 103, 127);
-}
 
 .field_anotacoes{
     display: flex;
@@ -61,10 +43,19 @@
     margin: auto;
 }
 
+.field_anotacoes .campo_anotacao{
+    height: 100px;
+}
+
+.field_anotacoes button{
+    height: 10px;
+}
 .field_anotacoes .campo_anotacao,
 .field_anotacoes button
 {
-    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     margin-top: 20px;
     padding: 20px;
@@ -79,6 +70,21 @@
 .field_anotacoes button:hover{
     cursor: pointer;
     transition: 0.6s;
-    background-color: rgb(16, 103, 127);
+    background-color: #5734a4;
     color: white;
+}
+
+
+.topicos li,
+.materiais li,
+.subtopicos li{
+    margin-bottom: 2px;
+    padding: 5px 10px;
+}
+
+.topicos li:hover,
+.materiais li:hover,
+.subtopicos li:hover{
+    padding: 5px 10px;
+    background: rgba(183, 179, 179, 0.128);
 }

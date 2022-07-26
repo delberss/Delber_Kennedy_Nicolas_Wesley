@@ -1,33 +1,23 @@
 .formulario1{
-    background-color: white;
-
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-
+    justify-content: center;
     margin: auto;
+
+    min-height: 100vh;
+    padding: 0 2rem;
     
+    width: 100%;
+    height: 400px;
+    max-width: 480px;
+    padding: 0.5rem;
 
-    width: 50%;
-    height: 60%;
-    padding: 30px;
-
-    border-radius: 30px;
+    background-color: transparent;
+    border: 10px solid white;
+    border-radius: 40px;
 }
 
-label{
-    margin-bottom: 20px;
-}
-
-.radio {
-    display: flex;
-    flex-direction: column;
-}
-
-.radio label{
-    text-align: start;
-}
 
 .question{
     display: flex;
@@ -35,18 +25,72 @@ label{
     align-items: center;
     width: 80%;
     margin-bottom: 10px;
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
 }
 
-.buttonEnviar {
-    background-color: rgb(16, 103, 127);
-    font-size: 25px;
-    border: none;
-    padding: 10px;
+.pergunta{
+    margin-bottom: 10px;
+}
+
+.radio {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.label_form{
+    margin-bottom: 20px;
+    text-align: start;
+}
+
+#signin .field {
+    padding-bottom: 0.5rem;
+    margin-bottom: 20px;
+}
+
+#signin .field label {
+    display: block;
+    font-size: 1.3rem;
     color: white;
+}
+
+
+
+#signin .field input{
+    width: 70%;
+    height: 50px;
+
+    margin: 5px auto;
+    padding: 10px;
+
+    background-color: #f1f1f1;
+    border: 1px solid rgb(16, 103, 127);
     border-radius: 10px;
+    outline: 0;
+}
+
+.actions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#buttonFormulario {
+    width: 100px;
+    height: 50px;
+
+    margin: 5px;
+
+    background-color: #a3ffbf;
+    border: none;
+    font-size: 1rem;
+    border-radius: 10px;
+    outline: 0;
     cursor: pointer;
 }
 
-.buttonEnviar:hover{
-    background-color: rgba(0, 0, 0, 0.749);
+#buttonFormulario:hover{
+    background-color: #90dea7;
 }

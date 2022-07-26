@@ -1,5 +1,10 @@
+.container{
+    background-color: rgb(55, 71, 79);
+}
+
 .content{
-    background-color: #2beb7e7f;
+    
+    background-color: #161b22;
   
     width: 70%;
     min-height: 100vh;
@@ -11,9 +16,29 @@
 }
   
 .content h2 {
-    color: rgb(16, 103, 127);
+    color: white;
     text-transform: uppercase;
     padding-bottom: 20px;
 
 }
 
+.btn_voltar {
+    display: block;
+    position: absolute;
+    width: 50px;
+    margin: 5px 20px;
+    cursor: pointer;
+}
+
+.material-symbols-outlined{
+    background: #5734a4;
+    font-size: 45px;
+    border-radius: 25px;
+    color:white;
+}
+
+.material-symbols-outlined:hover{
+    transition: 1s;
+    background-color: white;
+    color: #5734a4;
+}
