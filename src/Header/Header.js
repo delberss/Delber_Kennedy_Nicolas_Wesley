@@ -31,8 +31,8 @@ class Header extends Component {
         const userVazio =  [{"id":-1,"nome":"teste","email":"teste@teste.com","curso":"","senha":"","experiencia":0,"caminhoatual":-1,"subtopicosconcluidos":[{'id': 9999, 'valor':false}],"topicosconcluidos":[{'id': 9999, 'valor':false}]}];
         this.setState({logado : false})
         window.sessionStorage.setItem("usuario",JSON.stringify(userVazio));
-        window.location.reload();
     }
+
     render() {
       
         return (
@@ -57,7 +57,7 @@ class Header extends Component {
                             <a href="/sobre">SOBRE</a>
                         </li>
                         <li >
-                            <a href="/formulario1">Form</a>
+                            <a href="/formulario1">FORMULÁRIO</a>
                         </li>
 
                     </ul>
@@ -76,7 +76,7 @@ class Header extends Component {
 
                 {this.state.logado &&
                     <div id="login_on" className="login_on">
-                        <div>
+                        <div className="campo_User">
                             <span className="nomeUser">{this.state.nome}</span> <br></br>
                             <img className="photoUser" src="https://cdn-icons-png.flaticon.com/512/17/17004.png" alt="foto de perfil" /><br></br>
                             <span className="xp">{this.props.xp=== undefined ? this.state.pontos : this.props.xp} pontos</span>

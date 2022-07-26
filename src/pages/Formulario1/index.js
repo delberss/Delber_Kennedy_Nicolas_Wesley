@@ -16,21 +16,26 @@ function Formulario1(props){
     return(
         
         <div className="content">
+            <div className="btn_voltar" onClick={() => { this.volta() }}>
+                <span className="material-symbols-outlined">arrow_back</span>
+            </div>
+
             <div className="formulario1"  onSubmit={handleSubmit}>
 
+
                 <div className="question">
-                    <label>1. Qual o seu nível de conhecimento em programação?</label>
+                    <label className="pergunta">1. Qual o seu nível de conhecimento em programação?</label>
 
                     <div className="radio">
-                        <label>
+                        <label className="label_form">
                             <input type="radio" name="conhecimentoProg" value="basico" /> Básico
                         </label>
 
-                        <label>
+                        <label className="label_form">
                             <input type="radio" name="conhecimentoProg" value="intermediário" /> Intermediário
                         </label>
 
-                        <label>
+                        <label className="label_form">
                             <input type="radio" name="conhecimentoProg" value="avancado" /> Avançado
                         </label>
 
@@ -38,18 +43,18 @@ function Formulario1(props){
                 </div>
 
                 <div className="question">
-                    <label>2. Você tem interesse sobre backend?</label>
+                    <label className="pergunta">2. Você tem interesse sobre backend?</label>
 
                     <div className="radio">
-                        <label>
+                        <label className="label_form">
                             <input type="radio" name="conhecimentoBackend" value="basico" /> Nenhum
                         </label>
 
-                        <label>
+                        <label className="label_form">
                             <input type="radio" name="conhecimentoBackend" value="intermediário" /> Médio
                         </label>
 
-                        <label>
+                        <label className="label_form">
                             <input type="radio" name="conhecimentoBackend" value="avancado" /> Alto
                         </label>
 
@@ -58,18 +63,18 @@ function Formulario1(props){
                 </div>
 
                 <div className="question">
-                    <label>3. Você tem interesse sobre frontend?</label>
+                    <label className="pergunta">3. Você tem interesse sobre frontend?</label>
 
                     <div className="radio">
-                        <label>
+                        <label className="label_form">
                             <input type="radio" name="conhecimentoFrontend" value="basico" /> Nenhum
                         </label>
 
-                        <label>
+                        <label className="label_form">
                             <input type="radio" name="conhecimentoFrontend" value="intermediário" /> Médio
                         </label>
 
-                        <label>
+                        <label className="label_form">
                             <input type="radio" name="conhecimentoFrontend" value="avancado" /> Alto
                         </label>
 
@@ -77,7 +82,7 @@ function Formulario1(props){
 
                 </div>
                 
-                <button className="buttonEnviar" onClick={handleSubmit}>ENVIAR</button>
+                <button id="buttonFormulario" onClick={handleSubmit}>ENVIAR</button>
             </div>
             
         </div>
