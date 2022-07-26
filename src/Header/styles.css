@@ -42,7 +42,7 @@ li a {
   padding: 0 10px;
 }
 
-/LOGIN OFF/
+/*LOGIN OFF*/
 
 .login_off {
   display: flex;
@@ -77,7 +77,7 @@ li a {
   transition: 100ms;
 }
 
-/LOGIN ON/
+/*LOGIN ON*/
 
 .login_on{
   display: flex;

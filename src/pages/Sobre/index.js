@@ -43,4 +43,4 @@ function Sobre(props){
     );
 }
 
-export default Sobre
+export default Sobre;
