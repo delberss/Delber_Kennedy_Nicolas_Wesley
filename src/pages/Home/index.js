@@ -80,7 +80,16 @@ class Home extends Component {
                     {!this.state.logado &&
                         <div className="box_home">
                             <h2>HOME</h2>
-                            <h3 className="facaLogin" >Faça o seu login!</h3>
+
+                            <Link  to={{
+                                pathname: '/signin'                        
+                                }}>
+                                <a>
+                                    <h3 className="facaLogin" >Faça o seu login!</h3>
+                                </a>
+                            </Link>
+
+                            
                         </div>}
                 </div>
                 <Footer />

@@ -29,9 +29,9 @@ class Header extends Component {
 
     logout = () => {
         const userVazio =  [{"id":-1,"nome":"teste","email":"teste@teste.com","curso":"","senha":"","experiencia":0,"caminhoatual":-1,"subtopicosconcluidos":[{'id': 9999, 'valor':false}],"topicosconcluidos":[{'id': 9999, 'valor':false}]}];
-          
-        window.sessionStorage.setItem("usuario",JSON.stringify(userVazio));
         this.setState({logado : false})
+        window.sessionStorage.setItem("usuario",JSON.stringify(userVazio));
+        window.location.reload();
     }
     render() {
       
@@ -84,14 +84,16 @@ class Header extends Component {
 
                         <div>
                             
-                            <button type="button" onClick={() => this.logout()}>SAIR</button>
+                            
                             <Link  onClick={()=>{
                                 // essa tag <link é uma forma que achei de deslogar e navegar pra home 
                                 // pq quando desloga lá na pagina das jornadas buga muita coisa
                                 //e se for pra pagina home reseta a maioria das coisas que buga
                                 this.logout()}} to={{
-                        pathname: '/'                        
-                    }}><strong>SAIR2</strong></Link>
+                                pathname: '/'                        
+                                }}>
+                                <button type="button">SAIR</button>
+                            </Link>
                         </div>
                     </div>
                 }

@@ -18,6 +18,14 @@
     margin-bottom: 10px;
 }
 
+.box_home a{
+    text-decoration: none;
+}
+
+.box_home a{
+    text-decoration: none;
+}
+
 .jornadaIndicada, .facaLogin, .bemVindoHome{
     background-color: rgba(16, 103, 127, 0.575);
     color: white;
