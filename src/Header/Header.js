@@ -1,4 +1,5 @@
 import { Component} from "react";
+import { Link } from 'react-router-dom';
 import "../Header/styles.css"
 
 class Header extends Component {
@@ -82,7 +83,15 @@ class Header extends Component {
                         </div>
 
                         <div>
+                            
                             <button type="button" onClick={() => this.logout()}>SAIR</button>
+                            <Link  onClick={()=>{
+                                // essa tag <link é uma forma que achei de deslogar e navegar pra home 
+                                // pq quando desloga lá na pagina das jornadas buga muita coisa
+                                //e se for pra pagina home reseta a maioria das coisas que buga
+                                this.logout()}} to={{
+                        pathname: '/'                        
+                    }}><strong>SAIR2</strong></Link>
                         </div>
                     </div>
                 }

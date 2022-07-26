@@ -41,6 +41,10 @@ class Jornadas extends Component {
         };
 
     }
+    carregaUsuario()
+    {
+        this.setState({user: JSON.parse(window.sessionStorage.getItem("usuario"))});
+    }
     //na primeira vez que for usar esse component vai ser utilizado carrega os topicos dos 2 caminhos
     componentDidMount() {
         //console.log('fn componentDidMount')
@@ -486,6 +490,7 @@ class Jornadas extends Component {
     subTConcluido(id) {
        // console.log('fn subtconcluido');
        // console.log(this.state.user[0]['subtopicosconcluidos']);
+
         let b = [... this.state.user[0]['subtopicosconcluidos'], { 'id': id, 'valor': true }];
         let aux = this.state.user;
         aux[0]['subtopicosconcluidos'] = b;
@@ -860,7 +865,6 @@ class Jornadas extends Component {
     }
 
     render() {
-
 
         switch (this.state.valorSwitch) {
             case 'f': {
