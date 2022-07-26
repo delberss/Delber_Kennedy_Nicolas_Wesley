@@ -42,10 +42,6 @@ li a {
   padding: 0 10px;
 }
 
-<<<<<<< HEAD
-/*LOGIN OFF*/
-=======
->>>>>>> e8d6d389691198e646d46ddc26240aac62f9410a
 
 .login_off {
   display: flex;
@@ -80,10 +76,6 @@ li a {
   transition: 100ms;
 }
 
-<<<<<<< HEAD
-/*LOGIN ON*/
-=======
->>>>>>> e8d6d389691198e646d46ddc26240aac62f9410a
 
 .login_on{
   display: flex;
