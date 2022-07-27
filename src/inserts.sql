@@ -398,3 +398,342 @@ INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','3');
 INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','4');
 INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','5');
 
+
+----------------------------- começa aqui
+
+
+--ELECTRON------------
+
+
+INSERT INTO conteudos(tipo,link,titulo) VALUES( 'texto','https://www.electronjs.org/docs/latest/ ','O que é Electron? ');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ','https://www.electronjs.org/ ','Aplicabilidade do Electron ');
+
+----INTERNET: O QUE É HTTP?---------
+
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ','https://canaltech.com.br/internet/o-que-e-http/ ','Como funciona o HTTP ');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ','https://rockcontent.com/br/blog/http/ ','Entenda a importância ');
+
+------INTERNET: NAVEGADORES E COMO FUNCIONAM---------
+
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ','https://www.youtube.com/watch?v=kDy62zaCHZE&ab_channel=AluraCursosOnline ','Funcionamento dos navegadores ');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ','https://www.youtube.com/watch?v=3yTDZTKwj-o&ab_channel=TecMundo','Entenda a importância ');
+
+------INTERNET: DNS E COMO ELE FUNCIONA---------
+
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ','https://aws.amazon.com/pt/route53/what-is-dns/#:~:text=O%20sistema%20DNS%20da%20internet,dom%C3%ADnio%20no%20navegador%20da%20web. ','O que é e como funciona ');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ','https://www.youtube.com/watch?v=XoLQHCPZS9s&ab_channel=HostGatorAcademy','Entenda a importância ');
+
+------------------- O QUE É NOME DE DOMÍNIO ------------------------------------
+
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ','https://support.google.com/a/answer/2573637?hl=pt-BR#Top ',' Noção básica de domínio');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ',' https://www.hostnet.com.br/blog/o-que-e-dominio-e-como-escolher-um-nome-para-o-seu-site/',' como escolher um domínio  ');
+
+------INTERNET: O QUE É HOSPEDAGEM---------
+
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ','https://www.hostgator.com.br/blog/o-que-e-uma-hospedagem-de-site/ ','Entendendo sobre hospedagem ');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ','https://www.youtube.com/watch?v=3unUNNbitzM&ab_channel=HostGatorAcademy ','Para que serve e como funciona');
+
+------SISTEMAS DE CONTROLE DE VERSÃO:USO BÁSICO DE GIT ---------
+
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ','https://www.hostinger.com.br/tutoriais/tutorial-do-git-basics-introducao ','Noções básicas sobre git ');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ','https://www.youtube.com/watch?v=za5KWZ5pRag&ab_channel=C%C3%B3digoFonteTV ','Visão geral sobre git');
+
+------SISTEMAS DE CONTROLE DE VERSÃO:GITHUB ---------
+
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ','https://www.hostinger.com.br/tutoriais/o-que-github ','O básico de Github ');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ','https://www.youtube.com/watch?v=2alg7MQ6_sI ','uso do github para iniciantes');
+
+------CONHECIMENTO BÁSICO DE FRONTEND:HTML ---------
+
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ','https://www.homehost.com.br/blog/tutoriais/o-que-e-html/ ','O que é o HTML? ');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ','https://www.youtube.com/watch?v=SV7TL0hxmIQ&ab_channel=MatheusBattisti-HoradeCodar ','Curso gratuito sobre HTML');
+
+------CONHECIMENTO BÁSICO DE FRONTEND:CSS ---------
+
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ','https://www.hostinger.com.br/tutoriais/tutorial-do-git-basics-introducao ','Noções básicas sobre git ');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ','https://www.youtube.com/watch?v=r11FflkQqJs&ab_channel=FelipeRocha%E2%80%A2dicasparadevs ','Curso gratuito de CSS');
+
+------CONHECIMENTO BÁSICO DE FRONTEND:JAVASCRITP ---------
+
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ','https://www.hostinger.com.br/tutoriais/tutorial-do-git-basics-introducao ','Noções básicas sobre git ');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ','https://www.youtube.com/watch?v=Ptbk2af68e8&t=1490s&ab_channel=CursoemV%C3%ADdeo ','Curso gratuito de JavaScript');
+
+--------OS E CONHECIMENTOS GERAIS : USO DO TERMINAL--
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ','https://www.lucascaton.com.br/2018/01/07/comandos-para-o-terminal-windows-macos-e-linux ','noção básica de terminal e comandos ');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ','https://www.youtube.com/watch?v=JEhVB4VHsTI ','Comandos básicos em terminal com ubuntu');
+
+--------OS E CONHECIMENTOS GERAIS : COMO SOS FUNCIONAM NO GERAL--
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ','https://tecnoblog.net/responde/ativar-modo-emergencia-sos-celular/ ','Noções básicas sobre SOS');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ','https://www.youtube.com/watch?v=Qjk-cSW-jk4&ab_channel=FabioAkita ','Visão geral');
+
+------OS E CONHECIMENTOS GERAIS: GERENCIAMENTO DE PROCESSOS --------------
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ','  https://ead.unisc.br/blog/gestao-de-processos#:~:text=Gest%C3%A3o%20de%20processos%20%C3%A9%20um,um%20produto%20para%20o%20consumidor. ',' Noção inicial do gerenciamento de processos   ');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ',' https://www.youtube.com/watch?v=gD22R5r7s9Y  ',' A gestão de processos com os negócios ');
+
+------OS E CONHECIMENTOS GERAIS: THREADS E CONCORRÊNCIA ----------------------
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ','  https://www.treinaweb.com.br/blog/concorrencia-paralelismo-processos-threads-programacao-sincrona-e-assincronaI ',' Noções básicas  ');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ',' https://www.youtube.com/watch?v=YvJbCydedV4  ',' Aula - Concorrência, paralelismo - threads');
+
+------OS E CONHECIMENTOS GERAIS: COMANDOS BÁSICOS DE TERMINAL----------
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ','  https://www.lucascaton.com.br/2018/01/07/comandos-para-o-terminal-windows-macos-e-linux',' comandos básicos no terminal  ');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ',' https://www.youtube.com/watch?v=JEhVB4VHsTI',' aula com comandos básicos de terminal ');
+
+---------- OS E CONHECIMENTOS GERAIS:GERÊNCIAMENTO DE MEMÓRIA------------------------
+
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ','https://sites.google.com/site/proffernandosiqueiraso/aulas/9-gerencia-de-memoria',' Visão geral');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ','https://www.youtube.com/watch?v=9AK_1gqEfkQ&ab_channel=FabioAkita ',' Entenda o básico');
+
+------- OS E CONHECIMENTOS GERAIS:COMUNICAÇÃO ENTRE PROCESSOS ----------
+
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ','https://homepages.dcc.ufmg.br/~fsantos/ECO036/comunicacao-Sockets.pdf ',' Noção inicial de comunicação entre processos ');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ','https://www.youtube.com/watch?v=uPMaNFlBXzI ','aula de comunicação entre processos');
+
+----------- OS E CONHECIMENTOS GERAIS:GERENCIAMENTO DE I/O --------------------------
+
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ','  https://joaoricardao.files.wordpress.com/2012/07/gerenciamento-i-o.pdf',' O que é? ');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ',' https://www.youtube.com/watch?v=P3qNph_HzXo&ab_channel=PedroLuiz ',' Visão geral');
+ 
+----------------- OS E CONHECIMENTOS GERAIS:POSIX BÁSICO ----------------------------------------------
+
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ','https://www.techtarget.com/whatis/definition/POSIX-Portable-Operating-System-Interface ',' O que é PORSIX ');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ',' https://www.youtube.com/watch?v=gfpblqOY6bs',' Entendendo o PORSIX ');
+
+----- OS E CONHECIMENTOS GERAIS: CONCEITOS BÁSICOS DE REDE ----------------------------------------
+
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ','  https://xtech.com.br/Blog/Conceitos-Basicos-De-Rede-O-Que-Voce-Precisa-Saber/b/39/#:~:text=A%20rede%20funciona%20conectando%20computadores,bem%20como%20com%20outras%20redes.',' O que você precisa saber  ');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ','https://www.youtube.com/watch?v=jMZF5ZjbA7A&ab_channel=B%C3%B3sonTreinamentos ',' 10 conceitos de redes');
+
+------APRENDA UMA LINGUAGEM : RUST --------------------------
+--INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ',' LINKAQUI''  TITULOAQUI ');
+--INSERT INTO conteudos(tipo,link,titulo) VALUES('video ',' LINKAQUI','  TITULOAQUI ');
+
+-------------APRENDA UMA LINGUAGEM :  GO ------------------------------
+
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ',' https://www.youtube.com/watch?v=KfCNyIrqjsg&ab_channel=AluraCursosOnline', ' O que é e para que serve?');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ','https://www.youtube.com/watch?v=WiGU_ZB-u0w&list=PLCKpcjBB_VlBsxJ9IseNxFllf-UFEXOdg&ab_channel=AprendaGo',  'Curso sobre GO');
+
+-----------APRENDA UMA LINGUAGEM:  JAVA --------------------------------------------------
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ','https://www.youtube.com/watch?v=sZAxLRMxEUo&ab_channel=C%C3%B3digoFonteTV', ' Visão geral de JAVA');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ','https://www.youtube.com/watch?v=sTX0UEplF54&list=PLHz_AreHm4dkI2ZdjTwZA4mPMxWTfNSpR&ab_channel=CursoemV%C3%ADdeo', ' Curso sobre JAVA');
+
+----------------APRENDA UMA LINGUAGEM : C# ------------------------------------
+
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video',' https://www.youtube.com/watch?v=NXVQasys0B8&ab_channel=C%C3%B3digoFonteTV ', 'Visão geral de C# ');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video',' https://www.youtube.com/watch?v=PKMm-cHe56g&ab_channel=VictorLima-GuiadoProgramador ', 'Curso sobre C# ');
+
+------------------APRENDA UMA LINGUAGEM:  PHP ------------------------------
+
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ','https://www.youtube.com/watch?v=AqDj3OSV0mM&ab_channel=C%C3%B3digoFonteTV',  'Visão geral sobre PHP ');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ','https://www.youtube.com/watch?v=bGUuPgEn4U4&list=PL2Fdisxwzt_cOvOTUJhwEOxNV59wTs3ac&ab_channel=Programa%C3%A7%C3%A3oWeb','Curso sobre PHP ');
+
+----------------------APRENDA UMA LINGUAGEM : JAVASCRIPT ------------------------
+
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ',' https://www.youtube.com/watch?v=P39AO9T9bio',  'Por que aprender JavaScript');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ',' https://www.youtube.com/watch?v=BXqUH86F-kA&list=PLntvgXM11X6pi7mW0O4ZmfUI1xDSIbmTm',  'Curso de Javascript');
+
+----------------------APRENDA UMA LINGUAGEM : PYTHON --------------------------------
+
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ',' https://www.youtube.com/watch?v=LsRDACTZK_0',  'Por que aprender Python');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video','https://www.youtube.com/watch?v=S9uPNppGsGo&list=PLvE-ZAFRgX8hnECDn1v9HNTI71veL3oW0', 'Curso de Python');
+
+----------------APRENDA  UMA LINGUAGEM : RUBY--------------------------------------------
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ',' https://www.youtube.com/watch?v=D8rIn9Ti8c0', ' Por que aprender Ruby');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video','https://www.youtube.com/watch?v=ZHPondVB9RQ&list=PLe3LRfCs4go-mkvHRMSXEOG-HDbzesyaP', 'Curso de Ruby');
+
+-----------BANCO DE DADOS RELACIONAIS : POSTGRESQL-----------------
+
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ',' https://4linux.com.br/o-que-e-postgresql/#:~:text=PostgreSQL%20%C3%A9%20um%20sistema%20gerenciador,bancos%20de%20dados%20comerciais%20mais','  O que é e para que serve ');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ',' https://www.youtube.com/watch?v=Z_SPrzlT4Fc&list=PLucm8g_ezqNoAkYKXN_zWupyH6hQCAwxY&ab_channel=B%C3%B3sonTreinamentos','  Curso sobre POSTGRESQL ');
+
+-------------BANCO DE DADOS RELACIONAIS : MYSQL -------------------
+
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ',' https://www.hostinger.com.br/tutoriais/o-que-e-mysql','  O que é ');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ',' https://www.youtube.com/watch?v=Ofktsne-utM&list=PLHz_AreHm4dkBs-795Dsgvau_ekxg8g1r&ab_channel=CursoemV%C3%ADdeo','  Curso sobre MYSQL ');
+
+------------- BANCO DE DADOS RELACIONAIS : MARIADB ---------------------------
+
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ',' https://rockcontent.com/br/blog/mariadb/','  MariaDB ou MySQL? ');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ',' https://www.youtube.com/watch?v=RjtdDlSLDPA&ab_channel=ChronosDicasTech','  Introdução ');
+
+------------- BANCO DE DADOS RELACIONAIS : MS SQL --------------------
+
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ',' https://king.host/wiki/artigo/acessar-banco-mssql-via-sql-managment-studio/','  Sobre MS SQL');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ',' https://www.youtube.com/watch?v=86Bgna7JKB8&ab_channel=ProgramadorM%C3%B3vel','  Banco de Dados MS SQL ');
+
+------------ BANCO DE DADOS RELACIONAIS : ORACLE  -------------------------------------
+
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ','https://www.devmedia.com.br/guia/tecnologia-oracle/34365', ' Guia incial de Oracle');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ',' https://www.youtube.com/watch?v=fclVMUUxLSA',' Aula de Oracle');
+
+------------ CONHECIMENTOS DE SEGURANÇA WEB: HTTPS ---------------------------------
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ',' https://www.remessaonline.com.br/blog/https-o-que-e-e-qual-a-sua-importancia-para-a-seguranca-do-seu-site/','  O que é e qual sua importância ');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ',' https://www.youtube.com/watch?v=G9VlDTshk-k&ab_channel=Dicion%C3%A1riodeInform%C3%A1tica','  HTTP e HTTPs ');
+
+------------ CONHECIMENTOS DE SEGURANÇA WEB: CORS ---------------------------------
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ',' https://www.treinaweb.com.br/blog/o-que-e-cors-e-como-resolver-os-principais-erros','  O que é? ');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ',' https://www.youtube.com/watch?v=GZV-FUdeVwE&ab_channel=C%C3%B3digoFonteTV','  CORS em 6 minutos ');
+
+------------ CONHECIMENTOS DE SEGURANÇA WEB: SSL ---------------------------------
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ',' https://serasa.certificadodigital.com.br/blog/ssl/o-que-e-ssl-entenda-a-importancia-para-a-seguranca-do-seu-site/','  O que é o SSL');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ',' https://www.hostgator.com.br/blog/o-que-e-certificado-ssl-e-porque-voce-deve-utilizar-no-seu-site/','  O que é o SSL');
+
+------------ HTML: APRENDA O BÁSICO ---------------------------------
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ',' https://www.homehost.com.br/blog/tutoriais/html-basico/',' Conhecimento básico de HTML');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ',' https://www.youtube.com/watch?v=SV7TL0hxmIQ','  Aula inicial de HTML');
+
+
+------------ HTML: ESCREVENDO HTML SEM NTICO ---------------------------------
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ',' https://www.devmedia.com.br/html-semantico-conheca-os-elementos-semanticos-da-html5/38065','  Elementos semânticos do HTML');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ',' https://www.youtube.com/watch?v=HaSgt1hK2Fs','  Aula de semântica do HTML');
+
+------------ HTML: FORMULÁRIOS E VALIDAÇÕES ---------------------------------
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ',' https://www.devmedia.com.br/html5-validator-validando-formularios-com-html5/28785','  Formulário e validação no HTML');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ',' https://www.youtube.com/watch?v=tZ7MEuygnU8','  Aula de formuçário e validação');
+
+------------ HTML: CONVENÇÕES E BOAS PRÁTICAS ---------------------------------
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ',' https://kinsta.com/pt/blog/melhores-praticas-html/','  convenções e boas práticas');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ',' https://www.youtube.com/watch?v=TBplwrsUj4s','  Aula de boas práticas para se escrever HTML');
+
+------------ HTML: ACESSIBILIDADE ---------------------------------
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ',' https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML','  A ideia de acessibilidade no HTML');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ',' https://developer.mozilla.org/pt-BR/docs/Learn/Accessibility','  Video sobre a acessibilidade');
+
+------------ HTML: SEO BÁSICO ---------------------------------
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ',' https://www.infowester.com/seo.php','  O básico de SEO');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ',' https://www.youtube.com/watch?v=qAJEoY4V5nI','  SEO para o HTML');
+
+
+------------ CSS: APRENDA O BÁSICO ---------------------------------
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ',' https://www.hostinger.com.br/tutoriais/o-que-e-css-guia-basico-de-css#:~:text=O%20CSS%20separa%20o%20conte%C3%BAdo,telas%20e%20assim%20por%20diante.','  O inicial de CSS');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ','https://www.hostinger.com.br/tutoriais/o-que-e-css-guia-basico-de-css',' Básico de CSS');
+
+------------ CSS: FAZENDO LAYOUTS ---------------------------------
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ',' https://developer.mozilla.org/pt-BR/docs/Learn/CSS/CSS_layout','  Aprenda a estilizar HTML utilizando CSS ');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ',' https://blog.matheuscastiglioni.com.br/criando-layouts-com-css-grid-layout/','  Criando layouts com CSS');
+
+------------ CSS: DESIGN RESPONSIVO E MEDIA QUERIES ---------------------------------
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ',' https://www.freecodecamp.org/portuguese/news/tutorial-de-media-queries-do-css-resolucoes-padrao-breakpoints-do-css-e-tamanhos-de-telefone/','  Tutorial de media queries do CSS ');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ',' https://www.youtube.com/watch?v=AltqAPZzAqo&ab_channel=Origamid','  Como utilizar Media Queries ');
+
+
+------------ JAVASCRIPT: SINTAXE E CONSTRUÇÕES BÁSICAS ---------------------------------
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ',' http://devfuria.com.br/javascript/sintaxe-basica/','  O básico que você precisa saber ');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ',' https://www.youtube.com/watch?v=z7gvyMe0VQI&ab_channel=ProfessorErmogenesPalacio','  Tudo sobre sintaxe e estruturas básicas');
+
+------------ JAVASCRIPT: APRENDA A MANIPULAR O DOM ---------------------------------
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ',' http://devfuria.com.br/javascript/dom-manipulando-o-dom/','  Como funciona ');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ',' https://www.youtube.com/watch?v=UftSB4DaRU4&ab_channel=Rocketseat ','  Utilização na prática ');
+
+------------ JAVASCRIPT: APRENDA FETCH API ---------------------------------
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ',' https://www.devmedia.com.br/javascript-fetch/41206','  Entenda básico ');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ',' https://www.youtube.com/watch?v=1d5jNmKdwlY&ab_channel=Ot%C3%A1vioMiranda','  Uso de Fetch API ');
+
+------------ JAVASCRIPT: ES6+ E JAVASCRIPT MODULAR ---------------------------------
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ',' https://medium.com/trainingcenter/entendendo-m%C3%B3dulos-no-javascript-73bce1d64dbf','  Entendendo módulos ES6 ');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ',' https://www.youtube.com/watch?v=vylVbb2PY0M&ab_channel=TiagoMatos','  Reutilizando funções ');
+
+------------ JAVASCRIPT: OUTROS CONCEITOS ---------------------------------
+INSERT INTO conteudos(tipo,link,titulo) VALUES('texto ',' https://developer.mozilla.org/pt-BR/docs/Learn/JavaScript/First_steps/What_is_JavaScript','  Desenvolvimento JavaScript ');
+INSERT INTO conteudos(tipo,link,titulo) VALUES('video ',' https://www.youtube.com/watch?v=qfIWd6715tI&ab_channel=Felipe-DevSamurai','  JavaScript antes do React ');
+
+
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','1');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','2');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','3');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','4');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','5');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','6');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','7');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','8');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','9');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','10');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','11');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','12');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','13');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','14');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','15');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','16');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','17');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','18');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','19');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','20');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','21');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','22');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','23');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','24');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','25');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','26');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','27');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','28');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','29');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','30');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','31');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','32');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','33');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','34');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','35');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','36');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','37');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','38');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','39');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','40');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','41');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','42');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','43');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','44');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','45');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','46');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','47');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','48');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','49');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','50');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','51');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','52');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','53');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','54');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','55');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','56');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','57');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','58');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','59');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','50');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','61');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','62');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','63');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','64');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','65');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','66');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','67');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','68');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','69');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','70');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','71');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','72');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','73');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','74');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','75');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','76');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','77');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','78');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','79');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','80');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','81');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','82');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','83');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','84');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','85');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','86');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','87');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','88');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','89');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','90');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','91');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','92');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','93');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','94');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','95');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','96');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','97');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','98');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','99');
+INSERT INTO subtopicoContemConteudo (subtopico ,conteudo) VALUES('1','100');
