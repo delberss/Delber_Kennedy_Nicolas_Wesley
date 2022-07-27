@@ -31,15 +31,30 @@ class Header extends Component {
     calculoxp()
     {   //console.log('nivel ='+ this.state.nivel);
         let xp = this.props.xp=== undefined ? this.state.pontos : this.props.xp;
-        if(xp == 0 || xp == 1)
-        {
-            return xp + ' pontos (Nível ' + 1 + ')' ;
 
-        }
-        let y = 1773009 + (0.8691453 - 1773009)/(1 + (xp/82323.29)**1.442783)
-        let x = Math.floor(y/1) ;
-        return xp + ' pontos  (Nível ' + x + ')';
+        let nivel = Math.ceil(xp/5);
+        nivel = nivel +1;
+  
+        return xp + ' pontos  (Nível ' + nivel + ')';
+
     }
+
+    calculoxp()
+    {   //console.log('nivel ='+ this.state.nivel);
+
+        let xp = this.props.xp=== undefined ? this.state.pontos : this.props.xp;
+        
+        let nivel = xp/5;
+
+        if(nivel < 1)
+            return xp + ' pontos  (Nível 1)';
+
+        else
+            nivel++;
+            return xp + ' pontos  (Nível ' + Math.floor(nivel) + ')';
+
+    }
+
     
     logout = () => {
         const userVazio =  [{"id":-1,"nome":"teste","email":"teste@teste.com","curso":"","senha":"","experiencia":0,"caminhoatual":-1,"subtopicosconcluidos":[{'id': 9999, 'valor':false}],"topicosconcluidos":[{'id': 9999, 'valor':false}]}];
