@@ -1,5 +1,9 @@
 .sobre,
 .sobrePontuacao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     width: 80%;
     margin: 10px auto;
@@ -69,3 +73,6 @@
     margin-top: 20px;
 }
 
+.itensSobrePontuacao li{
+    text-align: left;
+}

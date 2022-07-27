@@ -35,8 +35,9 @@ function Sobre(props){
 
                 <div className="sobrePontuacao">
                     <h2>SISTEMA DE PONTUAÇÃO</h2>
-                    <ul>
+                    <ul className="itensSobrePontuacao">
                         <li> - Cada subtópico concluído gera 1 ponto de experiência</li>
+                        <li> - A cada 5 pontos ganhos, o usuário sobe 1 nível na plataforma</li>
                     </ul>
                 </div>
 
