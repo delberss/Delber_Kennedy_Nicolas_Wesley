@@ -182,6 +182,7 @@ class Jornadas extends Component {
             for (let i = 0; i < this.state.subT.length; i++) {
                 let id = this.state.subT[i]['id'];
                 let nome = this.state.subT[i]['nome'];
+                const stc = true; //this.subTConcluido(id); não funciona
                 List.push(
                     <>
                         <div className="subtopico">
@@ -200,9 +201,9 @@ class Jornadas extends Component {
                                 </div>
 
                             </li>
-                            <div className="subtopicoConcluido">
+                            {stc && <div className="subtopicoConcluido" >
                                 <span className="fa-solid fa-check"></span>
-                            </div>
+                            </div>}
                         </div>
                     </>
                 );
@@ -494,6 +495,7 @@ class Jornadas extends Component {
     }
 
     subTConcluido(id) {
+        console.log('me chamou');
        // console.log('fn subtconcluido');
        // console.log(this.state.user[0]['subtopicosconcluidos']);
 
