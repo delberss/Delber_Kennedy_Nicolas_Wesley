@@ -18,7 +18,7 @@
 
 .topicoConcluido,
 .subtopicoConcluido {
-    display: none;
+    display: block;
     justify-self: end;
     text-align: right;
     

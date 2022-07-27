@@ -182,7 +182,7 @@ class Jornadas extends Component {
             for (let i = 0; i < this.state.subT.length; i++) {
                 let id = this.state.subT[i]['id'];
                 let nome = this.state.subT[i]['nome'];
-                const stc = true; //this.subTConcluido(id); não funciona
+                
                 List.push(
                     <>
                         <div className="subtopico">
@@ -195,13 +195,12 @@ class Jornadas extends Component {
                                      () => {
                                          this.carregaAnotacao(3);
                                          this.detalhesST(id);
-                                         //this.verificaSubTConcluido(id);
      
                                      });}}>{nome}
                                 </div>
 
                             </li>
-                            {stc && <div className="subtopicoConcluido" >
+                            {this.verificaSubTConcluido(id) && <div className="subtopicoConcluido" >
                                 <span className="fa-solid fa-check"></span>
                             </div>}
                         </div>
@@ -666,7 +665,7 @@ class Jornadas extends Component {
                         </div>
 
                         <div className="conclusaoSubtopico">
-                            <h4> subt já concluido</h4>
+                            <h4>CONCLUÍDO</h4>
                         </div>
 
                         
@@ -726,7 +725,7 @@ class Jornadas extends Component {
                                 alert('É necessario estar logado para usar essa função') :
                                 this.subTConcluido(this.state.detST[0]['id']);
                                 
-                                }}>Concluido </button>
+                                }}>CONCLUÍDO </button>
                         </div>
 
                         

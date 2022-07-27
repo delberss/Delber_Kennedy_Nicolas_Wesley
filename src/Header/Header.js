@@ -32,26 +32,17 @@ class Header extends Component {
     {   //console.log('nivel ='+ this.state.nivel);
         let xp = this.props.xp=== undefined ? this.state.pontos : this.props.xp;
         if(xp<5)
-        {
-            //this.setState({nivel :1});
-            return 'Nivel: 1 e '+ xp + ' pontos de xp';
-        }
-        if(xp<10)
-        {   return 'Nivel: 2 e '+ xp + ' pontos de xp';
-            //this.setState({nivel :2});
-        }if(xp<15)
-        {   return 'Nivel: 3 e '+ xp + ' pontos de xp';
-            //this.setState({nivel :3});
-        }if(xp<20)
-        {   return 'Nivel: 4 e '+ xp + ' pontos de xp';
-            //this.setState({nivel :4});
-        }
-        if(xp<25)
-        {   return 'Nivel: 5 e '+ xp + ' pontos de xp';
-            //this.setState({nivel :5});
-        }
-        return 'Nivel: 9 e '+ xp + ' pontos de xp';
+            return xp + ' pontos - Nivel 1';
+        else if(xp<10)
+           return xp + ' pontos - Nivel 2';
+        else if(xp<15)
+           return xp + ' pontos - Nivel 3';
+        else if(xp<20)
+           return xp + ' pontos - Nivel 4';
+        else if(xp<25)
+           return xp + ' pontos - Nivel 5';
     }
+    
     logout = () => {
         const userVazio =  [{"id":-1,"nome":"teste","email":"teste@teste.com","curso":"","senha":"","experiencia":0,"caminhoatual":-1,"subtopicosconcluidos":[{'id': 9999, 'valor':false}],"topicosconcluidos":[{'id': 9999, 'valor':false}]}];
         this.setState({logado : false})

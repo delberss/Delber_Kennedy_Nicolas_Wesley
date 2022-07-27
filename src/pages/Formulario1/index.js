@@ -93,10 +93,6 @@ function Formulario1(props) {
     return (
 
         <div className="content">
-            <div className="btn_voltar" onClick={() => { this.volta() }}>
-                <span className="material-symbols-outlined">arrow_back</span>
-            </div>
-
             <div className="formulario1" onSubmit={handleSubmit}>
 
 
