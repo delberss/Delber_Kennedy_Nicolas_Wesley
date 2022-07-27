@@ -10,6 +10,7 @@ class Header extends Component {
             logado: true,
             nome : "",
             pontos : 0,
+            nivel :1
             
         }
         if(this.state.usuario != null){
@@ -25,8 +26,29 @@ class Header extends Component {
         }
     };
 
+    //this.calculoxp();
     }
-
+    // calculoxp()
+    // {   console.log('nivel ='+ this.state.nivel);
+    //     if(this.state.pontos<5)
+    //     {
+    //         this.setState({nivel :1});
+    //     }
+    //     if(this.state.pontos<10)
+    //     {
+    //         this.setState({nivel :2});
+    //     }if(this.state.pontos<15)
+    //     {
+    //         this.setState({nivel :3});
+    //     }if(this.state.pontos<20)
+    //     {
+    //         this.setState({nivel :4});
+    //     }
+    //     if(this.state.pontos>20)
+    //     {
+    //         this.setState({nivel :5});
+    //     }
+    // }
     logout = () => {
         const userVazio =  [{"id":-1,"nome":"teste","email":"teste@teste.com","curso":"","senha":"","experiencia":0,"caminhoatual":-1,"subtopicosconcluidos":[{'id': 9999, 'valor':false}],"topicosconcluidos":[{'id': 9999, 'valor':false}]}];
         this.setState({logado : false})
@@ -79,7 +101,7 @@ class Header extends Component {
                         <div className="campo_User">
                             <span className="nomeUser">{this.state.nome}</span> <br></br>
                             <img className="photoUser" src="https://cdn-icons-png.flaticon.com/512/17/17004.png" alt="foto de perfil" /><br></br>
-                            <span className="xp">{this.props.xp=== undefined ? this.state.pontos : this.props.xp} pontos</span>
+                            <span className="xp"> Nivel : {this.state.nivel} E {this.props.xp=== undefined ? this.state.pontos : this.props.xp} pontos</span>
                         </div>
 
                         <div>
