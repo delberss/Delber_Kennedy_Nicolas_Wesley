@@ -87,14 +87,16 @@ class Ranking extends Component {
 
     calculoNivel(xp)
     {   //console.log('nivel ='+ this.state.nivel);
-        if(xp == 0 || xp == 1)
-        {
-            return 'Nível: ' + 1    ;
 
-        }
-        let y = 1773009 + (0.8691453 - 1773009)/(1 + (xp/82323.29)**1.442783)
-        let x = Math.floor(y/1) ;
-        return 'Nível: ' + x ;
+        let nivel = xp/5;
+
+        if(nivel < 1)
+            return '(Nível 1)';
+
+        else
+            nivel++;
+            return '(Nível ' + Math.floor(nivel) + ')';
+
     }
 
     render() {
