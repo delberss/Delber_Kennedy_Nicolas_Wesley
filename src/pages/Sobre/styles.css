@@ -1,17 +1,32 @@
-.sobre {
+.sobre,
+.sobrePontuacao {
     text-align: center;
     width: 80%;
     margin: 10px auto;
-    border: 10px solid #5734a4;;
+    border: 10px solid #5734a4;
     border-radius: 20px;
     padding: 10px;
 }
 
-.sobre h2{
-    color: #a3ffbf;
+.sobre{
+    border: 10px solid #5734a4;
 }
 
-.sobre p{
+.sobrePontuacao{
+    border: 10px solid #a3ffbf;
+}
+
+
+.sobre h2
+{
+    color: #a3ffbf;
+}
+.sobrePontuacao h2{
+    color: #5734a4;
+}
+
+.sobre p,
+.sobrePontuacao p{
     font-size: 1.3rem;
     line-height: 35px;
     color: white;
@@ -35,7 +50,10 @@
  .social-medias li a{
     font-size: 2rem;
     color: black;
-    border-radius: 60px;
+    background-color: white;
+    padding: 5px;
+    border-radius: 10px;
+    transition: 1s;
 }
 
  .social-medias li a:hover{
@@ -43,13 +61,11 @@
     transition: 0.9s;
     font-size: 2.5rem;
     height: 10px;
-}
-
-.social-medias li:hover{
-    background-color: white;
-    border-radius: 60px;
+    color: white;
+    background-color: black;
 }
 
 .sobre .contato{
     margin-top: 20px;
 }
+

@@ -16,7 +16,6 @@
     margin-top: 20px;
 }
 
-.topicoConcluido,
 .subtopicoConcluido {
     display: block;
     justify-self: end;
@@ -24,11 +23,10 @@
     
 }
 
-.topicoConcluido span,
 .subtopicoConcluido span{
     color: green;
     background-color: white;
-    padding: 2px;
+    padding: 8px;
     border-radius: 50px;
 }
 

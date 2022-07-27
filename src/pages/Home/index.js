@@ -93,6 +93,14 @@ class Home extends Component {
                                 </a>
                             </Link>
 
+                            <Link  to={{
+                                pathname: '/signup'                        
+                                }}>
+                                <a>
+                                <h3 className="facaCadastro" >Cadastre!</h3>
+                                </a>
+                            </Link>
+
                             
                         </div>}
                 </div>

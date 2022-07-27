@@ -31,10 +31,15 @@ function Sobre(props){
                             </li>
                         </ul>
                     </div>
-
                 </div>
 
-                
+                <div className="sobrePontuacao">
+                    <h2>SISTEMA DE PONTUAÇÃO</h2>
+                    <ul>
+                        <li> - Cada subtópico concluído gera 1 ponto de experiência</li>
+                    </ul>
+                </div>
+
             </div>
             
             <Footer/>

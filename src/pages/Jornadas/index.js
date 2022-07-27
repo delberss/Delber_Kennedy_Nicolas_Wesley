@@ -145,9 +145,7 @@ class Jornadas extends Component {
                                 }}>{nome}
                         </li>
                         
-                        <div className="topicoConcluido">
-                            <span className="fa-solid fa-check"></span>
-                        </div>
+                        
                     </div>
 
 
@@ -315,7 +313,7 @@ class Jornadas extends Component {
 
                     fetch("https://trabalhoengsw.herokuapp.com/feedbacktopicos/insert", requestOptions)
                         .then(response => response.text())
-                        .then(result => { alert('Anotação salva topico'+ result); })
+                        .then(result => { alert('Anotação salva com sucesso!'); })
                         .catch(error => { alert('Erro inesperado ao salvar a anotação') });
                 }
                 else {
@@ -343,7 +341,7 @@ class Jornadas extends Component {
 
                     fetch("https://trabalhoengsw.herokuapp.com/feedbacktopicos/edit", requestOptions)
                         .then(response => response.text())
-                        .then(result => { alert('Anotação salva topico'+ result); })
+                        .then(result => { alert('Anotação salva com sucesso!'); })
                         .catch(error => { alert('Erro inesperado ao salvar a anotação') });
                 }
 
@@ -375,7 +373,7 @@ class Jornadas extends Component {
 
                     fetch("https://trabalhoengsw.herokuapp.com/feedbacksubtopicos/insert", requestOptions)
                         .then(response => response.text())
-                        .then(result => { alert('Anotação salva topico'+ result); })
+                        .then(result => { alert('Anotação salva com sucesso!'); })
                         .catch(error => { alert('Erro inesperado ao salvar a anotação') });
                 }
                 else {
@@ -403,7 +401,7 @@ class Jornadas extends Component {
 
                     fetch("https://trabalhoengsw.herokuapp.com/feedbacksubtopicos/edit", requestOptions)
                         .then(response => response.text())
-                        .then(result => { alert('Anotação salva subtopico '+ result); })
+                        .then(result => { alert('Anotação salva com sucesso!'); })
                         .catch(error => { alert('Erro inesperado ao salvar a anotação') });
                 }
 

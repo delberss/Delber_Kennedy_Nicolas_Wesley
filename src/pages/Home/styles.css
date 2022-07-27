@@ -24,14 +24,16 @@
 }
 
 
-.facaLogin {
+.facaLogin,
+.facaCadastro {
     background-color: #a3ffbf;
     border-radius: 30px;
     padding: 10px;
-    margin: auto;
+    margin: 10px auto;
     font-size: 18px;
 }
-.facaLogin:hover{
+.facaLogin:hover,
+.facaCadastro:hover{
     background-color: #a3ffbfeb;
 }
 

@@ -39,9 +39,21 @@ function Formulario1(props) {
             .catch(error => (console.log('error', error), alert("erro de conexão, tente novamente")));
 
     }
-    const alteraCaminho = (usr, caminhoEscolhido) => {
+    const alteraCaminho = (usr, back, front) => {
     
-        let caminho = caminhoEscolhido <= 0 ? 1 : 2;
+        let caminho;
+        if(back >= 0){
+            if(front < 0)
+                caminho = 1;
+            else
+                if(back > front)
+                    caminho = 1;
+                else
+                    caminho = 2;
+        }
+        else{
+            caminho = 2;
+        }
         // console.log('cam es = '+caminhoEscolhido);
         // console.log('caminho = ' + caminho);
         usr[0]['caminhoatual'] = caminho;
@@ -54,15 +66,13 @@ function Formulario1(props) {
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
-        // var a = parseInt(document.querySelector('input[name="conhecimentoProg"]:checked').value);
         // var b = parseInt(document.querySelector('input[name="conhecimentoBackend"]:checked').value);
         // var c = parseInt(document.querySelector('input[name="conhecimentoFrontend"]:checked').value);
 
-        var a = parseInt(p1);
         var b = parseInt(p2);
         var c = parseInt(p3);
         //e.preventDefault();
-        alteraCaminho(user, a + b + c)
+        alteraCaminho(user, b,c);
         if (r) {
             navigate("/");
         }

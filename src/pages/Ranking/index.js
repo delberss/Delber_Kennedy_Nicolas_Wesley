@@ -9,7 +9,7 @@ class Ranking extends Component {
         super(props);
         this.state = {
             usuarios: [],
-            user : window.sessionStorage.getItem("usuario")
+            user : window.sessionStorage.getItem("usuario"),
         }
         // console.log('ranking');
         // console.log(JSON.parse(this.state.user)[0]['nome']);
@@ -42,7 +42,7 @@ class Ranking extends Component {
                             <span className="material-symbols-outlined">workspace_premium</span>
                         </td>
                         <td className="nome_rank">{nome}</td>
-                        <td className="pts_rank">{xp}</td>
+                        <td className="pts_rank">{xp} pts<br></br> <span className="nivel">{this.calculoNivel(xp)}</span></td>
                     </tr>
                 );
             }
@@ -53,7 +53,7 @@ class Ranking extends Component {
                             <span className="material-symbols-outlined">workspace_premium</span>
                         </td>
                         <td className="nome_rank">{nome}</td>
-                        <td className="pts_rank">{xp}</td>
+                        <td className="pts_rank">{xp} pts<br></br> <span className="nivel">{this.calculoNivel(xp)}</span></td>
                     </tr>
                 );
             }
@@ -64,17 +64,19 @@ class Ranking extends Component {
                             <span className="material-symbols-outlined">workspace_premium</span>
                         </td>
                         <td className="nome_rank">{nome}</td>
-                        <td className="pts_rank">{xp}</td>
+                        <td className="pts_rank">{xp} pts<br></br> <span className="nivel">{this.calculoNivel(xp)}</span></td>
                     </tr>
                 );
             }
-            
+            else if(i == 20){
+                break;
+            }
             else{
                 userList.push(
                     <tr key ={i}>
                         <td className="pos_rank">{i+1}</td>
                         <td className="nome_rank">{nome}</td>
-                        <td className="pts_rank">{xp}</td>
+                        <td className="pts_rank">{xp} pts <br></br> <span className="nivel">{this.calculoNivel(xp)}</span></td>
                     </tr>
                 );
             }
@@ -83,8 +85,19 @@ class Ranking extends Component {
         return userList;
     }
 
-    render() {
+    calculoNivel(xp)
+    {   //console.log('nivel ='+ this.state.nivel);
+        if(xp == 0 || xp == 1)
+        {
+            return 'Nível: ' + 1    ;
 
+        }
+        let y = 1773009 + (0.8691453 - 1773009)/(1 + (xp/82323.29)**1.442783)
+        let x = Math.floor(y/1) ;
+        return 'Nível: ' + x ;
+    }
+
+    render() {
         return (<div>
             <Header user = {this.props.user} />
             <div className="content">
@@ -98,7 +111,7 @@ class Ranking extends Component {
                                 <tr>
                                     <th>Rank</th>
                                     <th className="th_name">Nome</th>
-                                    <th className="th_pts">Pontos</th>
+                                    <th className="th_pts">Pontos (Nível)</th>
                                 </tr>
                             </thead>
                             <tbody>

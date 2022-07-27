@@ -38,7 +38,7 @@ function Signup() {
 
     e.preventDefault();
     if(!erro){
-    navigate("/jornadas");
+    navigate("/signin");
     }
     else{
       alert('Aconteceu algum erro inesperado, tente novamente');
@@ -47,7 +47,7 @@ function Signup() {
 
   const handleBack = (e) => {
     e.preventDefault()
-    navigate("/jornadas");
+    navigate("/");
   }
 
   const navigate = useNavigate();
