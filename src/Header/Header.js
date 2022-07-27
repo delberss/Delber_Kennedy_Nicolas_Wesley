@@ -31,16 +31,14 @@ class Header extends Component {
     calculoxp()
     {   //console.log('nivel ='+ this.state.nivel);
         let xp = this.props.xp=== undefined ? this.state.pontos : this.props.xp;
-        if(xp<5)
-            return xp + ' pontos - Nivel 1';
-        else if(xp<10)
-           return xp + ' pontos - Nivel 2';
-        else if(xp<15)
-           return xp + ' pontos - Nivel 3';
-        else if(xp<20)
-           return xp + ' pontos - Nivel 4';
-        else if(xp<25)
-           return xp + ' pontos - Nivel 5';
+        if(xp == 0 || xp == 1)
+        {
+            return xp + ' pontos - Nivel: ' + 1 ;
+
+        }
+        let y = 1773009 + (0.8691453 - 1773009)/(1 + (xp/82323.29)**1.442783)
+        let x = Math.floor(y/1) ;
+        return xp + ' pontos - Nivel: ' + x ;
     }
     
     logout = () => {
